@@ -364,7 +364,6 @@ h2 {
 }
 h2::after {
   content: " ";
-  border: solid 2px #3dc9b3;
   display: block;
   width: 35px;
   margin: 25px auto;
@@ -585,7 +584,6 @@ h1.arrow {
   text-transform: uppercase;
   color: #353535;
   letter-spacing: 1px;
-  background: url("../img/h1-bg.png") no-repeat center bottom;
   padding-bottom: 30px;
   font-weight: bold;
 }
