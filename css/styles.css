@@ -1039,3 +1039,15 @@ Waypoints
   background: url("../img/13.jpeg") no-repeat center center;
   height: 100%;
 }
+
+@media only screen and (max-width: 500px) {
+    #titulo1
+    {
+      font-size: 12px;
+    } 
+    
+    
+
+
+  }
+  
