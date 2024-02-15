@@ -1030,8 +1030,8 @@ ul.slides li {
 }
 /* ==========================================================================
 Waypoints
-========================================================================== */titulo
-.wp1,
+========================================================================== */
+titulo .wp1,
 .wp2,
 .wp3,
 .wp4,
@@ -1062,17 +1062,62 @@ Waypoints
   height: 100%;
 }
 
+.call-section {
+}
+
+.call-section h2 {
+  width: 60%;
+  text-transform: capitalize;
+}
+
+.callSection-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.call-btn {
+  cursor: pointer;
+  width: 20%;
+  outline: 0;
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 16px;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  :hover {
+    color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+  }
+}
+
+.call-btn:hover {
+  background-color: #65b9e6;
+}
+
+.call-btn:active {
+  box-shadow: 0 0 2px darkslategray;
+  transform: translateY(2px);
+}
+
 @media only screen and (max-width: 500px) {
   #titulo1 {
     font-size: 12px;
   }
 }
 
-
-
 @media only screen and (max-width: 500px) {
-  #titulo{
+  #titulo {
     font-size: 24px;
   }
 }
-
