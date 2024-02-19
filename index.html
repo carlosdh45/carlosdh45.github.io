@@ -1,766 +1,707 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+    <!-- Basic -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/yourcode.js"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Mobile Metas -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="images/favicon.svg" type="" />
+
     <title>CorosDev - Software Development Enhancements</title>
-    <link rel="shortcut icon" href="img/favicon.svg" />
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <!-- fonts style -->
     <link
-      href="http://fonts.googleapis.com/css?family=Varela+Round"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--owl slider stylesheet -->
+    <link
       rel="stylesheet"
       type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
     />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link
-      href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-    <link href="css/flexslider.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/queries.css" rel="stylesheet" />
-    <link href="css/animate.css" rel="stylesheet" />
-    <script
-      src="https://kit.fontawesome.com/a076d05399.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/yourcode.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body id="top">
-    <header id="home">
-      <!-- <nav>
-        <div class="container-fluid">
-          <div class="row">
-            <div
-              class="
-                col-md-8
-                col-md-offset-2
-                col-sm-8
-                col-sm-offset-2
-                col-xs-8
-                col-xs-offset-2
-              "
-            >
-              <nav class="pull">
-                <ul class="top-nav">
-                  <li>
-                    <a href="#intro"
-                      >Introduction
-                      <span class="indicator"
-                        ><i class="fa fa-angle-right"></i></span
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#features"
-                      >Features
-                      <span class="indicator"
-                        ><i class="fa fa-angle-right"></i></span
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#responsive"
-                      >Responsive Design
-                      <span class="indicator"
-                        ><i class="fa fa-angle-right"></i></span
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#portfolio"
-                      >Portfolio
-                      <span class="indicator"
-                        ><i class="fa fa-angle-right"></i></span
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#team"
-                      >Team
-                      <span class="indicator"
-                        ><i class="fa fa-angle-right"></i></span
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#contact"
-                      >Get in Touch
-                      <span class="indicator"
-                        ><i class="fa fa-angle-right"></i></span
-                    ></a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </nav> -->
-      <section class="hero" id="hero">
-        <video id="background-video" autoplay muted loop>
-          <source
-            src="https://res.cloudinary.com/corosdev/video/upload/v1693493664/_import_615163540096e1.68968110_FPpreview_rbunzd.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <div class="overlays"></div>
-        <div style="width: 15%" class="row">
-          <img
-            width="290x"
-            height="180px"
-            src="https://res.cloudinary.com/corosdev/image/upload/v1659043897/img_umvjsg.png"
-            alt=""
-          />
-          <!-- <a style="margin: 5%;" id="nav-toggle" class="nav_slide_button" href="#"
-                ><span></span
-              ></a> -->
-        </div>
 
-        <div class="container">
-          <div class="row"></div>
-          <div class="row"></div>
-          <div class="row">
-            <div class="col-md-6 col-md-offset-3 text-center">
-              <h1 id="titulo" style="color: #fff">
-                Corporate and operational solutions
-              </h1>
-              <h1 id="titulo" style="color: #fff">Empowering your ideas</h1>
+    <!-- font awesome style -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="hero_area">
+      <div class="hero_bg_box">
+        <div class="bg_img_box">
+          <img src="images/hero2bg.png" alt="" />
+        </div>
+      </div>
+
+      <!-- header section strats -->
+      <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="index.html">
+              <img style="width: 200px" src="images/coros.png" alt="" />
+            </a>
+
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class=""> </span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <!-- <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html"
+                    >Home <span class="sr-only">(current)</span></a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="about.html"> About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="service.html">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="why.html">Why Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="team.html">Team</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="fa fa-user" aria-hidden="true"></i> Login</a
+                  >
+                </li>
+                <form class="form-inline">
+                  <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
+                </form>
+              </ul> -->
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- end header section -->
+      <!-- slider section -->
+      <section class="slider_section">
+        <div id="customCarousel1" class="carousel slide">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-box">
+                      <h1>Software Developments</h1>
+                      <p>
+                        We're a Central American Software Development Company,
+                        dedicated to creating exceptional global software
+                        solutions. Our expert team excels in software
+                        engineering, design, digital marketing, and more.
+                      </p>
+                      <!-- <div class="btn-box">
+                        <a href="" class="btn1"> Read More </a>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="img-box">
+                      <img src="images/slider-img.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-box">
+                      <h1>
+                        Crypto <br />
+                        Currency
+                      </h1>
+                      <p>
+                        Explicabo esse amet tempora quibusdam laudantium,
+                        laborum eaque magnam fugiat hic? Esse dicta aliquid
+                        error repudiandae earum suscipit fugiat molestias,
+                        veniam, vel architecto veritatis delectus repellat modi
+                        impedit sequi.
+                      </p>
+                      <!-- <div class="btn-box">
+                        <a href="" class="btn1"> Read More </a>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="img-box">
+                      <img src="images/slider-img.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="detail-box">
+                      <h1>
+                        Crypto <br />
+                        Currency
+                      </h1>
+                      <p>
+                        Explicabo esse amet tempora quibusdam laudantium,
+                        laborum eaque magnam fugiat hic? Esse dicta aliquid
+                        error repudiandae earum suscipit fugiat molestias,
+                        veniam, vel architecto veritatis delectus repellat modi
+                        impedit sequi.
+                      </p>
+                      <div class="btn-box">
+                        <a href="" class="btn1"> Read More </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="img-box">
+                      <img src="images/slider-img.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-    </header>
-    <section class="intro text-center section-padding" id="intro">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2 wp1">
-            <h1 class="arrow">Experts on Computer Science & Engineering</h1>
+      <!-- end slider section -->
+    </div>
+
+    <!-- service section -->
+
+    <section class="service_section layout_padding">
+      <div class="service_container">
+        <div class="container">
+          <div class="heading_container heading_center">
+            <h2>Our <span>Services</span></h2>
             <p>
-              We are a Software Development Company based in the heart of
-              America (Central America), our goal is to create, design, and
-              optimize the best software{s} around the world. We have the power
-              of great talent and the brightest minds in all Latin America who
-              specializes in software engineering, design, digital marketing,
-              and much more.
+              Crafting Corporate Excellence through Innovative Systems and
+              Software Solutions.
             </p>
           </div>
-        </div>
-      </div>
-    </section>
-    <section class="features text-center section-padding" id="features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="arrow">Our Services</h1>
-            <!-- <div class="features-wrapper">
-              <div class="col-md-4 wp2">
-                <div class="icon">
-                  <i class="fa fa-laptop shadow"></i>
-                </div>
-                <h2>Software Development</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a
-                  lorem quis neque interdum consequat ut sed sem. Duis quis
-                  tempor nunc. Interdum et malesuada fames ac ante ipsum primis
-                  in faucibus.
-                </p>
-              </div>
-              <div class="col-md-4 wp2 delay-05s">
-                <div class="icon">
-                  <i class="fa fa-code shadow"></i>
-                </div>
-                <h2>Web Development</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a
-                  lorem quis neque interdum consequat ut sed sem. Duis quis
-                  tempor nunc. Interdum et malesuada fames ac ante ipsum primis
-                  in faucibus.
-                </p>
-              </div>
-              <div class="col-md-4 wp2 delay-1s">
-                <div class="icon">
-                  <i class="fa fa-mobile shadow"></i>
-                </div>
-                <h2>Mobile Development</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a
-                  lorem quis neque interdum consequat ut sed sem. Duis quis
-                  tempor nunc. Interdum et malesuada fames ac ante ipsum primis
-                  in faucibus.
-                </p>
-              </div>
-              <div class="clearfix"></div>
-            </div> -->
-            <div class="features-wrapper">
-              <div class="col-md-4 wp2">
-                <div class="icon">
-                  <i class="fa fa-code shadow"></i>
-                </div>
-                <h2>Software Engineering</h2>
-                <p>
-                  Web services, mobile applications, databases, servers and much
-                  more developed by latam top talent.
-                </p>
-              </div>
-              <div class="col-md-4 wp2 delay-05s">
-                <div class="icon">
-                  <i class="fa fa-pencil shadow"></i>
-                </div>
-                <h2>Digital Marketing & Design</h2>
-                <p>
-                  Services of the best strategy in high markets, Search Engine
-                  Optimization, UX/UI design and much more.
-                </p>
-              </div>
-
-              <div class="col-md-4 wp2 delay-1s">
-                <div class="icon">
-                  <i class="fa fa-bitcoin shadow"></i>
-                </div>
-                <h2>CryptoCurrencies</h2>
-                <p>
-                  Trading the highest Crypto Markets around the world, designing
-                  structural blockchain and artificial intelligence.
-                </p>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- <section class="text-center" id="responsive">
-      <div class="container-fluid nopadding responsive-services">
-        <div class="wrapper">
-          <div class="iphone">
-            <div class="wp3"></div>
-          </div>
-          <div class="fluid-white"></div>
-        </div>
-        <div class="container designs">
           <div class="row">
-            <div class="col-md-5 col-md-offset-7">
-              <div id="servicesSlider">
-                <ul class="slides">
-                  <li>
-                    <h1 class="arrow">Responsive Design Specialists</h1>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nunc ultricies nulla non metus pulvinar imperdiet.
-                      Praesent non adipiscing libero.
-                    </p>
-                    <p>
-                      Mauris ultrices odio vitae nulla ultrices iaculis. Nulla
-                      rhoncus odio eu lectus faucibus facilisis. Maecenas ornare
-                      augue vitae sollicitudin accumsan.
-                    </p>
-                    <p>
-                      Etiam eget libero et erat eleifend consectetur a nec
-                      lectus. Sed id tellus lorem. Suspendisse sed venenatis
-                      odio, quis lobortis eros.
-                    </p>
-                  </li>
-                  <li>
-                    <h1 class="arrow">Bootstrap Professionals</h1>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nunc ultricies nulla non metus pulvinar imperdiet.
-                      Praesent non adipiscing libero.
-                    </p>
-                    <p>
-                      Mauris ultrices odio vitae nulla ultrices iaculis. Nulla
-                      rhoncus odio eu lectus faucibus facilisis. Maecenas ornare
-                      augue vitae sollicitudin accumsan.
-                    </p>
-                    <p>
-                      Etiam eget libero et erat eleifend consectetur a nec
-                      lectus. Sed id tellus lorem. Suspendisse sed venenatis
-                      odio, quis lobortis eros.
-                    </p>
-                  </li>
-                </ul>
+            <div class="col-md-4">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/s1.png" alt="" />
+                </div>
+                <div class="detail-box">
+                  <h5>SOFTWARE ENGINEERING</h5>
+                  <p>
+                    Web services, mobile applications, databases, servers and
+                    much more developed by latam top talent.
+                  </p>
+                  <!-- <a href=""> Read More </a> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/s2.png" alt="" />
+                </div>
+                <div class="detail-box">
+                  <h5>DIGITAL MARKETING & DESIGN</h5>
+                  <p>
+                    Services of the best strategy in high markets, Search Engine
+                    Optimization, UX/UI design and much more.
+                  </p>
+                  <!-- <a href=""> Read More </a> -->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/s3.png" alt="" />
+                </div>
+                <div class="detail-box">
+                  <h5>Expert Support</h5>
+                  <p>
+                    Creation of the top Ecommerce platforms using bleeding edge
+                    web development technologies
+                  </p>
+                  <!-- <a href=""> Read More </a> -->
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section> -->
-    <section class="swag text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <h1>
-              Reaching the world{s}<span
-                >top <em>companies</em> and <em>markets</em></span
-              >
-            </h1>
-            <!-- <a href="#portfolio" class="down-arrow-btn"
-              ><i class="fa fa-chevron-down"></i
-            ></a> -->
-          </div>
+          <!-- <div class="btn-box">
+            <a href=""> View All </a>
+          </div> -->
         </div>
       </div>
     </section>
-    <section class="portfolio text-center section-padding" id="portfolio">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="arrow">Meet our potential partners</h1>
-          </div>
-          <div id="portfolioSlider">
-            <ul class="slides">
-              <li>
-                <div class="col-md-4 wp4">
-                  <div class="overlay-effect effects clearfix">
-                    <div class="img">
-                      <img
-                        style="width: 360px; height: 225px"
-                        src="img/clients/Client1.jpg"
-                        alt="Portfolio Item"
-                      />
-                      <div class="overlay">
-                        <a href="https://www.aftermath.com/" class="expand"
-                          ><i class="fa fa-search"></i><br />View More</a
-                        >
-                        <a class="close-overlay hidden">x</a>
-                      </div>
-                    </div>
-                  </div>
-                  <h2>AfterMath</h2>
-                  <p>
-                    We're here to help. Aftermath provides professional
-                    biohazard, coronavirus (COVID-19) and crime scene cleanup
-                    services
-                  </p>
-                </div>
-                <div class="col-md-4 wp4 delay-05s">
-                  <div class="overlay-effect effects clearfix">
-                    <div class="img">
-                      <img
-                        style="width: 100%"
-                        src="https://i.ytimg.com/vi/o6vuIFajUKU/maxresdefault.jpg"
-                        alt="Portfolio Item"
-                      />
-                      <div class="overlay">
-                        <a href="https://www.udacity.com/" class="expand"
-                          ><i class="fa fa-search"></i><br />View More</a
-                        >
-                        <a class="close-overlay hidden">x</a>
-                      </div>
-                    </div>
-                  </div>
-                  <h2>Udacity</h2>
-                  <p>
-                    Radical talent transformation is here. Changing lives,
-                    businesses, and nations through talent transformation in
-                    digital technologies.
-                  </p>
-                </div>
-                <div class="col-md-4 wp4 delay-1s">
-                  <div class="overlay-effect effects clearfix">
-                    <div class="img">
-                      <img
-                        style="width: 360px; height: 225px"
-                        src="https://lh5.googleusercontent.com/p/AF1QipOUTZU70ckoEwyGNGmWeKiLwhgRqVx488eNccKX=w1080-k-no"
-                        alt
-                        alt="Portfolio Item"
-                      />
-                      <div class="overlay">
-                        <a href="http://www.binamia.com.ar/" class="expand"
-                          ><i class="fa fa-search"></i><br />View More</a
-                        >
-                        <a class="close-overlay hidden">x</a>
-                      </div>
-                    </div>
-                  </div>
-                  <h2>Binamia</h2>
-                  <p>
-                    IT services company and solutions for your company in growth
-                    and development, we are happy to hire top talent!
-                  </p>
-                </div>
-              </li>
-              <!-- <li>
-                <div class="col-md-4 wp4">
-                  <div class="overlay-effect effects clearfix">
-                    <div class="img">
-                      <img src="img/portfolio-01.jpg" alt="Portfolio Item" />
-                      <div class="overlay">
-                        <a href="#" class="expand"
-                          ><i class="fa fa-search"></i><br />View More</a
-                        >
-                        <a class="close-overlay hidden">x</a>
-                      </div>
-                    </div>
-                  </div>
-                  <h2>Creative Minds</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc ultricies nulla non metus pulvinar imperdiet. Praesent
-                    non adipiscing libero.
-                  </p>
-                </div>
-                <div class="col-md-4 wp4 delay-05s">
-                  <div class="overlay-effect effects clearfix">
-                    <div class="img">
-                      <img src="img/portfolio-02.jpg" alt="Portfolio Item" />
-                      <div class="overlay">
-                        <a href="#" class="expand"
-                          ><i class="fa fa-search"></i><br />View More</a
-                        >
-                        <a class="close-overlay hidden">x</a>
-                      </div>
-                    </div>
-                  </div>
-                  <h2>Creative Hearts</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc ultricies nulla non metus pulvinar imperdiet. Praesent
-                    non adipiscing libero.
-                  </p>
-                </div>
-                <div class="col-md-4 wp4 delay-1s">
-                  <div class="overlay-effect effects clearfix">
-                    <div class="img">
-                      <img src="img/portfolio-03.jpg" alt="Portfolio Item" />
-                      <div class="overlay">
-                        <a href="#" class="expand"
-                          ><i class="fa fa-search"></i><br />View More</a
-                        >
-                        <a class="close-overlay hidden">x</a>
-                      </div>
-                    </div>
-                  </div>
-                  <h2>Creative Ideas</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc ultricies nulla non metus pulvinar imperdiet. Praesent
-                    non adipiscing libero.
-                  </p>
-                </div>
-              </li> -->
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- <div class="ignite-cta text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <a href="#" class="ignite-btn">Ignite Your Passion</a>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- <section class="team text-center section-padding" id="team">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="arrow">We're a team that adore what we do</h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="team-wrapper">
-            <div id="teamSlider">
-              <ul class="slides">
-                <li>
-                  <div class="col-md-4 wp5">
-                    <img src="img/team-01.png" alt="Team Member" />
-                    <h2>Carlos Hernandez</h2>
-                    <p>Founder , Chief Architect , Software Engineer</p>
-                    <div class="social">
-                      <ul class="social-buttons">
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-dribbble"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-twitter"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-envelope"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
 
-                  <div class="col-md-4 wp5 delay-05s">
-                    <img src="img/team-02.png" alt="Team Member" />
-                    <h2>Mylord Andonie</h2>
-                    <p>Ux/Ui Designer</p>
-                    <div class="social">
-                      <ul class="social-buttons">
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-dribbble"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-twitter"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-envelope"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-md-4 wp5 delay-1s">
-                    <img src="img/team-03.png" alt="Team Member" />
-                    <h2>Fernando Morales</h2>
-                    <p>CTO, Software Engineer</p>
-                    <div class="social">
-                      <ul class="social-buttons">
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-dribbble"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-twitter"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-envelope"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="col-md-4 wp5">
-                    <img src="img/team-01.png" alt="Team Member" />
-                    <h2>Jon Snow</h2>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nunc ultricies nulla non metus pulvinar imperdiet.
-                      Praesent non adipiscing libero.
-                    </p>
-                    <div class="social">
-                      <ul class="social-buttons">
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-dribbble"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-twitter"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-envelope"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-md-4 wp5 delay-05s">
-                    <img src="img/team-02.png" alt="Team Member" />
-                    <h2>Cersei Lannister</h2>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nunc ultricies nulla non metus pulvinar imperdiet.
-                      Praesent non adipiscing libero.
-                    </p>
-                    <div class="social">
-                      <ul class="social-buttons">
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-dribbble"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-twitter"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-envelope"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-md-4 wp5 delay-1s">
-                    <img src="img/team-03.png" alt="Team Member" />
-                    <h2>Jamie Lannister</h2>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nunc ultricies nulla non metus pulvinar imperdiet.
-                      Praesent non adipiscing libero.
-                    </p>
-                    <div class="social">
-                      <ul class="social-buttons">
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-dribbble"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-twitter"></i
-                          ></a>
-                        </li>
-                        <li>
-                          <a href="#" class="social-btn"
-                            ><i class="fa fa-envelope"></i
-                          ></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- <section class="subscribe text-center">
-      <div class="container">
-        <h1>
-          <i class="fa fa-paper-plane"></i
-          ><span>Subscribe to stay in the loop</span>
-        </h1>
-        <form action="#">
-          <input type="text" name="" value="" placeholder="" required />
-          <input type="submit" name="" value="Send" />
-        </form>
-      </div>
-    </section> -->
-    <section
-      class="dark-bg text-center section-padding contact-wrap"
-      id="contact"
-    >
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="arrow">Contact Us</h1>
-          </div>
-        </div>
+    <!-- end service section -->
 
-        <div class="call-section">
-          <div class="callSection-container">
-            <h1>
-              Are you looking to integrate cutting-edge technology into your
-              company?
-            </h1>
-            <h2>
-              Request a free demo call to discuss your specific needs and
-              explore potential ideas on how to bring your vision to life.
-            </h2>
+    <!-- about section -->
 
-            <a
-              href="https://calendly.com/carlos-corosdev/30min"
-              class="call-btn"
-              >Request a Demo</a
-            >
-          </div>
-        </div>
-        <div class="row contact-details">
-          <div class="col-md-4">
-            <div class="light-box box-hover">
-              <h2><i class="fa fa-map-marker"></i><span>Address</span></h2>
-              <p>
-                ALTARA. Oficinas Ejecutivas. K.M. 2 N.O. Boulevard Armenta, San
-                Pedro Sula Honduras
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="light-box box-hover">
-              <h2><i class="fa fa-mobile"></i><span>LinkedIn</span></h2>
-              <p>
-                <a href="https://www.linkedin.com/company/corosdev/about/"
-                  >/CorosDev</a
-                >
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="light-box box-hover">
-              <h2><i class="fa fa-paper-plane"></i><span>Email</span></h2>
-              <p><a href="#">carlos@corosdev.com</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <ul class="social-buttons">
-              <li>
-                <a href="#" class="social-btn"
-                  ><i class="fa fa-dribbble"></i
-                ></a>
-              </li>
-              <li>
-                <a href="#" class="social-btn"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li>
-                <a href="#" class="social-btn"
-                  ><i class="fa fa-envelope"></i
-                ></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <footer>
+    <section class="about_section layout_padding">
       <div class="container">
+        <div class="heading_container heading_center">
+          <h2>About <span>Us</span></h2>
+        </div>
         <div class="row">
           <div class="col-md-6">
-            <ul class="legals">
-              <li><a href="#">Copyright</a></li>
-              <li><a href="#">All rights reserved</a></li>
-            </ul>
+            <div class="img-box">
+              <img src="images/about-img.png" alt="" />
+            </div>
           </div>
-          <div class="col-md-6 credit">
-            <p>
-              <a href="http://tympanus.net/codrops/"
-                ><em
-                  >Challenging yourself is the key to success / CorosDev</em
-                ></a
-              >
-            </p>
+          <div class="col-md-6">
+            <div class="detail-box">
+              <h3>We Are CorosDev</h3>
+              <p>
+                We proudly represent a Software Development Company situated in
+                the heart of America (Central America), driven by the ambition
+                to create, design, and optimize cutting-edge software solutions
+                on a global scale. Our commitment extends to harnessing the
+                power of exceptional talent and the brightest minds across Latin
+                America. Specializing in software engineering, design, digital
+                marketing, and more, our diverse team brings a wealth of
+                expertise to the table.
+              </p>
+              <p>
+                At the forefront of our innovation is the pursuit of creating
+                impactful AI technology. We dedicate ourselves to advancing the
+                field, leveraging the latest developments to deliver intelligent
+                and forward-thinking solutions. With a keen focus on pushing
+                boundaries, we aspire to redefine the landscape of technology
+                and contribute to the evolution of AI on a global scale.
+              </p>
+              <!-- <a href=""> Read More </a> -->
+            </div>
           </div>
         </div>
       </div>
-    </footer>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
-    <script src="js/jquery.flexslider.js"></script>
-    <script src="js/modernizr.js"></script>
+    </section>
+
+    <!-- end about section -->
+
+    <!-- why section -->
+
+    <section class="why_section layout_padding">
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2>Why Choose <span>Us</span></h2>
+        </div>
+        <div class="why_container">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/w1.png" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Expert Management</h5>
+              <p>
+                Our company is distinguished by seasoned professionals who bring
+                extensive expertise to the management realm. With a wealth of
+                experience in overseeing diverse projects, our expert management
+                team ensures seamless coordination, efficient resource
+                allocation, and strategic decision-making. Trust us to navigate
+                the complexities of your project with precision and deliver
+                results that exceed expectations.
+              </p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img-box">
+              <img src="images/w2.png" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Expertise Across the Spectrum</h5>
+              <p>
+                Our seasoned team excels not only in software development but
+                also extends its expertise to IT services, design, and
+                marketing. By choosing us, you gain access to a comprehensive
+                range of skills, ensuring a holistic approach to meet all your
+                technology and business needs.
+              </p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img-box">
+              <img src="images/w3.png" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Innovative Solutions</h5>
+              <p>
+                We pride ourselves on delivering innovative and cutting-edge
+                solutions. From software development to design and marketing,
+                our commitment to staying at the forefront of technology ensures
+                that you receive solutions that are not just current but also
+                forward-thinking and adaptable to future challenges.
+              </p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="img-box">
+              <img src="images/w4.png" alt="" />
+            </div>
+            <div class="detail-box">
+              <h5>Proven Track Record</h5>
+              <p>
+                With a track record of successful projects and satisfied
+                clients, we've established ourselves as a reliable partner in
+                the tech industry. Our commitment to excellence, combined with a
+                proven ability to deliver results, makes us the ideal choice for
+                businesses seeking reliable and high-quality software
+                development, IT services, design, and marketing solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="btn-box">
+          <a href=""> Read More </a>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- end why section -->
+
+    <!-- team section -->
+    <section class="team_section layout_padding">
+      <div class="container-fluid">
+        <div class="heading_container heading_center">
+          <h2 class="">Our <span> Directors</span></h2>
+        </div>
+
+        <div class="team_container">
+          <div class="row">
+            <div class="col-lg-3 col-sm-6">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/Profile/Carlos.jpeg" class="img1" alt="" />
+                </div>
+                <div class="detail-box">
+                  <h5>Carlos Hernandez</h5>
+                  <p>Chief Executive Officer</p>
+                </div>
+                <div class="social_box">
+                  <a
+                    href="https://www.linkedin.com/in/carlos-hernandez-b030731a5/"
+                  >
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.instagram.com/carlos.h.zuniga45/">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/Profile/Faby.jpeg" class="img1" alt="" />
+                </div>
+                <div class="detail-box">
+                  <h5>Fabianna Hernandez</h5>
+                  <p>Chief Financial Officer</p>
+                </div>
+                <div class="social_box">
+                  <a
+                    href="https://www.linkedin.com/in/fabianna-hern%C3%A1ndez/"
+                  >
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.instagram.com/fabiannahdz/">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/Profile/Ronny.jpeg" class="img1" alt="" />
+                </div>
+                <div class="detail-box">
+                  <h5>Ronny Luque</h5>
+                  <p>Chief Marketing Officer</p>
+                </div>
+                <div class="social_box">
+                  <a href="https://www.linkedin.com/in/ronny-luque-690384211/">
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.instagram.com/ronnyluque/">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/Profile/Jarliev.jpg" class="img1" alt="" />
+                </div>
+                <div class="detail-box">
+                  <h5>Jarliev Guerrero</h5>
+                  <p>Chief Technology Officer</p>
+                </div>
+                <div class="social_box">
+                  <a href="https://www.linkedin.com/in/jarliev-perez-guerrero/">
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://www.instagram.com/jarlievpg/">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end team section -->
+
+    <!-- client section -->
+
+    <section class="client_section layout_padding">
+      <div class="container">
+        <div class="heading_container heading_center psudo_white_primary mb_45">
+          <h2>Our top <span>Customers</span></h2>
+        </div>
+        <div class="carousel-wrap">
+          <div class="owl-carousel client_owl-carousel">
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/Clients/wyman.jpeg" alt="" class="box-img" />
+                </div>
+                <div class="detail-box">
+                  <div class="client_id">
+                    <div class="client_info">
+                      <h6>Oliver Wyman Group</h6>
+                      <p>Unites States</p>
+                    </div>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    Oliver Wyman is a leading international management
+                    consulting firm that combines deep industry knowledge and
+                    expertise to create breakthroughs for clients
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/Clients/todos.png" alt="" class="box-img" />
+                </div>
+                <div class="detail-box">
+                  <div class="client_id">
+                    <div class="client_info">
+                      <h6>Todos Comemos Co.</h6>
+                      <p>Colombia</p>
+                    </div>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    Our one-stop solution for food manufacturers streamlines
+                    sales and logistics, helping them to grow exponentially
+                    across multiple sales channels.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img
+                    src="images/Clients/ubanku.jpeg"
+                    alt=""
+                    class="box-img"
+                  />
+                </div>
+                <div class="detail-box">
+                  <div class="client_id">
+                    <div class="client_info">
+                      <h6>uBanku</h6>
+                      <p>Colombia</p>
+                    </div>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    We are a technology company focused on re-inventing the
+                    service that is given to people with a lot of money but for
+                    everyone.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="box">
+                <div class="img-box">
+                  <img src="images/Clients/coe.png" alt="" class="box-img" />
+                </div>
+                <div class="detail-box">
+                  <div class="client_id">
+                    <div class="client_info">
+                      <h6>Cup of Excellence</h6>
+                      <p>United States</p>
+                    </div>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <p>
+                    The Cup of Excellence is an annual competition held in
+                    several countries to identify the highest quality coffees
+                    produced. It is organized by the Alliance for Coffee
+                    Excellence.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end client section -->
+
+    <!-- info section -->
+
+    <section class="info_section layout_padding2">
+      <div class="container">
+        <div class="row" style="display: flex; justify-content: space-around">
+          <div class="col-md-6 col-lg-3 info_col">
+            <div class="info_contact">
+              <h4>Address</h4>
+              <div class="contact_link_box">
+                <a href="">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>
+                    ALTARA. Oficinas Ejecutivas. K.M. 2 N.O. Boulevard Armenta,
+                    San Pedro Sula, Honduras, 21101
+                  </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-phone" aria-hidden="true"></i>
+                  <span> Call +504 9244-9021 </span>
+                </a>
+                <a href="">
+                  <i class="fa fa-envelope" aria-hidden="true"></i>
+                  <span> carlos@corosdev.com </span>
+                </a>
+              </div>
+            </div>
+            <div class="info_social">
+              <a href="">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.linkedin.com/company/corosdev/about/">
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.instagram.com/corosdev/">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 info_col">
+            <div class="info_detail">
+              <h4>Info</h4>
+              <p>
+                Are you looking to integrate cutting-edge technology into your
+                company? Get In Touch with us by clicking the Request a Demo
+                Botton.
+              </p>
+            </div>
+          </div>
+          <!-- <div class="col-md-6 col-lg-2 mx-auto info_col">
+            <div class="info_link_box">
+              <h4>Links</h4>
+              <div class="info_links">
+                <a class="active" href="index.html"> Home </a>
+                <a class="" href="about.html"> About </a>
+                <a class="" href="service.html"> Services </a>
+                <a class="" href="why.html"> Why Us </a>
+                <a class="" href="team.html"> Team </a>
+              </div>
+            </div>
+          </div> -->
+          <div class="col-md-6 col-lg-3 info_col">
+            <h4>Request a Demo</h4>
+            <form action="#">
+              <!-- <input type="text" placeholder="Enter email" /> -->
+              <p>
+                Request A Free Demo Call To Discuss Your Specific Needs And
+                Explore Potential Ideas On How To Bring Your Vision To Life.
+              </p>
+              <button type="submit">
+                <a
+                  style="color: #fff"
+                  href="https://calendly.com/carlos-corosdev/30min"
+                  >Request a Demo</a
+                >
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end info section -->
+
+    <!-- footer section -->
+    <section class="footer_section">
+      <div class="container">
+        <p>
+          &copy; <span id="displayYear"></span> All Rights Reserved By
+          <a>CorosDev</a>
+        </p>
+      </div>
+    </section>
+    <!-- footer section -->
+
+    <!-- jQery -->
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <!-- popper js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- owl slider -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+    ></script>
+    <!-- custom js -->
+    <script type="text/javascript" src="js/custom.js"></script>
+    <!-- Google Map -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+    <!-- End Google Map -->
   </body>
 </html>
