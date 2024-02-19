@@ -1062,9 +1062,7 @@ titulo .wp1,
   height: 100%;
 }
 
-.call-section {
-}
-
+/* Estilos generales para tamaños de pantalla grandes */
 .call-section h2 {
   width: 60%;
   text-transform: capitalize;
@@ -1094,20 +1092,26 @@ titulo .wp1,
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  :hover {
-    color: #fff;
-    background-color: #0b5ed7;
-    border-color: #0a58ca;
-  }
 }
 
 .call-btn:hover {
-  background-color: #65b9e6;
+  background-color: #0b5ed7;
 }
 
 .call-btn:active {
   box-shadow: 0 0 2px darkslategray;
   transform: translateY(2px);
+}
+
+/* Estilos para tamaños de pantalla pequeños (móviles) */
+@media (max-width: 768px) {
+  .call-section h2 {
+    width: 80%; /* Ajustar el ancho para dispositivos más pequeños */
+  }
+
+  .call-btn {
+    width: 80%; /* Ajustar el ancho del botón para dispositivos más pequeños */
+  }
 }
 
 @media only screen and (max-width: 500px) {
