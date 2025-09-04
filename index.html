@@ -76,6 +76,26 @@
 
   /* Optional: prevent rounding-caused bleed on fixed canvas */
   #stars { max-width: 100vw; }
+
+  .nav-glass{
+  background: rgba(7, 11, 26, 0.60);           /* brand-900 ~60% */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+
+/* Cuando hay scroll, aumenta opacidad para mejor lectura */
+.scrolled .nav-glass{
+  background: rgba(7, 11, 26, 0.85);
+  border-color: rgba(255,255,255,0.14);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+}
+
+/* Fallback si no hay soporte de backdrop-filter (algunos Android viejos) */
+@supports not ((-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))){
+  .nav-glass{ background: rgba(7, 11, 26, 0.85); }
+}
   </style>
 </head>
 <body class="bg-brand-900 text-white antialiased selection:bg-neon-500 selection:text-brand-900 relative overflow-x-hidden">
@@ -83,7 +103,7 @@
   <div class="bg-orb -z-20"></div>
 
   <!-- NAV -->
-  <header class="fixed top-0 left-0 right-0 z-40">
+  <header id="site-nav" class="fixed top-0 left-0 right-0 z-40">
     <div class="mx-auto max-w-7xl px-6 py-3 glass rounded-b-2xl soft">
       <div class="flex items-center justify-between">
         <a href="#" class="flex items-center gap-3">
