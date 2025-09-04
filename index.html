@@ -531,7 +531,13 @@ document.querySelectorAll('.tilt').forEach(el => {
   });
   el.addEventListener('mouseleave', () => el.style.transform = 'perspective(1000px)');
 });
-
+const siteNav = document.getElementById('site-nav');
+function toggleNavGlass(){
+  if (window.scrollY > 8) siteNav.classList.add('scrolled');
+  else siteNav.classList.remove('scrolled');
+}
+window.addEventListener('scroll', toggleNavGlass, { passive: true });
+toggleNavGlass(); // estado inicial
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
 let W, H, stars = [];
