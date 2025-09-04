@@ -1,704 +1,537 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <!-- Basic -->
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- Mobile Metas -->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <!-- Site Metas -->
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link rel="shortcut icon" href="images/favicon.svg" type="" />
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CorosDev — Software that feels futuristic</title>
+  <meta name="description" content="Nearshore product squads delivering modern apps, commerce, and integrations—with security-first discipline and a design-led approach." />
+  <link rel="icon" href="assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script
+  src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"
+  type="module"
+></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 900: '#070B1A', 800:'#0B1226', 700:'#0E1730', 600:'#121D3C'},
+            neon: { 100:'#D9FFF1', 300:'#7CFFD7', 500:'#1F7FFF', 700:'#00B388' },
+            cobalt: { 300:'#7DBBFF', 500:'#1F7FFF', 700:'#114A99' },
+          },
+          dropShadow: {
+            glow: '0 0 20px rgba(31,127,255,0.45)',
+            glowblue: '0 0 25px rgba(31,127,255,0.35)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html,body{height:100%;}
+    .bg-orb { position: absolute; inset:-20%; filter: blur(120px); opacity: .55;
+      background: conic-gradient(from 180deg at 50% 50%, #1F7FFF 0deg, #1F7FFF 120deg, #1F7FFF 240deg, #1F7FFF 360deg);
+      animation: spin 18s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .glass { backdrop-filter: blur(16px); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,.12); }
+    .gradient-text { background: linear-gradient(90deg, #7DBBFF, #1F7FFF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .tilt { transform-style: preserve-3d; transform: perspective(1000px); }
+    .tilt > * { transform: translateZ(30px); }
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent); }
+    .marquee { overflow:hidden; white-space:nowrap; mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+    .marquee-track { display:inline-block; animation: scroll 24s linear infinite; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%);} }
+    .btn-primary { background:#1F7FFF; color:#0B1226; }
+    .btn-primary:hover { filter: brightness(1.05); }
+    .btn-ghost { border:1px solid rgba(255,255,255,.18); }
+    .btn-ghost:hover { border-color:#1F7FFF; color:#1F7FFF; }
+    .soft { box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+      .tech-icon {
+    transition: all 0.3s ease;
+  }
+  .tech-icon:hover {
+    filter: drop-shadow(0 0 10px #1F7FFF);
+    transform: scale(1.1);
+  }
+      dotlottie-wc {
+      width: 250px;
+      height: 250px;
+    }
 
-    <title>CorosDev - Software Development Enhancements</title>
+    @media (min-width: 640px) {
+      dotlottie-wc {
+        width: 400px;
+        height: 400px;
+      }
+    }
 
-    <!-- bootstrap core css -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    @media (min-width: 1024px) {
+      dotlottie-wc {
+        width: 600px;
+        height: 600px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-brand-900 text-white antialiased selection:bg-neon-500 selection:text-brand-900 relative overflow-x-hidden">
+  <canvas id="stars" class="fixed inset-0 -z-10"></canvas>
+  <div class="bg-orb -z-20"></div>
 
-    <!-- fonts style -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
+  <!-- NAV -->
+  <header class="fixed top-0 left-0 right-0 z-40">
+    <div class="mx-auto max-w-7xl px-6 py-3 glass rounded-b-2xl soft">
+      <div class="flex items-center justify-between">
+        <a href="#" class="flex items-center gap-3">
+          
+          <img src="assets/coros.png" alt="CorosDev" class="h-16  w-auto">
 
-    <!--owl slider stylesheet -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-    />
-
-    <!-- font awesome style -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
-    <!-- responsive style -->
-    <link href="css/responsive.css" rel="stylesheet" />
-  </head>
-
-  <body>
-    <div class="hero_area">
-      <div class="hero_bg_box">
-        <div class="bg_img_box">
-          <img src="images/hero2bg.png" alt="" />
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm text-white/80">
+          <a href="#platform" class="hover:text-neon-500">Platform</a>
+          <a href="#services" class="hover:text-neon-500">Services</a>
+          <a href="#solutions" class="hover:text-neon-500">Solutions</a>
+          <a href="#tech" class="hover:text-neon-500">Tech</a>
+          <a href="#work" class="hover:text-neon-500">Work</a>
+          <a href="#pricing" class="hover:text-neon-500">Pricing</a>
+          <a href="#contact" class="hover:text-neon-500">Contact</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="mailto:carlos@corosdev.com" class="hidden sm:inline-block px-4 py-2 rounded-xl btn-ghost">Talk to sales</a>
+          <a href="https://calendly.com/carlos-corosdev/30min?month=2025-09&fbclid=PARlRTSAMkqJJleHRuA2FlbQIxMAABp-wi3Noq_0-ADWeNMO6tDEIm-8esAi7ISMOeaGSHfvjivgDuSBFHdPniHKGa_aem_eAIKOXbhlwFmwVdSfZN8oQ " class="px-4 py-2 rounded-xl btn-primary font-semibold drop-shadow-glow">Book a demo</a>
         </div>
       </div>
-
-      <!-- header section strats -->
-      <header class="header_section">
-        <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg custom_nav-container">
-            <a class="navbar-brand" href="index.html">
-              <img style="width: 200px" src="images/coros.png" alt="" />
-            </a>
-
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class=""> </span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <!-- <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html"
-                    >Home <span class="sr-only">(current)</span></a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.html"> About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="service.html">Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="why.html">Why Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="team.html">Team</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="fa fa-user" aria-hidden="true"></i> Login</a
-                  >
-                </li>
-                <form class="form-inline">
-                  <button class="btn my-2 my-sm-0 nav_search-btn" type="submit">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                  </button>
-                </form>
-              </ul> -->
-            </div>
-          </nav>
-        </div>
-      </header>
-      <!-- end header section -->
-      <!-- slider section -->
-      <section class="slider_section">
-        <div id="customCarousel1" class="carousel slide">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="detail-box">
-                      <h1>Software Development</h1>
-                      <p>
-                        We're a Central American Software Development Company,
-                        dedicated to creating exceptional global software
-                        solutions. Our expert team excels in software
-                        engineering, design, digital marketing, and more.
-                      </p>
-                      <!-- <div class="btn-box">
-                        <a href="" class="btn1"> Read More </a>
-                      </div> -->
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="img-box">
-                      <img src="images/slider-img.png" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="detail-box">
-                      <h1>
-                        Crypto <br />
-                        Currency
-                      </h1>
-                      <p>
-                        Explicabo esse amet tempora quibusdam laudantium,
-                        laborum eaque magnam fugiat hic? Esse dicta aliquid
-                        error repudiandae earum suscipit fugiat molestias,
-                        veniam, vel architecto veritatis delectus repellat modi
-                        impedit sequi.
-                      </p>
-                      <!-- <div class="btn-box">
-                        <a href="" class="btn1"> Read More </a>
-                      </div> -->
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="img-box">
-                      <img src="images/slider-img.png" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="detail-box">
-                      <h1>
-                        Crypto <br />
-                        Currency
-                      </h1>
-                      <p>
-                        Explicabo esse amet tempora quibusdam laudantium,
-                        laborum eaque magnam fugiat hic? Esse dicta aliquid
-                        error repudiandae earum suscipit fugiat molestias,
-                        veniam, vel architecto veritatis delectus repellat modi
-                        impedit sequi.
-                      </p>
-                      <div class="btn-box">
-                        <a href="" class="btn1"> Read More </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="img-box">
-                      <img src="images/slider-img.png" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- end slider section -->
     </div>
+  </header>
 
-    <!-- service section -->
-
-    <section class="service_section layout_padding">
-      <div class="service_container">
-        <div class="container">
-          <div class="heading_container heading_center">
-            <h2>Our <span>Services</span></h2>
-            <p>
-              Crafting Corporate Excellence through Innovative Systems and
-              Software Solutions.
-            </p>
+  <!-- HERO -->
+  <section class="pt-36 pb-20 relative">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="tilt">
+          <p class="text-white/70 text-sm">LATAM engineers · US time · Bilingual</p>
+          <h1 class="mt-4 text-5xl md:text-7xl font-black leading-[1.1]">
+            Software that <span class="gradient-text drop-shadow-glow">feels futuristic</span> and ships fast.
+          </h1>
+          <p class="mt-5 text-white/80 text-lg">Modern apps, e‑commerce, and integrations with security-first discipline and pragmatic AI.</p>
+          <div class="mt-8 flex items-center gap-3">
+            <a href="https://calendly.com/carlos-corosdev/30min?month=2025-09&fbclid=PARlRTSAMkqJJleHRuA2FlbQIxMAABp-wi3Noq_0-ADWeNMO6tDEIm-8esAi7ISMOeaGSHfvjivgDuSBFHdPniHKGa_aem_eAIKOXbhlwFmwVdSfZN8oQ " class="px-6 py-3 rounded-xl btn-primary font-semibold drop-shadow-glow">Book a 30‑min discovery</a>
+            <a href="#work" class="px-6 py-3 rounded-xl btn-ghost">See our work</a>
           </div>
-          <div class="row">
-            <div class="col-md-4">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/s1.png" alt="" />
-                </div>
-                <div class="detail-box">
-                  <h5>SOFTWARE ENGINEERING</h5>
-                  <p>
-                    Web services, mobile applications, databases, servers and
-                    much more developed by latam top talent.
-                  </p>
-                  <!-- <a href=""> Read More </a> -->
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/s2.png" alt="" />
-                </div>
-                <div class="detail-box">
-                  <h5>DIGITAL MARKETING & DESIGN</h5>
-                  <p>
-                    Services of the best strategy in high markets, Search Engine
-                    Optimization, UX/UI design and much more.
-                  </p>
-                  <!-- <a href=""> Read More </a> -->
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/s3.png" alt="" />
-                </div>
-                <div class="detail-box">
-                  <h5>Expert Support</h5>
-                  <p>
-                    Creation of the top Ecommerce platforms using bleeding edge
-                    web development technologies
-                  </p>
-                  <!-- <a href=""> Read More </a> -->
-                </div>
-              </div>
-            </div>
+          <div class="mt-6 flex items-center gap-6 text-white/60 text-sm">
+            <span>Security‑first</span><span class="opacity-50">•</span><span>Design‑led</span><span class="opacity-50">•</span><span>Measurable impact</span>
           </div>
-          <!-- <div class="btn-box">
-            <a href=""> View All </a>
-          </div> -->
+        </div>
+        <div class="relative" style="justify-content: center; display: flex; align-items: center;">
+          <div style="justify-content: center; display: flex; align-items: center;" class="absolute -inset-6 rounded-3xl blur-3xl opacity-40" style="background: radial-gradient(600px 200px at 20% 30%, #1F7FFF, transparent), radial-gradient(500px 300px at 80% 70%, #1F7FFF, transparent)"></div>
+          <dotlottie-wc
+            src="https://lottie.host/6b6701c6-715b-4027-991d-4275f9a9b558/hTruhs7m1y.lottie"
+            speed="1"
+            autoplay
+            loop
+          ></dotlottie-wc>
         </div>
       </div>
-    </section>
 
-    <!-- end service section -->
-
-    <!-- about section -->
-
-    <section class="about_section layout_padding">
-      <div class="container">
-        <div class="heading_container heading_center">
-          <h2>About <span>Us</span></h2>
+      <!-- Logo marquee -->
+      <!-- <div class="mt-16 marquee py-4">
+        <div class="marquee-track">
+          <span class="mx-10 inline-flex items-center gap-3 opacity-80"><img src="assets/logo1.svg" class="h-7">Trusted by teams in US & LATAM</span>
+          <img src="assets/logo2.svg" class="h-7 mx-10 opacity-80">
+          <img src="assets/logo3.svg" class="h-7 mx-10 opacity-80">
+          <img src="assets/logo4.svg" class="h-7 mx-10 opacity-80">
+          <img src="assets/logo5.svg" class="h-7 mx-10 opacity-80">
+          <span class="mx-10 inline-flex items-center gap-3 opacity-80"><img src="assets/logo1.svg" class="h-7">Trusted by teams in US & LATAM</span>
+          <img src="assets/logo2.svg" class="h-7 mx-10 opacity-80">
+          <img src="assets/logo3.svg" class="h-7 mx-10 opacity-80">
+          <img src="assets/logo4.svg" class="h-7 mx-10 opacity-80">
+          <img src="assets/logo5.svg" class="h-7 mx-10 opacity-80">
         </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="img-box">
-              <img src="images/figure.png" alt="" />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="detail-box">
-              <h3>We Are CorosDev</h3>
-              <p>
-                We proudly represent a Software Development Company situated in
-                the heart of America (Central America), driven by the ambition
-                to create, design, and optimize cutting-edge software solutions
-                on a global scale. Our commitment extends to harnessing the
-                power of exceptional talent and the brightest minds across Latin
-                America. Specializing in software engineering, design, digital
-                marketing, and more, our diverse team brings a wealth of
-                expertise to the table.
-              </p>
-              <p>
-                At the forefront of our innovation is the pursuit of creating
-                impactful AI technology. We dedicate ourselves to advancing the
-                field, leveraging the latest developments to deliver intelligent
-                and forward-thinking solutions. With a keen focus on pushing
-                boundaries, we aspire to redefine the landscape of technology
-                and contribute to the evolution of AI on a global scale.
-              </p>
-              <!-- <a href=""> Read More </a> -->
-            </div>
-          </div>
+      </div> -->
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PLATFORM -->
+  <section id="platform" class="py-20">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl md:text-5xl font-bold">The Coros Platform</h2>
+        <p class="mt-3 text-white/70">Our stack + methods to ship faster and safer.</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-4 gap-6">
+        <div class="glass p-6 rounded-2xl soft hover:drop-shadow-glowblue transition">
+          <h3 class="font-semibold text-xl">Product Engineering</h3>
+          <p class="mt-2 text-white/70">Web & mobile apps, APIs, data layers. Vue/Nuxt, React, Node, .NET, AEM.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl soft hover:drop-shadow-glowblue transition">
+          <h3 class="font-semibold text-xl">E‑commerce</h3>
+          <p class="mt-2 text-white/70">Storefronts, custom themes, checkout, inventory & payment integrations.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl soft hover:drop-shadow-glowblue transition">
+          <h3 class="font-semibold text-xl">Integrations</h3>
+          <p class="mt-2 text-white/70">Salesforce, Shopify, AEM, GTM, Postgres, custom middleware & data syncs.</p>
+        </div>
+        <div class="glass p-6 rounded-2xl soft hover:drop-shadow-glowblue transition">
+          <h3 class="font-semibold text-xl">Applied AI</h3>
+          <p class="mt-2 text-white/70">Summarization, classification, document automation, RAG—with guardrails.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- end about section -->
-
-    <!-- why section -->
-
-    <section class="why_section layout_padding">
-      <div class="container">
-        <div class="heading_container heading_center">
-          <h2>Why Choose <span>Us</span></h2>
-        </div>
-        <div class="why_container">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/w1.png" alt="" />
-            </div>
-            <div class="detail-box">
-              <h5>Expert Management</h5>
-              <p>
-                Our company is distinguished by seasoned professionals who bring
-                extensive expertise to the management realm. With a wealth of
-                experience in overseeing diverse projects, our expert management
-                team ensures seamless coordination, efficient resource
-                allocation, and strategic decision-making. Trust us to navigate
-                the complexities of your project with precision and deliver
-                results that exceed expectations.
-              </p>
-            </div>
-          </div>
-          <div class="box">
-            <div class="img-box">
-              <img src="images/w2.png" alt="" />
-            </div>
-            <div class="detail-box">
-              <h5>Expertise Across the Spectrum</h5>
-              <p>
-                Our seasoned team excels not only in software development but
-                also extends its expertise to IT services, design, and
-                marketing. By choosing us, you gain access to a comprehensive
-                range of skills, ensuring a holistic approach to meet all your
-                technology and business needs.
-              </p>
-            </div>
-          </div>
-          <div class="box">
-            <div class="img-box">
-              <img src="images/w3.png" alt="" />
-            </div>
-            <div class="detail-box">
-              <h5>Innovative Solutions</h5>
-              <p>
-                We pride ourselves on delivering innovative and cutting-edge
-                solutions. From software development to design and marketing,
-                our commitment to staying at the forefront of technology ensures
-                that you receive solutions that are not just current but also
-                forward-thinking and adaptable to future challenges.
-              </p>
-            </div>
-          </div>
-          <div class="box">
-            <div class="img-box">
-              <img src="images/w4.png" alt="" />
-            </div>
-            <div class="detail-box">
-              <h5>Proven Track Record</h5>
-              <p>
-                With a track record of successful projects and satisfied
-                clients, we've established ourselves as a reliable partner in
-                the tech industry. Our commitment to excellence, combined with a
-                proven ability to deliver results, makes us the ideal choice for
-                businesses seeking reliable and high-quality software
-                development, IT services, design, and marketing solutions.
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- <div class="btn-box">
-          <a href=""> Read More </a>
-        </div> -->
+  <!-- SERVICES -->
+  <section id="services" class="py-20 bg-brand-800/20">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl md:text-5xl font-bold">What we do</h2>
+        <p class="mt-3 text-white/70">Services designed to accelerate outcomes.</p>
       </div>
-    </section>
-
-    <!-- end why section -->
-
-    <!-- team section -->
-    <!-- <section class="team_section layout_padding">
-      <div class="container-fluid">
-        <div class="heading_container heading_center">
-          <h2 class="">Our <span> Directors</span></h2>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="glass p-6 rounded-2xl soft">
+          <div class="text-sm text-neon-500">Build</div>
+          <h3 class="mt-1 font-semibold text-xl">Custom Software</h3>
+          <ul class="mt-3 text-white/80 space-y-2 text-sm">
+            <li>• Web & Mobile (iOS/Android)</li>
+            <li>• APIs, microservices</li>
+            <li>• CI/CD, monitoring</li>
+          </ul>
         </div>
-
-        <div class="team_container">
-          <div class="row">
-            <div class="col-lg-3 col-sm-6">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/Profile/Carlos.jpeg" class="img1" alt="" />
-                </div>
-                <div class="detail-box">
-                  <h5>Carlos Hernandez</h5>
-                  <p>Chief Executive Officer</p>
-                </div>
-                <div class="social_box">
-                  <a
-                    href="https://www.linkedin.com/in/carlos-hernandez-b030731a5/"
-                  >
-                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                  </a>
-                  <a href="https://www.instagram.com/carlos_h_zuniga?igsh=Y2Z5djMyZmpjeWZy">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/Profile/Faby.jpeg" class="img1" alt="" />
-                </div>
-                <div class="detail-box">
-                  <h5>Fabianna Hernandez</h5>
-                  <p>Chief Financial Officer</p>
-                </div>
-                <div class="social_box">
-                  <a
-                    href="https://www.linkedin.com/in/fabianna-hern%C3%A1ndez/"
-                  >
-                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                  </a>
-                  <a href="https://www.instagram.com/fabiannahdz/">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/Profile/Ronny.jpeg" class="img1" alt="" />
-                </div>
-                <div class="detail-box">
-                  <h5>Ronny Luque</h5>
-                  <p>Chief Marketing Officer</p>
-                </div>
-                <div class="social_box">
-                  <a href="https://www.linkedin.com/in/ronny-luque-690384211/">
-                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                  </a>
-                  <a href="https://www.instagram.com/ronnyluque/">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/Profile/Jarliev.jpg" class="img1" alt="" />
-                </div>
-                <div class="detail-box">
-                  <h5>Jarliev Guerrero</h5>
-                  <p>Chief Technology Officer</p>
-                </div>
-                <div class="social_box">
-                  <a href="https://www.linkedin.com/in/jarliev-perez-guerrero/">
-                    <i class="fa fa-linkedin" aria-hidden="true"></i>
-                  </a>
-                  <a href="https://www.instagram.com/jarlievpg/">
-                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="glass p-6 rounded-2xl soft">
+          <div class="text-sm text-neon-500">Commerce</div>
+          <h3 class="mt-1 font-semibold text-xl">E‑commerce</h3>
+          <ul class="mt-3 text-white/80 space-y-2 text-sm">
+            <li>• Storefront + Checkout</li>
+            <li>• ERP/Payments integrations</li>
+            <li>• SEO & performance</li>
+          </ul>
+        </div>
+        <div class="glass p-6 rounded-2xl soft">
+          <div class="text-sm text-neon-500">Integrations</div>
+          <h3 class="mt-1 font-semibold text-xl">Systems & Data</h3>
+          <ul class="mt-3 text-white/80 space-y-2 text-sm">
+            <li>• Salesforce, AEM, Shopify, GTM</li>
+            <li>• ETL, secure sync</li>
+            <li>• Reporting & analytics</li>
+          </ul>
         </div>
       </div>
-    </section> -->
-    <!-- end team section -->
+    </div>
+  </section>
 
-    <!-- client section -->
-
-    <section class="client_section layout_padding">
-      <div class="container">
-        <div class="heading_container heading_center psudo_white_primary mb_45">
-          <h2>Our top <span>Customers</span></h2>
+  <!-- SOLUTIONS -->
+  <section id="solutions" class="py-20 relative">
+    <div class="absolute inset-0 pointer-events-none opacity-30" style="background: radial-gradient(600px 200px at 30% 30%, #1F7FFF, transparent), radial-gradient(400px 240px at 70% 70%, #1F7FFF, transparent)"></div>
+    <div class="mx-auto max-w-7xl px-6 relative">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl md:text-5xl font-bold">Solutions that move the needle</h2>
+        <p class="mt-3 text-white/70">Start small or go big—each can ship as a sprint or part of a program.</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="glass p-6 rounded-2xl soft group">
+          <div class="text-sm text-neon-500">Go-to-Market</div>
+          <h3 class="mt-1 font-semibold text-xl">MVP in 6–8 Weeks</h3>
+          <p class="mt-2 text-white/70">Clickable prototype → production with CI/CD, monitoring, analytics.</p>
+          <a href="#contact" class="mt-4 inline-flex items-center gap-2 text-cobalt-300 group-hover:text-neon-500">Get timeline →</a>
         </div>
-        <div class="carousel-wrap">
-          <div class="owl-carousel client_owl-carousel">
-            <div class="item">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/Clients/wyman.jpeg" alt="" class="box-img" />
-                </div>
-                <div class="detail-box">
-                  <div class="client_id">
-                    <div class="client_info">
-                      <h6>Oliver Wyman Group</h6>
-                      <p>Unites States</p>
-                    </div>
-                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                  </div>
-                  <p>
-                    Oliver Wyman is a leading international management
-                    consulting firm that combines deep industry knowledge and
-                    expertise to create breakthroughs for clients
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/Clients/todos.png" alt="" class="box-img" />
-                </div>
-                <div class="detail-box">
-                  <div class="client_id">
-                    <div class="client_info">
-                      <h6>Todos Comemos Co.</h6>
-                      <p>Colombia</p>
-                    </div>
-                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                  </div>
-                  <p>
-                    Our one-stop solution for food manufacturers streamlines
-                    sales and logistics, helping them to grow exponentially
-                    across multiple sales channels.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="box">
-                <div class="img-box">
-                  <img
-                    src="images/Clients/ubanku.jpeg"
-                    alt=""
-                    class="box-img"
-                  />
-                </div>
-                <div class="detail-box">
-                  <div class="client_id">
-                    <div class="client_info">
-                      <h6>uBanku</h6>
-                      <p>Colombia</p>
-                    </div>
-                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                  </div>
-                  <p>
-                    We are a technology company focused on re-inventing the
-                    service that is given to people with a lot of money but for
-                    everyone.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="box">
-                <div class="img-box">
-                  <img src="images/Clients/coe.png" alt="" class="box-img" />
-                </div>
-                <div class="detail-box">
-                  <div class="client_id">
-                    <div class="client_info">
-                      <h6>Cup of Excellence</h6>
-                      <p>United States</p>
-                    </div>
-                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                  </div>
-                  <p>
-                    The Cup of Excellence is an annual competition held in
-                    several countries to identify the highest quality coffees
-                    produced. It is organized by the Alliance for Coffee
-                    Excellence.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="glass p-6 rounded-2xl soft group">
+          <div class="text-sm text-neon-500">Commerce</div>
+          <h3 class="mt-1 font-semibold text-xl">Storefront + Checkout</h3>
+          <p class="mt-2 text-white/70">High-performance storefronts with taxes, shipping, and ERP sync.</p>
+          <a href="#contact" class="mt-4 inline-flex items-center gap-2 text-cobalt-300 group-hover:text-neon-500">Get estimate →</a>
+        </div>
+        <div class="glass p-6 rounded-2xl soft group">
+          <div class="text-sm text-neon-500">Ops</div>
+          <h3 class="mt-1 font-semibold text-xl">Workflow Automation</h3>
+          <p class="mt-2 text-white/70">Replace spreadsheets with forms, approvals, and notifications.</p>
+          <a href="#contact" class="mt-4 inline-flex items-center gap-2 text-cobalt-300 group-hover:text-neon-500">See examples →</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- end client section -->
+  <!-- TECH -->
+  
+<section id="tech" class="py-16">
+  <div class="mx-auto max-w-7xl px-6">
+    <h3 class="text-xl font-semibold text-white/90">Tech we use</h3>
+    <div class="mt-2 text-white/50 text-sm">Frameworks & platforms we build with</div>
 
-    <!-- info section -->
+    <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-10 text-center">
+      
+      <!-- Vue -->
+      <div class="group">
+        <svg aria-label="Vue" class="h-12 w-12 md:h-14 md:w-14 mx-auto text-neon-500 tech-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>Vue</title>
+          <path d="M4 6 L24 42 L44 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+          <path d="M10 6 L24 27 L38 6" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <p class="mt-3 text-sm">Vue</p>
+      </div>
 
-    <section class="info_section layout_padding2">
-      <div class="container">
-        <div class="row" style="display: flex; justify-content: space-around">
-          <div class="col-md-6 col-lg-3 info_col">
-            <div class="info_contact">
-              <h4>Address</h4>
-              <div class="contact_link_box">
-                <a href="">
-                  <i class="fa fa-map-marker" aria-hidden="true"></i>
-                  <span>
-                    ALTARA. Oficinas Ejecutivas. K.M. 2 N.O. Boulevard Armenta,
-                    San Pedro Sula, Honduras, 21101
-                  </span>
-                </a>
-                <a href="">
-                  <i class="fa fa-phone" aria-hidden="true"></i>
-                  <span> Call +504 9244-9021 </span>
-                </a>
-                <a href="">
-                  <i class="fa fa-envelope" aria-hidden="true"></i>
-                  <span> carlos@corosdev.com </span>
-                </a>
-              </div>
-            </div>
-            <div class="info_social">
-              <a href="">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.linkedin.com/company/corosdev/about/">
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.instagram.com/corosdev/">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 info_col">
-            <div class="info_detail">
-              <h4>Info</h4>
-              <p>
-                Are you looking to integrate cutting-edge technology into your
-                company? Get In Touch with us by clicking the Request a Demo
-                Botton.
-              </p>
-            </div>
-          </div>
-          <!-- <div class="col-md-6 col-lg-2 mx-auto info_col">
-            <div class="info_link_box">
-              <h4>Links</h4>
-              <div class="info_links">
-                <a class="active" href="index.html"> Home </a>
-                <a class="" href="about.html"> About </a>
-                <a class="" href="service.html"> Services </a>
-                <a class="" href="why.html"> Why Us </a>
-                <a class="" href="team.html"> Team </a>
-              </div>
-            </div>
-          </div> -->
-          <div class="col-md-6 col-lg-3 info_col">
-            <h4>Request a Demo</h4>
-            <form action="#">
-              <!-- <input type="text" placeholder="Enter email" /> -->
-              <p>
-                Request A Free Demo Call To Discuss Your Specific Needs And
-                Explore Potential Ideas On How To Bring Your Vision To Life.
-              </p>
-                <a class="request-btn"
-                  href="https://calendly.com/carlos-corosdev/30min"
-                  >Request a Demo</a
-                >
-            </form>
-          </div>
+      <!-- React -->
+      <div class="group">
+        <svg aria-label="React" class="h-12 w-12 md:h-14 md:w-14 mx-auto text-neon-500 tech-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>React</title>
+          <circle cx="24" cy="24" r="4" fill="currentColor"/>
+          <ellipse cx="24" cy="24" rx="18" ry="8" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/>
+          <ellipse cx="24" cy="24" rx="18" ry="8" transform="rotate(60 24 24)" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/>
+          <ellipse cx="24" cy="24" rx="18" ry="8" transform="rotate(120 24 24)" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <p class="mt-3 text-sm">React</p>
+      </div>
+
+      <!-- Node -->
+      <div class="group">
+        <svg aria-label="Node" class="h-12 w-12 md:h-14 md:w-14 mx-auto text-neon-500 tech-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>Node</title>
+          <polygon points="24,6 40,16 40,32 24,42 8,32 8,16" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke" fill="none"/>
+          <text x="20" y="30" fill="currentColor" font-family="Menlo, Consolas, monospace" font-weight="700" font-size="12">n</text>
+        </svg>
+        <p class="mt-3 text-sm">Node</p>
+      </div>
+
+      <!-- .NET -->
+      <div class="group">
+        <svg aria-label=".NET" class="h-12 w-12 md:h-14 md:w-14 mx-auto text-neon-500 tech-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>.NET</title>
+          <circle cx="24" cy="24" r="12" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+          <circle cx="24" cy="24" r="3" fill="currentColor"/>
+        </svg>
+        <p class="mt-3 text-sm">.NET</p>
+      </div>
+
+      <!-- AEM -->
+      <div class="group">
+        <svg aria-label="AEM" class="h-12 w-12 md:h-14 md:w-14 mx-auto text-neon-500 tech-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>AEM</title>
+          <polygon points="16,36 24,12 32,36" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke" fill="none"/>
+          <line x1="20" y1="24" x2="28" y2="24" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <p class="mt-3 text-sm">AEM</p>
+      </div>
+
+      <!-- Postgres -->
+      <div class="group">
+        <svg aria-label="Postgres" class="h-12 w-12 md:h-14 md:w-14 mx-auto text-neon-500 tech-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>Postgres</title>
+          <path d="M24 12c6 0 10 4 10 10v10c0 2-2 4-4 4h-2c-2 0-4-2-4-4v-5c-3 1-6-1-6-4 0-6 4-10 10-11z" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+          <path d="M22 30c2 0 4 1 6 3" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <p class="mt-3 text-sm">Postgres</p>
+      </div>
+
+      <!-- Shopify -->
+      <div class="group">
+        <svg aria-label="Shopify" class="h-12 w-12 md:h-14 md:w-14 mx-auto text-neon-500 tech-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>Shopify</title>
+          <path d="M14 20h20l-2 14H16z" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+          <path d="M18 20c0-4 3-7 7-7s7 3 7 7" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <p class="mt-3 text-sm">Shopify</p>
+      </div>
+
+      <!-- Salesforce -->
+      <div class="group">
+        <svg aria-label="Salesforce" class="h-12 w-12 md:h-14 md:w-14 mx-auto text-neon-500 tech-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>Salesforce</title>
+          <path d="M12 30c-1-8 9-12 13-6 2-6 12-6 14 0 6-2 11 2 9 6-2 4-8 4-18 4s-17 0-18-4z" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <p class="mt-3 text-sm">Salesforce</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- WORK -->
+  <section id="work" class="py-20">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-3xl md:text-5xl font-bold">Artificial Intelligence at Scale</h2>
+          <p class="mt-4 text-white/70">Automated Artificial Intelligence and granular preferences across multi‑site environments—reducing legal risk and improving performance.</p>
+          <ul class="mt-4 space-y-2 text-white/80">
+            <li>• 100% policy coverage across sites</li>
+            <li>• Script & iframe blocking with guardrails</li>
+            <li>• QA automation + reporting</li>
+          </ul>
+          <a href="#contact" class="inline-flex items-center gap-2 mt-6 text-neon-500 hover:underline">Read the case →</a>
+        </div>
+        <div class="relative" style="justify-content: center; display: flex; align-items: center;">
+          <div class="absolute -inset-6 rounded-3xl blur-2xl opacity-50" style="background: radial-gradient(400px 150px at 30% 30%, #1F7FFF, transparent), radial-gradient(400px 200px at 70% 70%, #1F7FFF, transparent)"></div>
+          <dotlottie-wc
+            src="https://lottie.host/635c2435-6197-48c5-94b5-bf1f1a64e81d/jKNggYE4lV.lottie"
+            speed="1"
+            autoplay
+            loop
+          ></dotlottie-wc>
         </div>
       </div>
-    </section>
 
-    <!-- end info section -->
-
-    <!-- footer section -->
-    <section class="footer_section">
-      <div class="container">
-        <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a>CorosDev</a>
-        </p>
+      <div class="mt-14 grid md:grid-cols-3 gap-6">
+        <div class="glass p-6 rounded-2xl soft">
+          <h4 class="font-semibold text-lg">Fintech MVP</h4>
+          <p class="text-white/70 mt-2">Web app with KYC onboarding and integrated payments.</p>
+          <a href="#" class="text-cobalt-300 hover:text-neon-500 mt-3 inline-block">Details →</a>
+        </div>
+        <div class="glass p-6 rounded-2xl soft">
+          <h4 class="font-semibold text-lg">B2C E‑commerce</h4>
+          <p class="text-white/70 mt-2">Headless storefront with A+ performance and SEO.</p>
+          <a href="#" class="text-cobalt-300 hover:text-neon-500 mt-3 inline-block">Details →</a>
+        </div>
+        <div class="glass p-6 rounded-2xl soft">
+          <h4 class="font-semibold text-lg">Salesforce Integration</h4>
+          <p class="text-white/70 mt-2">Data sync and automated workflows.</p>
+          <a href="#" class="text-cobalt-300 hover:text-neon-500 mt-3 inline-block">Details →</a>
+        </div>
       </div>
-    </section>
-    <!-- footer section -->
+    </div>
+  </section>
 
-    <!-- jQery -->
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <!-- popper js -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <!-- bootstrap js -->
-    <script type="text/javascript" src="js/bootstrap.js"></script>
-    <!-- owl slider -->
-    <script
-      type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-    ></script>
-    <!-- custom js -->
-    <script type="text/javascript" src="js/custom.js"></script>
-    <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
-    <!-- End Google Map -->
-  </body>
+  <!-- TESTIMONIALS -->
+  <section class="py-20 bg-brand-800/20">
+    <div class="mx-auto max-w-7xl px-6">
+      <h2 class="text-3xl md:text-5xl font-bold">What clients say</h2>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="glass p-6 rounded-2xl soft">
+          <p class="text-white/80">“CorosDev delivered exactly what we needed, on time and with excellent quality.”</p>
+          <p class="text-white/50 text-sm mt-4">— Aftermath</p>
+        </div>
+        <div class="glass p-6 rounded-2xl soft">
+          <p class="text-white/80">“The team understood our business and proposed scalable solutions.”</p>
+          <p class="text-white/50 text-sm mt-4">— Dell Technologies</p>
+        </div>
+        <div class="glass p-6 rounded-2xl soft">
+          <p class="text-white/80">“Complex integrations, handled with great communication.”</p>
+          <p class="text-white/50 text-sm mt-4">— Beehiiv </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-20">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl md:text-5xl font-bold">Engagements that fit</h2>
+        <p class="mt-3 text-white/70">Simple options. Cancel anytime with 14‑day notice.</p>
+      </div>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <div class="glass p-6 rounded-2xl soft">
+          <div class="text-sm text-neon-500">Starter</div>
+          <h3 class="mt-1 font-semibold text-2xl">$6,000 / month</h3>
+          <ul class="mt-3 space-y-2 text-white/80 text-sm">
+            <li>• 1 PM · 1 Engineer</li>
+            <li>• Slack + biweekly demos</li>
+            <li>• Shared QA</li>
+          </ul>
+        </div>
+        <div class="glass p-6 rounded-2xl soft ring-1 ring-neon-500 drop-shadow-glow">
+          <div class="text-sm text-neon-500">Growth</div>
+          <h3 class="mt-1 font-semibold text-2xl">$12,000 / month</h3>
+          <ul class="mt-3 space-y-2 text-white/80 text-sm">
+            <li>• 1 PM · 2 Engineers · QA</li>
+            <li>• Weekly planning + demos</li>
+            <li>• SLOs + on‑call window</li>
+          </ul>
+        </div>
+        <div class="glass p-6 rounded-2xl soft">
+          <div class="text-sm text-neon-500">Enterprise</div>
+          <h3 class="mt-1 font-semibold text-2xl">Custom</h3>
+          <ul class="mt-3 space-y-2 text-white/80 text-sm">
+            <li>• Dedicated squad</li>
+            <li>• Security & compliance</li>
+            <li>• Exec reporting</li>
+          </ul>
+        </div>
+      </div>
+      <p class="mt-6 text-sm text-white/50">* Pricing is indicative; adjust or hide this section.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-3xl md:text-5xl font-bold">Tell us what you’re building</h2>
+          <p class="mt-3 text-white/70">Get a roadmap, estimate, and risk assessment in 72 hours.</p>
+          <ul class="mt-6 space-y-3 text-white/80">
+            <li>• Email: <a class="text-neon-500 hover:underline" href="mailto:carlos@corosdev.com">carlos@corosdev.com</a></li>
+            <li>• WhatsApp: <a class="text-neon-500 hover:underline" href="https://wa.me/50431750453">+504 3175-0453</a></li>
+            <li>• San Pedro Sula, Honduras · Remote / Nearshore</li>
+          </ul>
+        </div>
+        <form class="glass rounded-2xl p-6">
+          <div class="grid gap-4">
+            <input placeholder="Full name" class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500" />
+            <input type="email" placeholder="Work email" class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500" />
+            <input placeholder="Company" class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500" />
+            <textarea rows="4" placeholder="What are you building?" class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500"></textarea>
+            <a href="https://calendly.com/carlos-corosdev/30min?month=2025-09&fbclid=PARlRTSAMkqJJleHRuA2FlbQIxMAABp-wi3Noq_0-ADWeNMO6tDEIm-8esAi7ISMOeaGSHfvjivgDuSBFHdPniHKGa_aem_eAIKOXbhlwFmwVdSfZN8oQ " style="cursor: pointer; display: flex; justify-content: center; align-items: center;"   class="mt-2 px-5 py-3 rounded-xl btn-primary font-semibold drop-shadow-glow">Request proposal</a>
+            <p class="text-xs text-white/50">By submitting, you agree to our privacy policy.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-6 text-sm text-white/60 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        
+        <span>© <span id="year"></span> CorosDev. All rights reserved.</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-neon-500">Privacy</a>
+        <a href="#" class="hover:text-neon-500">Security</a>
+        <a href="#" class="hover:text-neon-500">Status</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+document.querySelectorAll('.tilt').forEach(el => {
+  el.addEventListener('mousemove', (e) => {
+    const r = el.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    const rx = ((y / r.height) - .5) * -8;
+    const ry = ((x / r.width) - .5) * 8;
+    el.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  });
+  el.addEventListener('mouseleave', () => el.style.transform = 'perspective(1000px)');
+});
+
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+let W, H, stars = [];
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize); resize();
+for (let i=0;i<160;i++){ stars.push({x:Math.random()*W, y:Math.random()*H, z:Math.random()*2+0.2}); }
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  for (const s of stars){
+    ctx.fillStyle = 'rgba(255,255,255,'+(0.3+Math.random()*0.7)+')';
+    ctx.fillRect(s.x, s.y, s.z, s.z);
+    s.x -= s.z * 0.6;
+    if (s.x < 0) { s.x = W; s.y = Math.random()*H; }
+  }
+  requestAnimationFrame(draw);
+}draw();
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('opacity-100','translate-y-0'); });
+},{ threshold:.1 });
+document.querySelectorAll('section .glass, section img, section h2').forEach(el => {
+  el.classList.add('opacity-0','translate-y-6','transition','duration-700');
+  io.observe(el);
+});
+</script>
+</body>
 </html>
