@@ -1,264 +1,312 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <!-- Basic -->
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-  <link rel="shortcut icon" href="images/favicon.png" type="">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us | CorosDev — Engineering the Future</title>
+  <meta name="description"
+    content="The visionary minds behind CorosDev, empowering innovation through world-class technology and intelligent systems." />
+  <link rel="icon" href="assets/favicon.svg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 900: '#070B1A', 800: '#0B1226', 700: '#0E1730', 600: '#121D3C' },
+            neon: { 100: '#D9EFFF', 300: '#7DBBFF', 500: '#1F7FFF', 700: '#114A99' },
+            cobalt: { 300: '#7DBBFF', 500: '#1F7FFF', 700: '#114A99' },
+          },
+          dropShadow: {
+            glow: '0 0 20px rgba(31,127,255,0.45)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
 
-  <title> Finexo </title>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #070B1A;
+    }
 
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    .glass {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, .08);
+      transform: translateZ(0);
+    }
 
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    .gradient-text {
+      background: linear-gradient(90deg, #7DBBFF, #1F7FFF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-  <!--owl slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    .nav-glass {
+      background: rgba(7, 11, 26, 0.60);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+    }
 
-  <!-- font awesome style -->
-  <link href="css/font-awesome.min.css" rel="stylesheet" />
+    .scrolled .nav-glass {
+      background: rgba(7, 11, 26, 0.85);
+    }
 
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+    .member-card:hover .member-img {
+      transform: scale(1.05);
+      border-color: #1F7FFF;
+    }
 
+    .member-img {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .1), transparent);
+    }
+
+    #stars {
+      max-width: 100vw;
+    }
+  </style>
 </head>
 
-<body class="sub_page">
+<body class="text-white antialiased selection:bg-neon-500 selection:text-brand-900 overflow-x-hidden">
 
-  <div class="hero_area">
+  <canvas id="stars" class="fixed inset-0 -z-10"></canvas>
 
-    <div class="hero_bg_box">
-      <div class="bg_img_box">
-        <img src="images/hero-bg.png" alt="">
-      </div>
-    </div>
-
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
-            <span>
-              Finexo
-            </span>
-          </a>
-
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class=""> </span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav  ">
-              <li class="nav-item ">
-                <a class="nav-link" href="index.html">Home </a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="about.html"> About <span class="sr-only">(current)</span> </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="service.html">Services</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="why.html">Why Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="team.html">Team</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
-              </li>
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-              </form>
-            </ul>
-          </div>
+  <!-- NAV (Same as Index) -->
+  <header id="site-nav" class="fixed top-0 left-0 right-0 z-50">
+    <div class="mx-auto max-w-7xl px-6 py-3 glass rounded-b-2xl shadow-2xl mt-0">
+      <div class="flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/coros.png" alt="CorosDev" class="h-16 w-auto">
+          <div class="hidden sm:block h-6 w-[1px] bg-white/10 mx-2"></div>
+          <span class="hidden sm:block text-[10px] tracking-widest text-white font-bold uppercase opacity-80">AI
+            Driven Company</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8 text-sm text-white/80 uppercase tracking-widest font-semibold">
+          <a href="index.html" class="hover:text-neon-500">Home</a>
+          <a href="index.html#pricing" class="hover:text-neon-500">Services</a>
+          <a href="about.html" class="text-neon-500">About Us</a>
+          <a href="index.html#contact" class="hover:text-neon-500">Contact</a>
         </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-  </div>
-
-  <!-- about section -->
-
-  <section class="about_section layout_padding">
-    <div class="container  ">
-      <div class="heading_container heading_center">
-        <h2>
-          About <span>Us</span>
-        </h2>
-        <p>
-          Magni quod blanditiis non minus sed aut voluptatum illum quisquam aspernatur ullam vel beatae rerum ipsum voluptatibus
-        </p>
-      </div>
-      <div class="row">
-        <div class="col-md-6 ">
-          <div class="img-box">
-            <img src="images/about-img.png" alt="">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="detail-box">
-            <h3>
-              We Are Finexo
-            </h3>
-            <p>
-              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
-              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
-              the middle of text. All
-            </p>
-            <p>
-              Molestiae odio earum non qui cumque provident voluptates, repellendus exercitationem, possimus at iste corrupti officiis unde alias eius ducimus reiciendis soluta eveniet. Nobis ullam ab omnis quasi expedita.
-            </p>
-            <a href="">
-              Read More
-            </a>
-          </div>
+        <div class="flex items-center gap-3">
+          <a href="https://calendly.com/corosdev-info/30min"
+            class="px-4 py-2 rounded-xl bg-cobalt-500 text-brand-900 font-semibold drop-shadow-glow hover:scale-105 transition-transform text-sm">Book
+            a demo</a>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- end about section -->
-
-  <!-- info section -->
-
-  <section class="info_section layout_padding2">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-3 info_col">
-          <div class="info_contact">
-            <h4>
-              Address
-            </h4>
-            <div class="contact_link_box">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Location
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Call +01 1234567890
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  demo@gmail.com
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="info_social">
-            <a href="">
-              <i class="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-twitter" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-linkedin" aria-hidden="true"></i>
-            </a>
-            <a href="">
-              <i class="fa fa-instagram" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3 info_col">
-          <div class="info_detail">
-            <h4>
-              Info
-            </h4>
-            <p>
-              necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful
-            </p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-2 mx-auto info_col">
-          <div class="info_link_box">
-            <h4>
-              Links
-            </h4>
-            <div class="info_links">
-              <a class="active" href="index.html">
-                Home
-              </a>
-              <a class="" href="about.html">
-                About
-              </a>
-              <a class="" href="service.html">
-                Services
-              </a>
-              <a class="" href="why.html">
-                Why Us
-              </a>
-              <a class="" href="team.html">
-                Team
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3 info_col ">
-          <h4>
-            Subscribe
-          </h4>
-          <form action="#">
-            <input type="text" placeholder="Enter email" />
-            <button type="submit">
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- end info section -->
-
-  <!-- footer section -->
-  <section class="footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates</a>
+  <!-- HERO -->
+  <section class="pt-48 pb-20 relative">
+    <div class="mx-auto max-w-5xl px-6 text-center">
+      <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
+        The Minds Behind <br>
+        <span class="gradient-text drop-shadow-glow">Global Innovation.</span>
+      </h1>
+      <p class="mt-8 text-white/60 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+        We are a collective of engineers, designers, and strategists dedicated to bridging the gap between Latin
+        American talent and global technological excellence.
       </p>
     </div>
   </section>
-  <!-- footer section -->
 
-  <!-- jQery -->
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <!-- popper js -->
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-  </script>
-  <!-- bootstrap js -->
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <!-- owl slider -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <!-- custom js -->
-  <script type="text/javascript" src="js/custom.js"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-  </script>
-  <!-- End Google Map -->
+  <div class="divider"></div>
 
+  <!-- TEAM GRID -->
+  <section class="py-24 relative">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mb-16 text-center">
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white">Our <span class="gradient-text">Leadership</span>
+          Team</h2>
+        <div class="w-24 h-1 bg-neon-500 mx-auto mt-6 rounded-full opacity-50"></div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <!-- Carlos Hernandez -->
+        <div class="member-card group">
+          <div
+            class="glass p-8 rounded-3xl border border-white/5 group-hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center text-center">
+
+            <h3 class="text-2xl font-bold text-white mb-1">Carlos Hernandez</h3>
+            <p class="text-neon-500 font-semibold tracking-widest text-xs uppercase mb-4">CEO</p>
+            <p class="text-white/50 text-sm leading-relaxed">Visionary leader driving the strategic direction and growth
+              of CorosDev worldwide.</p>
+          </div>
+        </div>
+
+        <!-- Kriscia Cornejo -->
+        <div class="member-card group">
+          <div
+            class="glass p-8 rounded-3xl border border-white/5 group-hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center text-center">
+
+            <h3 class="text-2xl font-bold text-white mb-1">Kriscia Cornejo</h3>
+            <p class="text-neon-500 font-semibold tracking-widest text-xs uppercase mb-4">CFO</p>
+            <p class="text-white/50 text-sm leading-relaxed">Strategic financial leader managing capital and performance
+              for sustainable innovation.</p>
+          </div>
+        </div>
+
+        <!-- Arturo Guzman -->
+        <div class="member-card group">
+          <div
+            class="glass p-8 rounded-3xl border border-white/5 group-hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center text-center">
+
+            <h3 class="text-2xl font-bold text-white mb-1">Arturo Guzman</h3>
+            <p class="text-neon-500 font-semibold tracking-widest text-xs uppercase mb-4">COO</p>
+            <p class="text-white/50 text-sm leading-relaxed">Architect of operational excellence, ensuring seamless
+              delivery across all global projects.</p>
+          </div>
+        </div>
+
+        <!-- Jafet Mourra -->
+        <div class="member-card group">
+          <div
+            class="glass p-8 rounded-3xl border border-white/5 group-hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center text-center">
+
+            <h3 class="text-2xl font-bold text-white mb-1">Jafet Mourra</h3>
+            <p class="text-neon-500 font-semibold tracking-widest text-xs uppercase mb-4">CPO</p>
+            <p class="text-white/50 text-sm leading-relaxed">Directing product innovation and user-centric architectures
+              for high-impact software.</p>
+          </div>
+        </div>
+
+        <!-- Salvador Reynaud -->
+        <div class="member-card group">
+          <div
+            class="glass p-8 rounded-3xl border border-white/5 group-hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center text-center">
+
+            <h3 class="text-2xl font-bold text-white mb-1">Salvador Reynaud</h3>
+            <p class="text-neon-500 font-semibold tracking-widest text-xs uppercase mb-4">CMO</p>
+            <p class="text-white/50 text-sm leading-relaxed">Expert in strategic management focused on scaling
+              businesses and positioning brands through high-impact market analysis.</p>
+          </div>
+        </div>
+
+        <!-- Jeremy Rápalo -->
+        <div class="member-card group">
+          <div
+            class="glass p-8 rounded-3xl border border-white/5 group-hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center text-center">
+
+            <h3 class="text-2xl font-bold text-white mb-1">Jeremy Rápalo</h3>
+            <p class="text-neon-500 font-semibold tracking-widest text-xs uppercase mb-4">CCO</p>
+            <p class="text-white/50 text-sm leading-relaxed">Managing internal and external flows to ensure clarity and
+              impact across all channels.</p>
+          </div>
+        </div>
+
+        <!-- John Vanegas -->
+        <div class="member-card group">
+          <div
+            class="glass p-8 rounded-3xl border border-white/5 group-hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center text-center">
+
+            <h3 class="text-2xl font-bold text-white mb-1">John Vanegas</h3>
+            <p class="text-neon-500 font-semibold tracking-widest text-xs uppercase mb-4">CIO</p>
+            <p class="text-white/50 text-sm leading-relaxed">Leading data strategy and technological integration to
+              drive intelligent business insights.</p>
+          </div>
+        </div>
+
+        <!-- Emerson Medina -->
+        <div class="member-card group">
+          <div
+            class="glass p-8 rounded-3xl border border-white/5 group-hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center text-center">
+
+            <h3 class="text-2xl font-bold text-white mb-1">Emerson Medina</h3>
+            <p class="text-neon-500 font-semibold tracking-widest text-xs uppercase mb-4">CTO</p>
+            <p class="text-white/50 text-sm leading-relaxed">Technical mastermind engineering high-performance systems
+              and AI-driven solutions.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-24 relative overflow-hidden">
+    <div class="mx-auto max-w-4xl px-6 glass p-12 rounded-[32px] text-center border border-white/10">
+      <h2 class="text-3xl md:text-5xl font-extrabold mb-6">Want to work with <span class="gradient-text">us?</span></h2>
+      <p class="text-white/60 text-lg mb-10">We are always looking for visionary talent and ambitious partners.</p>
+      <a href="index.html#contact"
+        class="px-10 py-4 rounded-xl bg-cobalt-500 text-brand-900 font-bold drop-shadow-glow hover:scale-105 transition-transform inline-block">GET
+        IN TOUCH</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 border-t border-white/5">
+    <div
+      class="mx-auto max-w-7xl px-6 text-sm text-white/40 flex flex-col md:flex-row items-center justify-between gap-4">
+      <span>© 2026 CorosDev. All rights reserved.</span>
+      <div class="flex items-center gap-8">
+        <a href="index.html" class="hover:text-neon-500">Home</a>
+        <a href="index.html#services" class="hover:text-neon-500">Services</a>
+        <a href="about.html" class="hover:text-neon-500">About Us</a>
+        <a href="index.html#contact" class="hover:text-neon-500">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let W, H, stars = [];
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    window.addEventListener('resize', resize); resize();
+
+    for (let i = 0; i < 120; i++) {
+      stars.push({ x: Math.random() * W, y: Math.random() * H, z: Math.random() * 2 + 0.2 });
+    }
+
+    let currentScroll = window.scrollY;
+    window.addEventListener('scroll', () => {
+      currentScroll = window.scrollY;
+      const siteNav = document.getElementById('site-nav');
+      if (currentScroll > 10) siteNav.classList.add('scrolled');
+      else siteNav.classList.remove('scrolled');
+    }, { passive: true });
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      const scrollFactor = 1.2 + (currentScroll / 3000);
+
+      // Pre-calculate stars to update positions
+      for (const s of stars) {
+        s.x -= s.z * scrollFactor;
+        if (s.x < 0) { s.x = W; s.y = Math.random() * H; }
+      }
+
+      ctx.fillStyle = 'white';
+
+      // Low brightness
+      ctx.globalAlpha = 0.4;
+      for (const s of stars) {
+        if (s.z < 1) ctx.fillRect(s.x, s.y, s.z, s.z);
+      }
+
+      // High brightness
+      ctx.globalAlpha = 0.8;
+      for (const s of stars) {
+        if (s.z >= 1) ctx.fillRect(s.x, s.y, s.z, s.z);
+      }
+
+      ctx.globalAlpha = 1.0;
+      requestAnimationFrame(draw);
+    } draw();
+  </script>
 </body>
 
 </html>
