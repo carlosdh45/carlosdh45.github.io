@@ -36,8 +36,8 @@
     .bg-orb {
       position: absolute;
       inset: -20%;
-      filter: blur(100px);
-      /* Restored the blur effect as requested */
+      filter: blur(50px);
+      /* Reduced blur for better performance */
       opacity: .45;
       background: radial-gradient(circle at 50% 50%, #1F7FFF, transparent 70%);
       animation: spin 22s linear infinite;
@@ -48,6 +48,18 @@
     @keyframes spin {
       to {
         transform: rotate(360deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bg-orb {
+        animation: none;
+      }
+      .map-line {
+        animation: none;
+      }
+      .marquee-track {
+        animation: none;
       }
     }
 
@@ -1156,46 +1168,54 @@
     }
     window.addEventListener('scroll', toggleNavGlass, { passive: true });
     toggleNavGlass(); // estado inicial
-    const canvas = document.getElementById('stars');
-    const ctx = canvas.getContext('2d');
-    let W, H, stars = [];
-    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-    window.addEventListener('resize', resize); resize();
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    for (let i = 0; i < 160; i++) {
-      stars.push({ x: Math.random() * W, y: Math.random() * H, z: Math.random() * 2 + 0.2 });
+    if (!prefersReducedMotion) {
+      const canvas = document.getElementById('stars');
+      const ctx = canvas.getContext('2d');
+      let W, H, stars = [];
+      function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+      window.addEventListener('resize', resize); resize();
+
+      // Reduce stars on mobile for performance
+      const isMobile = window.innerWidth < 768;
+      const starCount = isMobile ? 50 : 160;
+      for (let i = 0; i < starCount; i++) {
+        stars.push({ x: Math.random() * W, y: Math.random() * H, z: Math.random() * 2 + 0.2 });
+      }
+
+      let currentScroll = window.scrollY;
+      window.addEventListener('scroll', () => { currentScroll = window.scrollY; }, { passive: true });
+
+      function draw() {
+        ctx.clearRect(0, 0, W, H);
+        const scrollFactor = 1.5 + (currentScroll / 2000);
+
+        // Pre-calculate stars to update positions
+        for (const s of stars) {
+          s.x -= s.z * scrollFactor;
+          if (s.x < 0) { s.x = W; s.y = Math.random() * H; }
+        }
+
+        // Group stars by brightness to minimize globalAlpha changes
+        // Low brightness
+        ctx.globalAlpha = 0.5;
+        ctx.fillStyle = 'white';
+        for (const s of stars) {
+          if (s.z < 1) ctx.fillRect(s.x, s.y, s.z, s.z);
+        }
+
+        // High brightness
+        ctx.globalAlpha = 0.9;
+        for (const s of stars) {
+          if (s.z >= 1) ctx.fillRect(s.x, s.y, s.z, s.z);
+        }
+
+        ctx.globalAlpha = 1.0;
+        requestAnimationFrame(draw);
+      } draw();
     }
-
-    let currentScroll = window.scrollY;
-    window.addEventListener('scroll', () => { currentScroll = window.scrollY; }, { passive: true });
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      const scrollFactor = 1.5 + (currentScroll / 2000);
-
-      // Pre-calculate stars to update positions
-      for (const s of stars) {
-        s.x -= s.z * scrollFactor;
-        if (s.x < 0) { s.x = W; s.y = Math.random() * H; }
-      }
-
-      // Group stars by brightness to minimize globalAlpha changes
-      // Low brightness
-      ctx.globalAlpha = 0.5;
-      ctx.fillStyle = 'white';
-      for (const s of stars) {
-        if (s.z < 1) ctx.fillRect(s.x, s.y, s.z, s.z);
-      }
-
-      // High brightness
-      ctx.globalAlpha = 0.9;
-      for (const s of stars) {
-        if (s.z >= 1) ctx.fillRect(s.x, s.y, s.z, s.z);
-      }
-
-      ctx.globalAlpha = 1.0;
-      requestAnimationFrame(draw);
-    } draw();
 
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
