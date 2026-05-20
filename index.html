@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CorosDev — Engineering the Future of Global Innovation</title>
+  <title>CorosDev - Engineering the Future of Global Innovation</title>
   <meta name="description"
-    content="We empower innovative companies through world-class technology and intelligent growth systems—transforming ideas into scalable, profitable, and future-ready businesses." />
+    content="We empower innovative companies through world-class technology and intelligent growth systems - transforming ideas into scalable, profitable, and future-ready businesses." />
   <link rel="icon" href="assets/favicon.svg">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="locale.js?v=1.0.3" charset="UTF-8"></script>
   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
   <script>
     tailwind.config = {
@@ -36,31 +37,10 @@
     .bg-orb {
       position: absolute;
       inset: -20%;
-      filter: blur(50px);
-      /* Reduced blur for better performance */
-      opacity: .45;
-      background: radial-gradient(circle at 50% 50%, #1F7FFF, transparent 70%);
-      animation: spin 22s linear infinite;
-      will-change: transform;
+      filter: blur(160px);
+      opacity: .07;
+      background: radial-gradient(circle at 50% 50%, #1F7FFF, transparent 60%);
       pointer-events: none;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .bg-orb {
-        animation: none;
-      }
-      .map-line {
-        animation: none;
-      }
-      .marquee-track {
-        animation: none;
-      }
     }
 
     .glass {
@@ -92,7 +72,29 @@
 
     .divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+      background: rgba(255, 255, 255, 0.05);
+      margin: 0;
+      pointer-events: none;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* Mobile responsive section spacing */
+    @media (max-width: 767px) {
+      section { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+    }
+
+    /* Floating logo animation */
+    @keyframes float-logo {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+    .animate-float {
+      animation: float-logo 5s ease-in-out infinite;
     }
 
     .marquee {
@@ -258,7 +260,158 @@
     .map-ping {
       animation: ping 2s ease-out infinite;
     }
+
+    /* Ã¢&#8221;-Ã¢&#8221;- ECOSYSTEM SECTION Ã¢&#8221;-Ã¢&#8221;- */
+    .eco-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(.25, .8, .25, 1), box-shadow 0.4s ease;
+    }
+
+    .eco-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 30px 80px rgba(31, 127, 255, 0.18), 0 0 0 1px rgba(31, 127, 255, 0.25);
+    }
+
+    .eco-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(31, 127, 255, 0.07) 0%, transparent 60%);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      opacity: 0;
+    }
+
+    .eco-card:hover::before {
+      opacity: 1;
+    }
+
+    .badge-early {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(31, 127, 255, 0.12);
+      border: 1px solid rgba(31, 127, 255, 0.35);
+      color: #7DBBFF;
+      white-space: nowrap;
+    }
+
+    .badge-early::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #1F7FFF;
+      box-shadow: 0 0 6px #1F7FFF;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.7);
+      }
+    }
+
+    .eco-icon-ring {
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      transition: transform 0.4s ease;
+    }
+
+    .eco-card:hover .eco-icon-ring {
+      transform: scale(1.12) rotate(-4deg);
+    }
+
+    /* Lang toggle button */
+    #lang-toggle {
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(255, 255, 255, 0.7);
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
+    }
+
+    #lang-toggle:hover {
+      border-color: #1F7FFF;
+      color: #7DBBFF;
+      background: rgba(31, 127, 255, 0.1);
+    }
+
+    /* ── Mobile Hamburger Menu ── */
+    #mobile-menu-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    #mobile-menu-btn span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: rgba(255,255,255,0.85);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    #mobile-menu.open {
+      max-height: 400px;
+      opacity: 1;
+    }
+    #mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: color 0.2s;
+    }
+    #mobile-menu a:last-child { border-bottom: none; }
+    #mobile-menu a:hover { color: #1F7FFF; }
   </style>
+  <link rel="stylesheet" href="cta-modal.css">
 </head>
 
 <body
@@ -267,64 +420,88 @@
   <canvas id="stars" class="fixed inset-0 -z-10"></canvas>
   <div class="bg-orb -z-20"></div>
 
-  <!-- NAV (Simplified & Refined) -->
+  <!-- NAV -->
   <header id="site-nav" class="fixed top-0 left-0 right-0 z-50">
     <div class="mx-auto max-w-7xl px-6 py-3 glass rounded-b-2xl shadow-2xl mt-0">
       <div class="flex items-center justify-between">
-        <a href="#" class="flex items-center gap-3 group">
-          <img src="assets/coros.png" alt="CorosDev" class="h-16 w-auto">
+        <!-- Hamburger (mobile only) -->
+        <button id="mobile-menu-btn" class="md:hidden" onclick="toggleMobileMenu()" aria-label="Menu">
+          <span id="ham-1"></span>
+          <span id="ham-2"></span>
+          <span id="ham-3"></span>
+        </button>
+        <!-- Logo (centered on mobile) -->
+        <a href="#" class="flex items-center gap-3 group md:order-none">
+          <img src="assets/coros.png" alt="CorosDev" class="h-12 md:h-16 w-auto">
           <div class="hidden sm:block h-6 w-[1px] bg-white/10 mx-2"></div>
           <span class="hidden sm:block text-[10px] tracking-widest text-white font-bold uppercase opacity-80">AI
             Driven Company</span>
         </a>
+        <!-- Desktop nav -->
         <nav class="hidden md:flex items-center gap-8 text-sm text-white/80 uppercase tracking-widest font-semibold">
-          <a href="#platform" class="hover:text-neon-500">Platform</a>
-          <a href="#pricing" class="hover:text-neon-500">Services</a>
-          <a href="about.html" class="hover:text-neon-500">About Us</a>
-          <a href="#contact" class="hover:text-neon-500">Contact</a>
+          <a href="index.html" class="hover:text-neon-500" data-i18n="nav_home">Home</a>
+          <a href="ecosystem.html" class="hover:text-neon-500" data-i18n="nav_ecosystem">Ecosystem</a>
+          <a href="services.html" class="hover:text-neon-500" data-i18n="nav_services">Services</a>
+          <a href="about.html" class="hover:text-neon-500" data-i18n="nav_about">About Us</a>
+          <a href="#contact" class="hover:text-neon-500" data-i18n="nav_contact">Contact</a>
         </nav>
+        <!-- Right side: lang + CTA -->
         <div class="flex items-center gap-3">
+          <button id="lang-toggle" onclick="cdToggleLang()" aria-label="Switch language">ES</button>
           <a href="https://calendly.com/corosdev-info/30min"
-            class="px-4 py-2 rounded-xl bg-cobalt-500 text-brand-900 font-semibold drop-shadow-glow hover:scale-105 transition-transform text-sm">Book
+            class="hidden sm:inline-block px-4 py-2 rounded-xl bg-cobalt-500 text-brand-900 font-semibold drop-shadow-glow hover:scale-105 transition-transform text-sm"
+            data-i18n="nav_cta">Book
             a demo</a>
         </div>
+      </div>
+      <!-- Mobile dropdown menu -->
+      <div id="mobile-menu" class="md:hidden px-2 pb-2">
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="ecosystem.html" data-i18n="nav_ecosystem">Ecosystem</a>
+        <a href="services.html" data-i18n="nav_services">Services</a>
+        <a href="about.html" data-i18n="nav_about">About Us</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+        <a href="https://calendly.com/corosdev-info/30min"
+          class="!text-neon-500 !font-bold" data-i18n="nav_cta">Book a demo</a>
       </div>
     </div>
   </header>
 
   <!-- HERO -->
-  <section class="pt-36 pb-20 relative">
+  <section class="pt-24 sm:pt-36 pb-12 sm:pb-20 relative">
     <div class="mx-auto max-w-7xl px-6">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div class="tilt">
-          <p class="text-white text-sm font-medium tracking-wide uppercase opacity-90">AI DRIVEN COMPANY ·
-            LATAM ENGINEERING · US TIME & EU TIME</p>
-          <h1 class="mt-4 text-5xl md:text-7xl font-extrabold leading-[1.1]">
-            Software that <span class="gradient-text drop-shadow-glow">feels futuristic</span> and ships fast.
-          </h1>
-          <p class="mt-5 text-white/80 text-lg max-w-xl">We transform ambitious ideas into
+          <p class="text-white text-sm font-medium tracking-wide uppercase opacity-90" data-i18n="hero_tag">AI DRIVEN
+            COMPANY &middot; LATAM ENGINEERING &middot; US TIME &amp; EU TIME</p>
+          <h1 class="mt-4 text-5xl md:text-7xl font-extrabold leading-[1.1]" data-i18n="hero_h1">Software that <span
+              class="gradient-text drop-shadow-glow">feels futuristic</span> and ships fast.</h1>
+          <p class="mt-5 text-white/80 text-lg max-w-xl" data-i18n="hero_sub">We transform ambitious ideas into
             scalable, profitable, and
             future-ready businesses through world-class technology systems.</p>
           <div class="mt-8 flex items-center gap-3">
             <a href="https://calendly.com/corosdev-info/30min"
-              class="px-6 py-3 rounded-xl btn-primary font-semibold drop-shadow-glow">Book a 30‑min discovery</a>
-            <a href="#work" class="px-6 py-3 rounded-xl btn-ghost">See our work</a>
+              class="px-6 py-3 rounded-xl btn-primary font-semibold drop-shadow-glow" data-i18n="hero_cta1">Book a
+              30-min discovery</a>
+            <a href="#work" class="px-6 py-3 rounded-xl btn-ghost" data-i18n="hero_cta2">See our work</a>
           </div>
           <div class="mt-6 flex items-center gap-6 text-white/60 text-sm">
-            <span>Security‑first</span><span class="opacity-50">•</span><span>Design‑led</span><span
-              class="opacity-50">•</span><span>Measurable impact</span>
+            <span data-i18n="hero_pill1">Security-first</span><span class="opacity-50">&bull;</span><span
+              data-i18n="hero_pill2">Design-led</span><span class="opacity-50">&bull;</span><span
+              data-i18n="hero_pill3">Measurable impact</span>
           </div>
         </div>
         <div class="relative w-full max-w-2xl mx-auto aspect-square flex items-center justify-center">
           <!-- Text Label centered above the map, visually aligned with left label -->
           <div class="absolute top-[22%] left-0 w-full text-center z-20">
             <span
-              class="text-white tracking-[0.6em] font-black uppercase text-[16px] opacity-100 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">Our
+              class="text-white tracking-[0.6em] font-black uppercase text-[16px] opacity-100 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+              data-i18n="hero_map">Our
               impact in the world</span>
           </div>
 
 
-          <div class="absolute -inset-6 rounded-3xl blur-3xl opacity-30"
+          <div class="absolute -inset-6 rounded-3xl blur-3xl opacity-10"
             style="background: radial-gradient(600px 200px at 20% 30%, #1F7FFF, transparent), radial-gradient(500px 300px at 80% 70%, #1F7FFF, transparent)">
           </div>
           <div class="relative z-10 w-full aspect-square flex items-center justify-center">
@@ -332,7 +509,7 @@
               <!-- World Map from Assets -->
               <image href="assets/mapa mundi.svg" x="0" y="0" width="2018" height="2018" opacity="0.4"
                 style="filter: brightness(1.2); will-change: transform, opacity;" />
-              <!-- Nota: Se eliminó el drop-shadow del SVG grande por ser extremadamente costoso en rendimiento -->
+              <!-- Nota: Se eliminÃÂ³ el drop-shadow del SVG grande por ser extremadamente costoso en rendimiento -->
 
               <!-- Connection Lines (White and Continuous Feeling) -->
               <!-- USA to EUROPE -->
@@ -391,25 +568,51 @@
 
   <div class="divider"></div>
 
-  <!-- MISSION -->
-  <section id="mission" class="py-24 relative overflow-hidden">
-    <!-- Subtle background glows -->
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-cobalt-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-500/5 rounded-full blur-[120px] pointer-events-none">
+  <!-- METHODOLOGY PRESENTATION VIDEO -->
+  <section id="presentation" class="py-12 md:py-20 relative overflow-hidden">
+    <div class="mx-auto max-w-5xl px-6 relative">
+      <div class="text-center mb-8 md:mb-12">
+        <h2 class="text-3xl md:text-5xl font-black text-white" data-i18n="video_title">
+          See Our <span class="gradient-text drop-shadow-glow">Methodology in Action</span>
+        </h2>
+        <p class="mt-4 text-white/50 text-base md:text-lg max-w-2xl mx-auto" data-i18n="video_desc">
+          Experience how we design, build, and scale digital products. Learn how our ecosystem and elite engineering teams bring future-ready systems to life.
+        </p>
+      </div>
+
+      <!-- Gorgeous interactive glassmorphic video frame with a neon glow (Landscape 16:9 Layout) -->
+      <div class="mx-auto max-w-3xl group relative rounded-[2rem] glass p-3 border border-white/10 shadow-[0_0_50px_rgba(31,127,255,0.15)] hover:border-neon-500/30 transition-all duration-700 ease-out hover:shadow-[0_0_60px_rgba(31,127,255,0.25)] hover:-translate-y-1">
+        <div class="relative aspect-video w-full overflow-hidden rounded-[1.5rem] bg-brand-900 border border-white/5">
+          <iframe class="absolute inset-0 w-full h-full" 
+            src="https://www.youtube.com/embed/haRpSox-c1Q" 
+            title="CorosDev Presentation Video" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
     </div>
+  </section>
 
+  <div class="divider"></div>
+
+  <!-- MISSION -->
+  <section id="mission" class="py-12 md:py-24 relative overflow-hidden">
     <div class="mx-auto max-w-7xl px-6 text-center relative">
-      <h2 class="text-4xl md:text-6xl font-black text-white mb-8">Our <span
+      <h2 class="text-4xl md:text-6xl font-black text-white mb-6 md:mb-8" data-i18n="mission_h2">Our <span
           class="gradient-text drop-shadow-glow">Mission</span></h2>
-      <p class="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed font-medium">
+      <p class="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed font-medium" data-i18n="mission_p">
         At CorosDev, we empower innovative companies worldwide through world-class technology and intelligent growth
-        systems—transforming ideas into scalable, profitable, and future-ready businesses.
+        systems&mdash;transforming ideas into scalable, profitable, and future-ready businesses.
       </p>
 
-      <p class="mt-16 text-cobalt-500 tracking-[0.3em] font-bold uppercase text-sm opacity-80">To accomplish this, we:
+      <p class="mt-8 md:mt-16 text-cobalt-500 tracking-[0.3em] font-bold uppercase text-sm opacity-80"
+        data-i18n="mission_label">To accomplish this, we:
       </p>
 
-      <div class="mt-10 grid md:grid-cols-3 gap-8">
+      <div class="mt-6 md:mt-10 grid md:grid-cols-3 gap-5 md:gap-8">
         <!-- Block 1: Build Technology That Scales -->
         <div class="group relative">
           <div
@@ -421,10 +624,11 @@
                   d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
               </svg>
             </div>
-            <h4 class="text-xl font-bold text-white mb-4">Build Technology That Scales</h4>
-            <p class="text-white/50 text-sm leading-relaxed">
-              We design and develop high-performance digital solutions engineered for global growth. We don’t just build
-              products that work today—we build platforms prepared to lead tomorrow.
+            <h4 class="text-xl font-bold text-white mb-4" data-i18n="mission_b1_h">Build Technology That Scales</h4>
+            <p class="text-white/50 text-sm leading-relaxed" data-i18n="mission_b1_p">
+              We design and develop high-performance digital solutions engineered for global growth. We don&#39;t just
+              build
+              products that work today. We build platforms prepared to lead tomorrow.
             </p>
           </div>
         </div>
@@ -432,18 +636,19 @@
         <!-- Block 2: Create Intelligent Growth Systems -->
         <div class="group relative">
           <div
-            class="glass p-10 rounded-3xl soft border border-white/5 hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center">
+            class="glass p-6 md:p-10 rounded-3xl soft border border-white/5 hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center">
             <div
-              class="w-16 h-16 rounded-2xl bg-neon-500/10 flex items-center justify-center text-neon-500 mb-8 group-hover:scale-110 transition-transform duration-500">
+              class="w-16 h-16 rounded-2xl bg-neon-500/10 flex items-center justify-center text-neon-500 mb-4 md:mb-8 group-hover:scale-110 transition-transform duration-500">
               <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                   d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
             </div>
-            <h4 class="text-xl font-bold text-white mb-4">Create Intelligent Growth Systems</h4>
-            <p class="text-white/50 text-sm leading-relaxed">
+            <h4 class="text-xl font-bold text-white mb-4" data-i18n="mission_b2_h">Create Intelligent Growth Systems
+            </h4>
+            <p class="text-white/50 text-sm leading-relaxed" data-i18n="mission_b2_p">
               We integrate software development, digital marketing, SEO, strategic content, automation, and performance
-              analytics to turn traffic into customers—and customers into predictable revenue.
+              analytics to turn traffic into customers, and customers into predictable revenue.
             </p>
           </div>
         </div>
@@ -451,16 +656,17 @@
         <!-- Block 3: Deliver Measurable & Sustainable Impact -->
         <div class="group relative">
           <div
-            class="glass p-10 rounded-3xl soft border border-white/5 hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center">
+            class="glass p-6 md:p-10 rounded-3xl soft border border-white/5 hover:border-neon-500/30 transition-all duration-500 h-full flex flex-col items-center">
             <div
-              class="w-16 h-16 rounded-2xl bg-neon-500/10 flex items-center justify-center text-neon-500 mb-8 group-hover:scale-110 transition-transform duration-500">
+              class="w-16 h-16 rounded-2xl bg-neon-500/10 flex items-center justify-center text-neon-500 mb-4 md:mb-8 group-hover:scale-110 transition-transform duration-500">
               <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h4 class="text-xl font-bold text-white mb-4">Deliver Measurable & Sustainable Impact</h4>
-            <p class="text-white/50 text-sm leading-relaxed">
+            <h4 class="text-xl font-bold text-white mb-4" data-i18n="mission_b3_h">Deliver Measurable &amp; Sustainable
+              Impact</h4>
+            <p class="text-white/50 text-sm leading-relaxed" data-i18n="mission_b3_p">
               We operate with clear KPIs, data-driven optimization, and ROI-focused execution to ensure consistent
               growth, competitive advantage, and long-term success.
             </p>
@@ -468,9 +674,10 @@
         </div>
       </div>
 
-      <div class="mt-20">
+      <div class="mt-10 md:mt-20">
         <a href="about.html"
-          class="px-10 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 hover:border-neon-500 transition-all duration-300 shadow-[0_0_30px_rgba(31,127,255,0.05)]">
+          class="px-10 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 hover:border-neon-500 transition-all duration-300 shadow-[0_0_30px_rgba(31,127,255,0.05)]"
+          data-i18n="mission_btn">
           READ ABOUT US
         </a>
       </div>
@@ -479,128 +686,124 @@
 
   <div class="divider"></div>
 
-  <!-- PLATFORM -->
-  <section id="platform" class="py-24 relative overflow-hidden">
-    <!-- Subtle background effect -->
-    <div class="absolute inset-0 pointer-events-none opacity-20"
-      style="background: radial-gradient(circle at 50% 50%, #1F7FFF22 0%, transparent 70%)"></div>
-
+  <!-- OUR ECOSYSTEM -->
+  <section id="ecosystem" class="py-12 md:py-24 relative overflow-hidden">
     <div class="mx-auto max-w-7xl px-6 relative">
-      <div class="mb-16">
-        <h2 class="text-4xl md:text-6xl font-black text-white">Strategic <span
-            class="gradient-text drop-shadow-glow">Systems</span></h2>
-        <p class="mt-4 text-white/50 text-lg max-w-2xl">A holistic approach to engineering where technology meets growth
-          strategy to deliver sustainable competitive advantage.</p>
+
+      <!-- Section Header -->
+      <div class="mb-8 md:mb-16">
+        <p class="text-[11px] tracking-[0.35em] text-neon-500 font-bold uppercase mb-4 opacity-70"
+          data-i18n="eco_label">Internal Ventures</p>
+        <h2 class="text-4xl md:text-6xl font-black text-white" data-i18n="eco_title">Our <span
+            class="gradient-text drop-shadow-glow">Ecosystem</span></h2>
+        <p class="mt-4 text-white/50 text-lg max-w-2xl" data-i18n="eco_subtitle">Beyond client work&mdash;we build our
+          own products. These are the ventures born inside CorosDev, each solving a real problem at scale.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
+      <!-- Product Cards Grid -->
+      <div class="grid md:grid-cols-3 gap-8">
 
-        <!-- Product Engineering -->
-        <div class="group relative">
-          <div
-            class="absolute -inset-1 bg-cobalt-500/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-500">
+        <!-- Card 1: Accesorios TRD -->
+        <div class="eco-card glass rounded-3xl p-8 border border-white/5 flex flex-col gap-6 group">
+          <div class="flex items-start justify-between">
+            <div class="w-32 h-16 flex items-center justify-start animate-float">
+              <img src="assets/LOGO TRD SVG.svg" class="h-16 w-auto max-w-full object-contain drop-shadow-glow" alt="Accesorios TRD Logo">
+            </div>
+            <span class="badge-early" data-i18n="eco_badge">Early Access</span>
           </div>
-          <div
-            class="glass p-10 rounded-3xl soft relative h-full border border-white/5 group-hover:border-cobalt-500/50 transition-all duration-500 flex items-start gap-8">
-            <div
-              class="flex-shrink-0 w-16 h-16 rounded-2xl bg-cobalt-500/10 flex items-center justify-center text-cobalt-500 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(31,127,255,0.2)]">
-              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-2xl font-bold text-white mb-3">Product Engineering</h3>
-              <p class="text-white/60 leading-relaxed">High-performance architectures engineered for global scale. We
-                don't just ship products; we build the technical foundations of tomorrow's leaders.</p>
-            </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-black text-white mb-3">Accesorios TRD</h3>
+            <p class="text-white/55 text-sm leading-relaxed" data-i18n="eco_trd_desc">Premium automotive accessories
+              e-commerce platform built for performance enthusiasts across LATAM and North America. Curated catalog,
+              fast logistics, and a seamless buying experience.</p>
+          </div>
+          <div class="flex items-center gap-3 pt-2 border-t border-white/5">
+            <span class="text-[11px] text-white/30 uppercase tracking-widest font-semibold"
+              data-i18n="eco_sector">Sector</span>
+            <span class="text-[11px] text-neon-300 font-bold uppercase tracking-widest">E-Commerce &middot; Auto</span>
           </div>
         </div>
 
-        <!-- Growth & Scaling -->
-        <div class="group relative">
+        <!-- Card 2: Snapay -->
+        <div class="eco-card glass rounded-3xl p-8 border border-white/5 flex flex-col gap-6 group"
+          style="border-color: rgba(31,127,255,0.15);">
+          <!-- Featured glow ring -->
           <div
-            class="absolute -inset-1 bg-cobalt-500/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-500">
+            class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+            style="background: radial-gradient(ellipse at 50% 0%, rgba(31,127,255,0.12), transparent 70%);"></div>
+          <div class="flex items-start justify-between">
+            <div class="w-32 h-16 flex items-center justify-start animate-float">
+              <img src="assets/Logo Snapay.svg" class="h-16 w-auto max-w-full object-contain drop-shadow-glow" alt="Snapay Logo">
+            </div>
+            <span class="badge-early" data-i18n="eco_badge">Early Access</span>
           </div>
-          <div
-            class="glass p-10 rounded-3xl soft relative h-full border border-white/5 group-hover:border-cobalt-500/50 transition-all duration-500 flex items-start gap-8">
-            <div
-              class="flex-shrink-0 w-16 h-16 rounded-2xl bg-cobalt-500/10 flex items-center justify-center text-cobalt-500 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(31,127,255,0.2)]">
-              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-2xl font-bold text-white mb-3">Intelligent Growth</h3>
-              <p class="text-white/60 leading-relaxed">Converting traffic into predictable revenue. We integrate
-                marketing, SEO, and performance analytics into your product's DNA.</p>
-            </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-black text-white mb-3">Snapay</h3>
+            <p class="text-white/55 text-sm leading-relaxed" data-i18n="eco_snapay_desc">A next-generation payment
+              infrastructure for SMEs in emerging markets. Instant settlements, multi-currency support, and AI-powered
+              fraud prevention - built to democratize fintech.</p>
           </div>
-        </div>
-
-        <!-- AI Integrations -->
-        <div class="group relative">
-          <div
-            class="absolute -inset-1 bg-cobalt-500/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-500">
-          </div>
-          <div
-            class="glass p-10 rounded-3xl soft relative h-full border border-white/5 group-hover:border-cobalt-500/50 transition-all duration-500 flex items-start gap-8">
-            <div
-              class="flex-shrink-0 w-16 h-16 rounded-2xl bg-cobalt-500/10 flex items-center justify-center text-cobalt-500 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(31,127,255,0.2)]">
-              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-2xl font-bold text-white mb-3">Autonomous Agents</h3>
-              <p class="text-white/60 leading-relaxed">Orchestrating complex operations through LLM-driven pipelines and
-                agentic workflows that minimize overhead and maximize output.</p>
-            </div>
+          <div class="flex items-center gap-3 pt-2 border-t border-white/5">
+            <span class="text-[11px] text-white/30 uppercase tracking-widest font-semibold"
+              data-i18n="eco_sector">Sector</span>
+            <span class="text-[11px] text-neon-300 font-bold uppercase tracking-widest">Fintech &middot; Payments</span>
           </div>
         </div>
 
-        <!-- Applied AI (Vanguard) -->
-        <div class="group relative">
-          <div
-            class="absolute -inset-1 bg-cobalt-500/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-500">
+        <!-- Card 3: Vorzana -->
+        <div class="eco-card glass rounded-3xl p-5 md:p-8 border border-white/5 flex flex-col gap-4 md:gap-6 group">
+          <div class="flex items-start justify-between">
+            <div class="w-40 h-20 flex items-center justify-start animate-float">
+              <img src="assets/Logo Vorzana SVG (2).svg" class="h-20 w-auto max-w-full object-contain drop-shadow-glow" alt="Vorzana Logo">
+            </div>
+            <span class="badge-early" data-i18n="eco_badge">Early Access</span>
           </div>
-          <div
-            class="glass p-10 rounded-3xl soft relative h-full border border-white/5 group-hover:border-cobalt-500/50 transition-all duration-500 flex items-start gap-8">
-            <div
-              class="flex-shrink-0 w-16 h-16 rounded-2xl bg-cobalt-500/10 flex items-center justify-center text-cobalt-500 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_20px_rgba(31,127,255,0.2)]">
-              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-2xl font-bold text-white mb-3">Cognitive Solutions</h3>
-              <p class="text-white/60 leading-relaxed">Applied AI designed to multiply human impact. From RAG to
-                document automation, we turn data into your most valuable asset.</p>
-            </div>
+          <div class="flex-1">
+            <h3 class="text-2xl font-black text-white mb-3">Vorzana</h3>
+            <p class="text-white/55 text-sm leading-relaxed" data-i18n="eco_vorzana_desc">An AI-powered business
+              intelligence platform that transforms raw operational data into strategic insights. Custom dashboards,
+              predictive analytics, and automated reporting at enterprise grade.</p>
+          </div>
+          <div class="flex items-center gap-3 pt-2 border-t border-white/5">
+            <span class="text-[11px] text-white/30 uppercase tracking-widest font-semibold"
+              data-i18n="eco_sector">Sector</span>
+            <span class="text-[11px] text-neon-300 font-bold uppercase tracking-widest">AI &middot; Analytics</span>
           </div>
         </div>
 
       </div>
+
+      <!-- Bottom CTA -->
+      <div class="mt-8 md:mt-14 flex items-center gap-4">
+        <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        <p class="text-white/30 text-xs tracking-widest uppercase font-semibold px-4">
+          <span data-i18n="eco_cta">Interested in partnering or investing?</span>
+          <a href="#contact" class="text-neon-500 hover:underline ml-1" data-i18n="eco_cta_link">Let's talk &rarr;</a>
+        </p>
+        <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+      </div>
+
+      <!-- Early Tester CTA -->
+      <div class="mt-6 md:mt-12 text-center">
+        <button onclick="openCtaModal('ecosystem')" class="px-8 py-4 rounded-2xl bg-neon-500 text-brand-900 font-bold hover:scale-105 transition-all text-base uppercase tracking-wider inline-flex items-center gap-2 cursor-pointer shadow-glow animate-pulse" data-i18n="eco_early_tester_btn">
+          Want to be an early Tester? &rarr;
+        </button>
+      </div>
+
     </div>
   </section>
 
-
+  <div class="divider"></div>
 
   <!-- SOLUTIONS -->
-  <section id="solutions" class="py-24 relative overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none opacity-30"
-      style="background: radial-gradient(800px 400px at 50% 50%, #1F7FFF15, transparent)">
-    </div>
+  <section id="solutions" class="py-12 md:py-24 relative overflow-hidden">
     <div class="mx-auto max-w-7xl px-6 relative">
-      <div class="mb-16">
-        <h2 class="text-4xl md:text-6xl font-black text-white">Solutions that <span
+      <div class="mb-8 md:mb-16">
+        <h2 class="text-4xl md:text-6xl font-black text-white" data-i18n="sol_title">Solutions that <span
             class="gradient-text drop-shadow-glow">move the needle</span></h2>
-        <p class="mt-4 text-white/50 text-lg">Start small or go big—each can ship as a sprint or part of a program.</p>
+        <p class="mt-4 text-white/50 text-lg" data-i18n="sol_subtitle">Start small or go big - each can ship as a sprint or part of a program.</p>
       </div>
-      <div class="mt-10 grid md:grid-cols-3 gap-8">
+      <div class="mt-6 md:mt-10 grid md:grid-cols-3 gap-5 md:gap-8">
         <!-- MVP -->
         <div class="group relative">
           <div
@@ -611,17 +814,16 @@
                 <path d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <div class="text-[10px] tracking-widest text-neon-500 font-bold uppercase mb-4 opacity-60">Go-to-Market
-            </div>
+            <div class="text-[10px] tracking-widest text-neon-500 font-bold uppercase mb-4 opacity-60" data-i18n="sol_badge_gtm">Go-to-Market</div>
             <h3
-              class="text-3xl font-black text-white mb-4 group-hover:gradient-text transition-colors min-h-[80px] flex items-center">
-              MVP in 6–8 Weeks</h3>
-            <p class="text-white/60 leading-relaxed mb-8 min-h-[120px]">From prototype to a production-ready engine. We
+              class="text-3xl font-black text-white mb-4 group-hover:gradient-text transition-colors min-h-[80px] flex items-center" data-i18n="sol_card1_title">
+              MVP in 6&mdash;8 Weeks</h3>
+            <p class="text-white/60 leading-relaxed mb-8 min-h-[120px]" data-i18n="sol_card1_desc">From prototype to a production-ready engine. We
               engineer scalable MVPs designed to validate your business model and lead the market from day one.</p>
             <div class="mt-auto">
               <a href="#contact"
                 class="inline-flex items-center gap-2 text-cobalt-300 font-bold group-hover:text-neon-500 transition-colors">
-                Get timeline <span class="group-hover:translate-x-1 transition-transform">→</span>
+                <span data-i18n="sol_card1_cta">Get timeline</span> <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
               </a>
             </div>
           </div>
@@ -630,24 +832,24 @@
         <!-- Scaling -->
         <div class="group relative">
           <div
-            class="glass p-8 rounded-3xl soft relative h-full border border-white/5 hover:border-neon-500/50 transition-all duration-500 overflow-hidden flex flex-col">
+            class="glass p-5 md:p-8 rounded-3xl soft relative h-full border border-white/5 hover:border-neon-500/50 transition-all duration-500 overflow-hidden flex flex-col">
             <div
               class="absolute bottom-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
               <svg class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.5">
                 <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
               </svg>
             </div>
-            <div class="text-[10px] tracking-widest text-neon-500 font-bold uppercase mb-4 opacity-60">Scaling</div>
+            <div class="text-[10px] tracking-widest text-neon-500 font-bold uppercase mb-4 opacity-60" data-i18n="sol_badge_scale">Scaling</div>
             <h3
-              class="text-3xl font-black text-white mb-4 group-hover:gradient-text transition-colors min-h-[80px] flex items-center">
+              class="text-3xl font-black text-white mb-4 group-hover:gradient-text transition-colors min-h-[80px] flex items-center" data-i18n="sol_card2_title">
               Hyper-Growth Blueprint</h3>
-            <p class="text-white/60 leading-relaxed mb-8 min-h-[120px]">Strategic acquisition systems engineered for
+            <p class="text-white/60 leading-relaxed mb-8 min-h-[120px]" data-i18n="sol_card2_desc">Strategic acquisition systems engineered for
               global expansion. We turn traffic into predictable revenue through intelligent marketing and
               authority-driven positioning.</p>
             <div class="mt-auto">
               <a href="#contact"
                 class="inline-flex items-center gap-2 text-cobalt-300 font-bold group-hover:text-neon-500 transition-colors">
-                Get growth plan <span class="group-hover:translate-x-1 transition-transform">→</span>
+                <span data-i18n="sol_card2_cta">Get growth plan</span> <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
               </a>
             </div>
           </div>
@@ -656,7 +858,7 @@
         <!-- Ops -->
         <div class="group relative">
           <div
-            class="glass p-8 rounded-3xl soft relative h-full border border-white/5 hover:border-neon-500/50 transition-all duration-500 overflow-hidden flex flex-col">
+            class="glass p-5 md:p-8 rounded-3xl soft relative h-full border border-white/5 hover:border-neon-500/50 transition-all duration-500 overflow-hidden flex flex-col">
             <div
               class="absolute bottom-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
               <svg class="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.5">
@@ -664,17 +866,17 @@
                   d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
-            <div class="text-[10px] tracking-widest text-neon-500 font-bold uppercase mb-4 opacity-60">Ops</div>
+            <div class="text-[10px] tracking-widest text-neon-500 font-bold uppercase mb-4 opacity-60" data-i18n="sol_badge_ops">Ops</div>
             <h3
-              class="text-3xl font-black text-white mb-4 group-hover:gradient-text transition-colors min-h-[80px] flex items-center">
+              class="text-3xl font-black text-white mb-4 group-hover:gradient-text transition-colors min-h-[80px] flex items-center" data-i18n="sol_card3_title">
               Workflow Automation</h3>
-            <p class="text-white/60 leading-relaxed mb-8 min-h-[120px]">Automating complexities into seamless
+            <p class="text-white/60 leading-relaxed mb-8 min-h-[120px]" data-i18n="sol_card3_desc">Automating complexities into seamless
               operational flow. We replace spreadsheet friction with intelligent systems to ensure sustainable growth
               and measurable ROI.</p>
             <div class="mt-auto">
               <a href="#contact"
                 class="inline-flex items-center gap-2 text-cobalt-300 font-bold group-hover:text-neon-500 transition-colors">
-                See examples <span class="group-hover:translate-x-1 transition-transform">→</span>
+                <span data-i18n="sol_card3_cta">See examples</span> <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
               </a>
             </div>
           </div>
@@ -686,48 +888,13 @@
 
 
 
-  <!-- WORK -->
-  <section id="work" class="py-24 relative">
-    <div class="mx-auto max-w-7xl px-6 relative">
-      <div class="grid md:grid-cols-2 gap-16 items-center mb-20">
-        <div>
-          <h2 class="text-4xl md:text-6xl font-black text-white mb-6">Artificial Intelligence <br /><span
-              class="gradient-text drop-shadow-glow">at Scale</span></h2>
-          <p class="text-white/60 text-lg leading-relaxed mb-8">Leveraging Cognitive Computing and granular operations
-            to reduce risk and multiply performance across multi‑site environments.</p>
-          <ul class="space-y-4 text-white/80 font-medium">
-            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-neon-500"></span> • 100% policy
-              coverage across sites</li>
-            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-neon-500"></span> • Script &
-              iframe blocking with guardrails</li>
-            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-neon-500"></span> • QA
-              automation + reporting</li>
-          </ul>
-          <a href="#contact"
-            class="inline-flex items-center gap-2 mt-10 px-8 py-3 rounded-xl border border-cobalt-500/30 text-cobalt-500 font-bold hover:bg-cobalt-500/10 transition-all">
-            Read the case study →
-          </a>
-        </div>
-        <div class="relative group">
-          <div
-            class="absolute -inset-10 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition duration-1000"
-            style="background: radial-gradient(#1F7FFF, transparent)">
-          </div>
-          <dotlottie-wc src="https://lottie.host/635c2435-6197-48c5-94b5-bf1f1a64e81d/jKNggYE4lV.lottie" speed="1"
-            autoplay loop class="relative z-10"></dotlottie-wc>
-        </div>
-      </div>
-
-
-    </div>
-  </section>
 
   <!-- TESTIMONIALS -->
-  <section id="testimonials" class="py-24 relative overflow-hidden">
-    <div class="mx-auto max-w-7xl px-6 relative mb-16">
-      <h2 class="text-4xl md:text-6xl font-black text-white">What our <span
+  <section id="testimonials" class="py-12 md:py-24 relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-6 relative mb-8 md:mb-16">
+      <h2 class="text-4xl md:text-6xl font-black text-white" data-i18n="testi_h2">What our <span
           class="gradient-text drop-shadow-glow">clients say</span></h2>
-      <p class="mt-4 text-white/50 text-lg max-w-2xl">Proven results delivered to industry leaders through dedicated
+      <p class="mt-4 text-white/50 text-lg max-w-2xl" data-i18n="testi_sub">Proven results delivered to industry leaders through dedicated
         engineering and design discipline.</p>
     </div>
 
@@ -743,8 +910,7 @@
                 <path
                   d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6.3c.5-1.7 2-3 3.7-3V8zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-7.7c.5-1.7 2-3 3.7-3V8z" />
               </svg>
-              <p class="text-white/90 italic leading-relaxed">“CorosDev delivered exactly what we needed, on time and
-                with excellent quality.”</p>
+              <p class="text-white/90 italic leading-relaxed" data-i18n="testi_card1">"CorosDev delivered exactly what we needed, on time and with excellent quality."</p>
             </div>
             <div class="mt-8 flex items-center gap-4">
               <div class="h-8 w-1 bg-cobalt-500 rounded-full"></div>
@@ -763,8 +929,7 @@
                 <path
                   d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6.3c.5-1.7 2-3 3.7-3V8zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-7.7c.5-1.7 2-3 3.7-3V8z" />
               </svg>
-              <p class="text-white/90 italic leading-relaxed">“Proposed scalable solutions that solved our most complex
-                infrastructure challenges.”</p>
+              <p class="text-white/90 italic leading-relaxed" data-i18n="testi_card2">"Proposed scalable solutions that solved our most complex infrastructure challenges."</p>
             </div>
             <div class="mt-8 flex items-center gap-4">
               <div class="h-8 w-1 bg-cobalt-500 rounded-full"></div>
@@ -783,8 +948,7 @@
                 <path
                   d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6.3c.5-1.7 2-3 3.7-3V8zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-7.7c.5-1.7 2-3 3.7-3V8z" />
               </svg>
-              <p class="text-white/90 italic leading-relaxed">“Complex integrations, handled with great communication.
-                True engineering partners.”</p>
+              <p class="text-white/90 italic leading-relaxed" data-i18n="testi_card3">"Complex integrations, handled with great communication. True engineering partners."</p>
             </div>
             <div class="mt-8 flex items-center gap-4">
               <div class="h-8 w-1 bg-cobalt-500 rounded-full"></div>
@@ -803,8 +967,7 @@
                 <path
                   d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6.3c.5-1.7 2-3 3.7-3V8zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-7.7c.5-1.7 2-3 3.7-3V8z" />
               </svg>
-              <p class="text-white/90 italic leading-relaxed">“The most robust Shopify Plus integration we've seen.
-                Flawless execution.”</p>
+              <p class="text-white/90 italic leading-relaxed" data-i18n="testi_card4">"The most robust Shopify Plus integration we've seen. Flawless execution."</p>
             </div>
             <div class="mt-8 flex items-center gap-4">
               <div class="h-8 w-1 bg-cobalt-500 rounded-full"></div>
@@ -823,8 +986,7 @@
                 <path
                   d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6.3c.5-1.7 2-3 3.7-3V8zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-7.7c.5-1.7 2-3 3.7-3V8z" />
               </svg>
-              <p class="text-white/90 italic leading-relaxed">“They built our fintech app from scratch. Security and
-                speed were top notch.”</p>
+              <p class="text-white/90 italic leading-relaxed" data-i18n="testi_card5">"They built our fintech app from scratch. Security and speed were top notch."</p>
             </div>
             <div class="mt-8 flex items-center gap-4">
               <div class="h-8 w-1 bg-cobalt-500 rounded-full"></div>
@@ -843,8 +1005,7 @@
                 <path
                   d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6.3c.5-1.7 2-3 3.7-3V8zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-7.7c.5-1.7 2-3 3.7-3V8z" />
               </svg>
-              <p class="text-white/90 italic leading-relaxed">“Exceptional technical talent. Their design-led approach
-                makes a real difference.”</p>
+              <p class="text-white/90 italic leading-relaxed" data-i18n="testi_card6">"Exceptional technical talent. Their design-led approach makes a real difference."</p>
             </div>
             <div class="mt-8 flex items-center gap-4">
               <div class="h-8 w-1 bg-cobalt-500 rounded-full"></div>
@@ -864,8 +1025,7 @@
                 <path
                   d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6.3c.5-1.7 2-3 3.7-3V8zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-7.7c.5-1.7 2-3 3.7-3V8z" />
               </svg>
-              <p class="text-white/90 italic leading-relaxed">“CorosDev delivered exactly what we needed, on time and
-                with excellent quality.”</p>
+              <p class="text-white/90 italic leading-relaxed" data-i18n="testi_card1">"CorosDev delivered exactly what we needed, on time and with excellent quality."</p>
             </div>
             <div class="mt-8 flex items-center gap-4">
               <div class="h-8 w-1 bg-cobalt-500 rounded-full"></div>
@@ -883,8 +1043,7 @@
                 <path
                   d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6.3c.5-1.7 2-3 3.7-3V8zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-7.7c.5-1.7 2-3 3.7-3V8z" />
               </svg>
-              <p class="text-white/90 italic leading-relaxed">“Proposed scalable solutions that solved our most complex
-                infrastructure challenges.”</p>
+              <p class="text-white/90 italic leading-relaxed" data-i18n="testi_card2">"Proposed scalable solutions that solved our most complex infrastructure challenges."</p>
             </div>
             <div class="mt-8 flex items-center gap-4">
               <div class="h-8 w-1 bg-cobalt-500 rounded-full"></div>
@@ -902,8 +1061,7 @@
                 <path
                   d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6.3c.5-1.7 2-3 3.7-3V8zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-7.7c.5-1.7 2-3 3.7-3V8z" />
               </svg>
-              <p class="text-white/90 italic leading-relaxed">“Complex integrations, handled with great communication.
-                True engineering partners.”</p>
+              <p class="text-white/90 italic leading-relaxed" data-i18n="testi_card3">"Complex integrations, handled with great communication. True engineering partners."</p>
             </div>
             <div class="mt-8 flex items-center gap-4">
               <div class="h-8 w-1 bg-cobalt-500 rounded-full"></div>
@@ -921,8 +1079,7 @@
                 <path
                   d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H6.3c.5-1.7 2-3 3.7-3V8zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-7.7c.5-1.7 2-3 3.7-3V8z" />
               </svg>
-              <p class="text-white/90 italic leading-relaxed">“Exceptional technical talent. Their design-led approach
-                makes a real difference.”</p>
+              <p class="text-white/90 italic leading-relaxed" data-i18n="testi_card6">"Exceptional technical talent. Their design-led approach makes a real difference."</p>
             </div>
             <div class="mt-8 flex items-center gap-4">
               <div class="h-8 w-1 bg-cobalt-500 rounded-full"></div>
@@ -938,186 +1095,44 @@
     </div>
   </section>
 
-  <!-- PRICING / SERVICES -->
-  <section id="pricing" class="py-32 relative overflow-hidden">
-    <div class="mx-auto max-w-7xl px-6 relative">
-      <div class="text-center mb-20 reveal-item">
-        <h2 class="text-4xl md:text-7xl font-black text-white">Engagements <span
-            class="gradient-text drop-shadow-glow">that scale</span></h2>
-        <p class="mt-6 text-white/50 text-xl max-w-2xl mx-auto">Elite technology solutions designed to fit your unique
-          business stage. Choose your impact level.</p>
-      </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- 01 / AI & AUTOMATION -->
-        <div class="group relative reveal-item delay-100">
-          <div
-            class="glass p-8 rounded-3xl h-full border border-white/5 group-hover:border-neon-500/50 transition-all duration-500 flex flex-col">
-            <div class="text-[12px] tracking-widest text-neon-500 font-bold uppercase mb-4">01 / Innovation</div>
-            <h3 class="text-3xl font-black text-white mb-6">AI & Workflow Automation</h3>
-            <p class="text-white/60 mb-8 flex-grow text-sm leading-relaxed">Boost operational efficiency by 40% with
-              intelligent agents and custom GPT integrations tailored to your data.</p>
-            <ul class="space-y-3 text-white/80 mb-10 text-sm">
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> Custom AI
-                Agents</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> Workflow
-                Optimization</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> LLM
-                Training & Fine-tune</li>
-            </ul>
-            <a href="#contact"
-              class="w-full text-center py-4 rounded-xl border border-white/10 group-hover:bg-neon-500 group-hover:text-brand-900 transition-all font-black text-xs uppercase tracking-widest">Select
-              Plan</a>
-          </div>
-        </div>
 
-        <!-- 02 / PRODUCT DEV -->
-        <div class="group relative reveal-item delay-300">
-          <div
-            class="glass p-8 rounded-3xl h-full border border-white/5 group-hover:border-neon-500/50 transition-all duration-500 flex flex-col">
-            <div class="text-[12px] tracking-widest text-neon-500 font-bold uppercase mb-4">02 / Engineering</div>
-            <h3 class="text-3xl font-black text-white mb-6">Full‑Stack Development</h3>
-            <p class="text-white/60 mb-8 flex-grow text-sm leading-relaxed">End-to-end product creation from MVP to
-              enterprise scale. We build software that feels like the future.</p>
-            <ul class="space-y-3 text-white/80 mb-10 text-sm">
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> Web &
-                Mobile Apps</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> Dedicated
-                PM & QA</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> React /
-                Node / Python</li>
-            </ul>
-            <a href="#contact"
-              class="w-full text-center py-4 rounded-xl border border-white/10 group-hover:bg-neon-500 group-hover:text-brand-900 transition-all font-black text-xs uppercase tracking-widest">Select
-              Plan</a>
-          </div>
-        </div>
-
-        <!-- 03 / GROWTH TECH -->
-        <div class="group relative reveal-item delay-500">
-          <div
-            class="glass p-8 rounded-3xl h-full border border-white/5 group-hover:border-neon-500/50 transition-all duration-500 flex flex-col">
-            <div class="text-[12px] tracking-widest text-neon-500 font-bold uppercase mb-4">03 / Marketing Tech</div>
-            <h3 class="text-3xl font-black text-white mb-6">Marketing & Conversion</h3>
-            <p class="text-white/60 mb-8 flex-grow text-sm leading-relaxed">Dominate the market with high-converting
-              landing pages and automated multi-channel marketing systems.</p>
-            <ul class="space-y-3 text-white/80 mb-10 text-sm">
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span>
-                High-Conversion UI/UX</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> Ad-Tech
-                Integrations</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> Performance
-                Analytics</li>
-            </ul>
-            <a href="#contact"
-              class="w-full text-center py-4 rounded-xl bg-neon-500 text-brand-900 shadow-glow transition-all font-black text-xs uppercase tracking-widest hover:scale-105">Select
-              Plan</a>
-          </div>
-        </div>
-
-        <!-- 04 / SEO & AUTHORITY -->
-        <div class="group relative reveal-item delay-100">
-          <div
-            class="glass p-8 rounded-3xl h-full border border-white/5 group-hover:border-neon-500/50 transition-all duration-500 flex flex-col">
-            <div class="text-[12px] tracking-widest text-neon-500 font-bold uppercase mb-4">04 / Authority</div>
-            <h3 class="text-3xl font-black text-white mb-6">SEO & Digital Authority</h3>
-            <p class="text-white/60 mb-8 flex-grow text-sm leading-relaxed">Turn search engines into your biggest
-              revenue source with aggressive technical SEO and content strategy.</p>
-            <ul class="space-y-3 text-white/80 mb-10 text-sm">
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> Technical
-                SEO Audits</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> Keyword
-                Dominance</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> Backlink
-                Architecture</li>
-            </ul>
-            <a href="#contact"
-              class="w-full text-center py-4 rounded-xl border border-white/10 group-hover:bg-neon-500 group-hover:text-brand-900 transition-all font-black text-xs uppercase tracking-widest">Select
-              Plan</a>
-          </div>
-        </div>
-
-        <!-- 05 / CLOUD & SCALE -->
-        <div class="group relative reveal-item delay-300">
-          <div
-            class="glass p-8 rounded-3xl h-full border border-white/5 group-hover:border-neon-500/50 transition-all duration-500 flex flex-col">
-            <div class="text-[12px] tracking-widest text-neon-500 font-bold uppercase mb-4">05 / Infrastructure</div>
-            <h3 class="text-3xl font-black text-white mb-6">Cloud & Scalability</h3>
-            <p class="text-white/60 mb-8 flex-grow text-sm leading-relaxed">Scale to millions of users with zero
-              downtime. We optimize your cloud for speed, security, and cost.</p>
-            <ul class="space-y-3 text-white/80 mb-10 text-sm">
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> AWS / Azure
-                / GCP</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> DevOps
-                Automation</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span>
-                Cyber-security Hardening</li>
-            </ul>
-            <a href="#contact"
-              class="w-full text-center py-4 rounded-xl border border-white/10 group-hover:bg-neon-500 group-hover:text-brand-900 transition-all font-black text-xs uppercase tracking-widest">Select
-              Plan</a>
-          </div>
-        </div>
-
-        <!-- 06 / ELITE PARTNERSHIP -->
-        <div class="group relative reveal-item delay-500">
-          <div
-            class="glass p-8 rounded-3xl h-full border border-white/5 group-hover:border-neon-500/50 transition-all duration-500 flex flex-col">
-            <div class="text-[12px] tracking-widest text-neon-500 font-bold uppercase mb-4">06 / Total Innovation</div>
-            <h3 class="text-3xl font-black text-white mb-6">Elite Innovation Squad</h3>
-            <p class="text-white/60 mb-8 flex-grow text-sm leading-relaxed">A dedicated high-performance team covering
-              all fronts: AI, Dev, Growth, and Infrastructure. Your tech partner for global dominance.</p>
-            <ul class="space-y-3 text-white/80 mb-10 text-sm">
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> Dedicated
-                C-Level Devs</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> 24/7
-                Priority Support</li>
-              <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-neon-500 rounded-full"></span> Unlimited
-                Scalability</li>
-            </ul>
-            <a href="#contact"
-              class="w-full text-center py-4 rounded-xl border border-neon-500/50 bg-white/5 hover:bg-neon-500 hover:text-brand-900 transition-all font-black text-xs uppercase tracking-widest shadow-[0_0_15px_rgba(31,127,255,0.2)]">Select
-              Plan</a>
-          </div>
-        </div>
-      </div>
-
-      <p
-        class="mt-16 text-center text-sm text-white/30 font-medium italic underline decoration-neon-500/30 underline-offset-4">
-        Looking for something custom? All plans can be tailored to your specific requirements.</p>
-    </div>
-  </section>
+  <div class="divider"></div>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-20">
+  <section id="contact" class="py-10 md:py-20">
     <div class="mx-auto max-w-7xl px-6">
       <div class="grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <h2 class="text-3xl md:text-5xl font-bold">Tell us what you’re building</h2>
-          <p class="mt-3 text-white/70">Get a roadmap, estimate, and risk assessment in 72 hours.</p>
+          <h2 class="text-3xl md:text-5xl font-bold" data-i18n="contact_h2">Tell us what you're building</h2>
+          <p class="mt-3 text-white/70" data-i18n="contact_sub">Get a roadmap, estimate, and risk assessment in 72
+            hours.</p>
           <ul class="mt-6 space-y-3 text-white/80">
-            <li>• Email: <a class="text-neon-500 hover:underline" href="mailto:info@corosdev.com">info@corosdev.com</a>
+            <li>&bull; Email: <a class="text-neon-500 hover:underline"
+                href="mailto:info@corosdev.com">info@corosdev.com</a>
             </li>
-            <li>• WhatsApp: <a class="text-neon-500 hover:underline" href="https://wa.me/50431750453">+504 3175-0453</a>
+            <li>&bull; WhatsApp: <a class="text-neon-500 hover:underline" href="https://wa.me/50431750453">+504
+                3175-0453</a>
             </li>
-            <li>• San Pedro Sula, Honduras · Prague, Czech Republic</li>
-            <li>• Remote / Nearshore · Global Engineering</li>
+            <li>&bull; San Pedro Sula, Honduras &middot; Prague, Czech Republic</li>
+            <li>&bull; Remote / Nearshore &middot; Global Engineering</li>
           </ul>
         </div>
         <form class="glass rounded-2xl p-6">
           <div class="grid gap-4">
-            <input placeholder="Full name"
+            <input placeholder="Full name" data-i18n="form_name"
               class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500" />
-            <input type="email" placeholder="Work email"
+            <input type="email" placeholder="Work email" data-i18n="form_email"
               class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500" />
-            <input placeholder="Company"
+            <input placeholder="Company" data-i18n="form_company"
               class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500" />
-            <textarea rows="4" placeholder="What are you building?"
+            <textarea rows="4" placeholder="What are you building?" data-i18n="form_msg"
               class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500"></textarea>
             <a href="https://calendly.com/corosdev-info/30min"
               style="cursor: pointer; display: flex; justify-content: center; align-items: center;"
-              class="mt-2 px-5 py-3 rounded-xl btn-primary font-semibold drop-shadow-glow">Request proposal</a>
-            <p class="text-xs text-white/50">By submitting, you agree to our privacy policy.</p>
+              class="mt-2 px-5 py-3 rounded-xl btn-primary font-semibold drop-shadow-glow" data-i18n="form_cta">Request
+              proposal</a>
+            <p class="text-xs text-white/50" data-i18n="form_legal">By submitting, you agree to our privacy policy.</p>
           </div>
         </form>
       </div>
@@ -1129,7 +1144,7 @@
     <div class="mx-auto max-w-7xl px-6 text-sm text-white/60 flex items-center justify-between">
       <div class="flex items-center gap-3">
 
-        <span>© <span id="year"></span> CorosDev. All rights reserved.</span>
+        <span>Ã&copy; <span id="year"></span> CorosDev. All rights reserved.</span>
       </div>
       <div class="flex items-center gap-6">
         <a href="#" class="hover:text-neon-500">Privacy</a>
@@ -1140,6 +1155,11 @@
   </footer>
 
   <script>
+    /* --•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•--
+       i18n loaded dynamically from locale.js
+    --•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•-- */
+
+    /* --&#8221;---&#8221;- Existing JS --&#8221;---&#8221;- */
     document.getElementById('year').textContent = new Date().getFullYear();
 
     document.querySelectorAll('.tilt').forEach(el => {
@@ -1168,54 +1188,46 @@
     }
     window.addEventListener('scroll', toggleNavGlass, { passive: true });
     toggleNavGlass(); // estado inicial
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let W, H, stars = [];
+    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+    window.addEventListener('resize', resize); resize();
 
-    if (!prefersReducedMotion) {
-      const canvas = document.getElementById('stars');
-      const ctx = canvas.getContext('2d');
-      let W, H, stars = [];
-      function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-      window.addEventListener('resize', resize); resize();
+    for (let i = 0; i < 160; i++) {
+      stars.push({ x: Math.random() * W, y: Math.random() * H, z: Math.random() * 2 + 0.2 });
+    }
 
-      // Reduce stars on mobile for performance
-      const isMobile = window.innerWidth < 768;
-      const starCount = isMobile ? 50 : 160;
-      for (let i = 0; i < starCount; i++) {
-        stars.push({ x: Math.random() * W, y: Math.random() * H, z: Math.random() * 2 + 0.2 });
+    let currentScroll = window.scrollY;
+    window.addEventListener('scroll', () => { currentScroll = window.scrollY; }, { passive: true });
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      const scrollFactor = 1.5 + (currentScroll / 2000);
+
+      // Pre-calculate stars to update positions
+      for (const s of stars) {
+        s.x -= s.z * scrollFactor;
+        if (s.x < 0) { s.x = W; s.y = Math.random() * H; }
       }
 
-      let currentScroll = window.scrollY;
-      window.addEventListener('scroll', () => { currentScroll = window.scrollY; }, { passive: true });
+      // Group stars by brightness to minimize globalAlpha changes
+      // Low brightness
+      ctx.globalAlpha = 0.5;
+      ctx.fillStyle = 'white';
+      for (const s of stars) {
+        if (s.z < 1) ctx.fillRect(s.x, s.y, s.z, s.z);
+      }
 
-      function draw() {
-        ctx.clearRect(0, 0, W, H);
-        const scrollFactor = 1.5 + (currentScroll / 2000);
+      // High brightness
+      ctx.globalAlpha = 0.9;
+      for (const s of stars) {
+        if (s.z >= 1) ctx.fillRect(s.x, s.y, s.z, s.z);
+      }
 
-        // Pre-calculate stars to update positions
-        for (const s of stars) {
-          s.x -= s.z * scrollFactor;
-          if (s.x < 0) { s.x = W; s.y = Math.random() * H; }
-        }
-
-        // Group stars by brightness to minimize globalAlpha changes
-        // Low brightness
-        ctx.globalAlpha = 0.5;
-        ctx.fillStyle = 'white';
-        for (const s of stars) {
-          if (s.z < 1) ctx.fillRect(s.x, s.y, s.z, s.z);
-        }
-
-        // High brightness
-        ctx.globalAlpha = 0.9;
-        for (const s of stars) {
-          if (s.z >= 1) ctx.fillRect(s.x, s.y, s.z, s.z);
-        }
-
-        ctx.globalAlpha = 1.0;
-        requestAnimationFrame(draw);
-      } draw();
-    }
+      ctx.globalAlpha = 1.0;
+      requestAnimationFrame(draw);
+    } draw();
 
     const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
@@ -1232,6 +1244,7 @@
       io.observe(el);
     });
   </script>
+  <script src="cta-modal.js"></script>
 </body>
 
 </html>
