@@ -488,11 +488,10 @@ function cdApplyLang(lang, save) {
   if (btn) btn.textContent = lang === 'en' ? 'ES' : 'EN';
   document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
 
-  // Video section is in Spanish — only show it for Spanish users
   const videoSection = document.getElementById('presentation');
   const videoDivider = document.getElementById('video-divider');
-  if (videoSection) videoSection.style.display = lang === 'es' ? '' : 'none';
-  if (videoDivider) videoDivider.style.display  = lang === 'es' ? '' : 'none';
+  if (videoSection) videoSection.style.display = '';
+  if (videoDivider) videoDivider.style.display  = '';
 }
 
 // User manual toggle — saves preference to localStorage
