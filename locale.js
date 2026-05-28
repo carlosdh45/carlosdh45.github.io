@@ -91,6 +91,19 @@ const CD_TRANSLATIONS = {
     eco_cta:          'Interested in partnering or investing?',
     eco_cta_link:     'Let\'s talk &rarr;',
     eco_early_tester_btn: 'Want to be an early Tester? &rarr;',
+
+    /* ── SNAPAY SPOTLIGHT ── */
+    snapay_badge:     'A CorosDev Venture',
+    snapay_title:     'The Future of Payments<br><span class="gradient-text drop-shadow-glow">for Emerging Markets</span>',
+    snapay_desc:      'Next-generation payment infrastructure built for SMEs. Instant settlements, multi-currency support, and AI-powered fraud prevention — democratizing fintech across borders.',
+    snapay_stat1_val: '10K+',
+    snapay_stat1_lbl: 'SMEs Onboarded',
+    snapay_stat2_val: '12+',
+    snapay_stat2_lbl: 'Currencies',
+    snapay_stat3_val: 'AI',
+    snapay_stat3_lbl: 'Fraud Prevention',
+    snapay_cta:       'Visit Snapay.ai &rarr;',
+
     eco_status_label: 'Status',
     eco_status_value: 'Early Access',
     eco_stage_label:  'Stage',
@@ -304,6 +317,19 @@ const CD_TRANSLATIONS = {
     eco_cta:          '&iquest;Interesado en asociarte o invertir?',
     eco_cta_link:     'Hablemos &rarr;',
     eco_early_tester_btn: '&iquest;Quieres ser un Tester de acceso anticipado? &rarr;',
+
+    /* ── SNAPAY SPOTLIGHT ── */
+    snapay_badge:     'Una Empresa de CorosDev',
+    snapay_title:     'El Futuro de los Pagos<br><span class="gradient-text drop-shadow-glow">para Mercados Emergentes</span>',
+    snapay_desc:      'Infraestructura de pagos de última generación para PYMEs. Liquidaciones instantáneas, soporte multimoneda y prevención de fraudes con IA — democratizando las fintech sin fronteras.',
+    snapay_stat1_val: '10K+',
+    snapay_stat1_lbl: 'PYMEs Registradas',
+    snapay_stat2_val: '12+',
+    snapay_stat2_lbl: 'Divisas',
+    snapay_stat3_val: 'IA',
+    snapay_stat3_lbl: 'Antifraude',
+    snapay_cta:       'Visitar Snapay.ai &rarr;',
+
     eco_status_label: 'Estado',
     eco_status_value: 'Acceso Anticipado',
     eco_stage_label:  'Etapa',
