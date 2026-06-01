@@ -16,9 +16,13 @@
   <meta name="description"
     content="We empower innovative companies through world-class technology and intelligent growth systems - transforming ideas into scalable, profitable, and future-ready businesses." />
   <link rel="icon" href="assets/favicon.svg">
+  <!-- Preconnect para CDNs externas -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://unpkg.com">
+  <!-- Defer scripts para no bloquear renderizado -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="locale.js?v=1.0.3" charset="UTF-8"></script>
-  <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+  <script defer src="locale.js?v=1.0.3" charset="UTF-8"></script>
+  <script defer type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -423,7 +427,10 @@
     #mobile-menu a:last-child { border-bottom: none; }
     #mobile-menu a:hover { color: #1F7FFF; }
   </style>
-  <link rel="stylesheet" href="cta-modal.css">
+  <!-- Cargar CSS de forma no-bloqueante usando media=print + onload -->
+  <link rel="stylesheet" href="cta-modal.css" media="print" onload="this.media='all'">
+  <!-- Fallback para navegadores sin soporte de onload -->
+  <noscript><link rel="stylesheet" href="cta-modal.css"></noscript>
 </head>
 
 <body
@@ -444,7 +451,7 @@
         </button>
         <!-- Logo (centered on mobile) -->
         <a href="#" class="flex items-center gap-3 group md:order-none">
-          <img src="assets/coros.png" alt="CorosDev" class="h-12 md:h-16 w-auto">
+          <img src="assets/coros.png" alt="CorosDev" class="h-12 md:h-16 w-auto" width="200" height="48">
           <div class="hidden sm:block h-6 w-[1px] bg-white/10 mx-2"></div>
           <span class="hidden sm:block text-[10px] tracking-widest text-white font-bold uppercase opacity-80">AI
             Driven Company</span>
@@ -719,7 +726,7 @@
         <div class="eco-card glass rounded-3xl p-8 border border-white/5 flex flex-col gap-6 group">
           <div class="flex items-start justify-between">
             <div class="w-32 h-16 flex items-center justify-start animate-float">
-              <img src="assets/LOGO TRD SVG.svg" class="h-16 w-auto max-w-full object-contain drop-shadow-glow" alt="Accesorios TRD Logo">
+              <img src="assets/LOGO TRD SVG.svg" class="h-16 w-auto max-w-full object-contain drop-shadow-glow" alt="Accesorios TRD Logo" width="192" height="64" loading="lazy">
             </div>
             <span class="badge-early" data-i18n="eco_badge">Early Access</span>
           </div>
@@ -745,7 +752,7 @@
             style="background: radial-gradient(ellipse at 50% 0%, rgba(31,127,255,0.12), transparent 70%);"></div>
           <div class="flex items-start justify-between">
             <div class="w-32 h-16 flex items-center justify-start animate-float">
-              <img src="assets/Logo Snapay.svg" class="h-16 w-auto max-w-full object-contain drop-shadow-glow" alt="Snapay Logo">
+              <img src="assets/Logo Snapay.svg" class="h-16 w-auto max-w-full object-contain drop-shadow-glow" alt="Snapay Logo" width="192" height="64" loading="lazy">
             </div>
             <span class="badge-early" data-i18n="eco_badge">Early Access</span>
           </div>
@@ -766,7 +773,7 @@
         <div class="eco-card glass rounded-3xl p-5 md:p-8 border border-white/5 flex flex-col gap-4 md:gap-6 group">
           <div class="flex items-start justify-between">
             <div class="w-40 h-20 flex items-center justify-start animate-float">
-              <img src="assets/Logo Vorzana SVG (2).svg" class="h-20 w-auto max-w-full object-contain drop-shadow-glow" alt="Vorzana Logo">
+              <img src="assets/Logo Vorzana SVG (2).svg" class="h-20 w-auto max-w-full object-contain drop-shadow-glow" alt="Vorzana Logo" width="240" height="80" loading="lazy">
             </div>
             <span class="badge-early" data-i18n="eco_badge">Early Access</span>
           </div>
@@ -826,7 +833,7 @@
 
       <!-- Logo -->
       <div class="flex justify-center mb-8 md:mb-10">
-        <img src="assets/Logo Snapay.svg" class="h-20 md:h-28 w-auto drop-shadow-glow animate-float" alt="Snapay Logo">
+        <img src="assets/Logo Snapay.svg" class="h-20 md:h-28 w-auto drop-shadow-glow animate-float" alt="Snapay Logo" width="240" height="80" loading="lazy">
       </div>
 
       <!-- Tagline -->
@@ -1228,6 +1235,18 @@
        i18n loaded dynamically from locale.js
     --•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•-- */
 
+    /* Throttle utility to prevent Long Tasks from high-frequency events */
+    function throttle(func, limit) {
+      let inThrottle;
+      return function(...args) {
+        if (!inThrottle) {
+          func.apply(this, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      };
+    }
+
     /* --&#8221;---&#8221;- Existing JS --&#8221;---&#8221;- */
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1255,20 +1274,23 @@
       if (window.scrollY > 8) siteNav.classList.add('scrolled');
       else siteNav.classList.remove('scrolled');
     }
-    window.addEventListener('scroll', toggleNavGlass, { passive: true });
+    // Throttle scroll event to 50ms to prevent excessive repaints
+    window.addEventListener('scroll', throttle(toggleNavGlass, 50), { passive: true });
     toggleNavGlass(); // estado inicial
     const canvas = document.getElementById('stars');
     const ctx = canvas.getContext('2d');
     let W, H, stars = [];
     function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-    window.addEventListener('resize', resize); resize();
+    // Throttle resize to 150ms to prevent layout thrashing
+    window.addEventListener('resize', throttle(resize, 150), { passive: true }); resize();
 
     for (let i = 0; i < 160; i++) {
       stars.push({ x: Math.random() * W, y: Math.random() * H, z: Math.random() * 2 + 0.2 });
     }
 
     let currentScroll = window.scrollY;
-    window.addEventListener('scroll', () => { currentScroll = window.scrollY; }, { passive: true });
+    // Throttle scroll position update to 16ms (~60fps) to keep in sync with animation frame
+    window.addEventListener('scroll', throttle(() => { currentScroll = window.scrollY; }, 16), { passive: true });
 
     function draw() {
       ctx.clearRect(0, 0, W, H);

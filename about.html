@@ -161,7 +161,7 @@
         </button>
         <!-- Logo -->
         <a href="index.html" class="flex items-center gap-3 group md:order-none">
-          <img src="assets/coros.png" alt="CorosDev" class="h-12 md:h-16 w-auto">
+          <img src="assets/coros.png" alt="CorosDev" class="h-12 md:h-16 w-auto" width="200" height="48">
           <div class="hidden sm:block h-6 w-[1px] bg-white/10 mx-2"></div>
           <span class="hidden sm:block text-[10px] tracking-widest text-white font-bold uppercase opacity-80">AI
             Driven Company</span>
@@ -326,23 +326,40 @@
   </footer>
 
   <script>
+    /* Throttle utility to prevent Long Tasks */
+    function throttle(func, limit) {
+      let inThrottle;
+      return function(...args) {
+        if (!inThrottle) {
+          func.apply(this, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      };
+    }
+
     const canvas = document.getElementById('stars');
     const ctx = canvas.getContext('2d');
     let W, H, stars = [];
     function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-    window.addEventListener('resize', resize); resize();
+    // Throttle resize to 150ms
+    window.addEventListener('resize', throttle(resize, 150), { passive: true }); resize();
 
     for (let i = 0; i < 120; i++) {
       stars.push({ x: Math.random() * W, y: Math.random() * H, z: Math.random() * 2 + 0.2 });
     }
 
     let currentScroll = window.scrollY;
-    window.addEventListener('scroll', () => {
+    const siteNav = document.getElementById('site-nav');
+    
+    // Throttle scroll updates to 50ms for nav and 16ms for animation
+    function handleScroll() {
       currentScroll = window.scrollY;
-      const siteNav = document.getElementById('site-nav');
       if (currentScroll > 10) siteNav.classList.add('scrolled');
       else siteNav.classList.remove('scrolled');
-    }, { passive: true });
+    }
+    
+    window.addEventListener('scroll', throttle(handleScroll, 50), { passive: true });
 
     function draw() {
       ctx.clearRect(0, 0, W, H);

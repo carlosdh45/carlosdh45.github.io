@@ -248,7 +248,7 @@
         </button>
         <!-- Logo -->
         <a href="index.html" class="flex items-center gap-3 group md:order-none">
-          <img src="assets/coros.png" alt="CorosDev" class="h-12 md:h-16 w-auto">
+          <img src="assets/coros.png" alt="CorosDev" class="h-12 md:h-16 w-auto" width="200" height="48">
           <div class="hidden sm:block h-6 w-[1px] bg-white/10 mx-2"></div>
           <span class="hidden sm:block text-[10px] tracking-widest text-white font-bold uppercase opacity-80">AI
             Driven Company</span>
@@ -340,7 +340,7 @@
             <!-- Interactive Visual Block -->
             <div class="lg:col-span-5 flex justify-center relative">
               <div class="w-72 h-72 flex items-center justify-center relative animate-float">
-                <img src="assets/LOGO TRD SVG.svg" class="h-48 w-auto max-w-full object-contain drop-shadow-glow z-10" alt="Accesorios TRD Logo">
+                <img src="assets/LOGO TRD SVG.svg" class="h-48 w-auto max-w-full object-contain drop-shadow-glow z-10" alt="Accesorios TRD Logo" width="576" height="192" loading="lazy">
               </div>
             </div>
           </div>
@@ -352,7 +352,7 @@
             <!-- Interactive Visual Block (Left on larger screens) -->
             <div class="lg:col-span-5 flex justify-center order-last lg:order-first relative">
               <div class="w-72 h-72 flex items-center justify-center relative animate-float">
-                <img src="assets/Logo Snapay.svg" class="h-48 w-auto max-w-full object-contain drop-shadow-glow z-10" alt="Snapay Logo">
+                <img src="assets/Logo Snapay.svg" class="h-48 w-auto max-w-full object-contain drop-shadow-glow z-10" alt="Snapay Logo" width="576" height="192" loading="lazy">
               </div>
             </div>
             <!-- Details info -->
@@ -428,7 +428,7 @@
             <!-- Interactive Visual Block -->
             <div class="lg:col-span-5 flex justify-center relative">
               <div class="w-72 h-72 flex items-center justify-center relative animate-float">
-                <img src="assets/Logo Vorzana SVG (2).svg" class="h-60 w-auto max-w-full object-contain drop-shadow-glow z-10" alt="Vorzana Logo">
+                <img src="assets/Logo Vorzana SVG (2).svg" class="h-60 w-auto max-w-full object-contain drop-shadow-glow z-10" alt="Vorzana Logo" width="720" height="240" loading="lazy">
               </div>
             </div>
           </div>
@@ -463,6 +463,18 @@
 
   <!-- SCRIPT BLOCK -->
   <script>
+    /* Throttle utility to prevent Long Tasks */
+    function throttle(func, limit) {
+      let inThrottle;
+      return function(...args) {
+        if (!inThrottle) {
+          func.apply(this, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      };
+    }
+
     // 3D Perspective Tilt Animation
     document.querySelectorAll('.tilt').forEach(el => {
       let rafId = null;
@@ -490,7 +502,8 @@
       if (window.scrollY > 8) siteNav.classList.add('scrolled');
       else siteNav.classList.remove('scrolled');
     }
-    window.addEventListener('scroll', toggleNavGlass, { passive: true });
+    // Throttle scroll listener to 50ms
+    window.addEventListener('scroll', throttle(toggleNavGlass, 50), { passive: true });
     toggleNavGlass();
 
     // Canvas Interactive Starfield
@@ -502,7 +515,8 @@
       W = canvas.width = window.innerWidth;
       H = canvas.height = window.innerHeight;
     }
-    window.addEventListener('resize', resize);
+    // Throttle resize to 150ms
+    window.addEventListener('resize', throttle(resize, 150), { passive: true });
     resize();
 
     for (let i = 0; i < 150; i++) {

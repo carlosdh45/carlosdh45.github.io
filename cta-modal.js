@@ -6,6 +6,18 @@
   // Brevo endpoint
   const BREVO_ACTION = 'https://8756b6e9.sibforms.com/serve/MUIFAKSh8xNxNu1k68CAUrSU-1pe6vuWPW7xwKd7CGDHHotwq4IrmYi4rmHXxIdPaUK9KrS9GkA8byZFdcgEXVmcuvpknY91tw4rl1QFgz2m2Dnkli1ietzEY80T98-1orF65YgnA86SG1HqVEkdqGQrDv6O6dj6R-uaW4-qJ5a_5pFTBIIDTFQm7_qVBIlphY3l7SZNkk3Brz5qlg==';
 
+  // Throttle utility to prevent Long Tasks
+  function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
+
   // 1. Inject DOM elements when file is loaded
   function injectCtaMarkup() {
     if (document.getElementById('cd-drawer-overlay')) return;
@@ -96,8 +108,8 @@
     wrapper.innerHTML = drawerHtml;
     document.body.appendChild(wrapper);
 
-    // Initial scroll listener to reveal floating CTA
-    window.addEventListener('scroll', handleCtaScroll, { passive: true });
+    // Throttle scroll listener to 50ms to prevent excessive DOM updates
+    window.addEventListener('scroll', throttle(handleCtaScroll, 50), { passive: true });
 
     // Apply translations immediately after injection
     if (typeof window.cdApplyLang === 'function') {
