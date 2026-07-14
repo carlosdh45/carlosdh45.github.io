@@ -518,6 +518,13 @@ function cdApplyLang(lang, save) {
   const videoDivider = document.getElementById('video-divider');
   if (videoSection) videoSection.style.display = '';
   if (videoDivider) videoDivider.style.display  = '';
+
+  const presentationVideo = document.getElementById('presentation-video');
+  if (presentationVideo) {
+    const videoId = lang === 'en' ? 'zK5vJHY2xec' : 'haRpSox-c1Q';
+    const newSrc = `https://www.youtube.com/embed/${videoId}`;
+    if (!presentationVideo.src.includes(videoId)) presentationVideo.src = newSrc;
+  }
 }
 
 // User manual toggle — saves preference to localStorage
