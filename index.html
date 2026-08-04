@@ -424,6 +424,7 @@
     #mobile-menu a:hover { color: #1F7FFF; }
   </style>
   <link rel="stylesheet" href="cta-modal.css">
+  <link rel="stylesheet" href="global-presence.css">
 </head>
 
 <body
@@ -503,62 +504,100 @@
               data-i18n="hero_pill3">Measurable impact</span>
           </div>
         </div>
-        <div class="relative w-full max-w-2xl mx-auto aspect-square flex items-center justify-center">
-          <!-- Text Label centered above the map, visually aligned with left label -->
-          <div class="absolute top-[22%] left-0 w-full text-center z-20">
-            <span
-              class="text-white tracking-[0.6em] font-black uppercase text-[16px] opacity-100 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
-              data-i18n="hero_map">Our
-              impact in the world</span>
+        <div id="hero-globe-stage" class="relative w-full min-w-0 max-w-2xl mx-auto">
+          <!-- Square globe box: the only part of the stage forced to aspect-square -->
+          <div class="relative w-full aspect-square overflow-visible">
+            <!-- Perfectly circular ambient glow (replaces the old rectangular box-shadow glow) -->
+            <div class="gp-ambient-glow" aria-hidden="true"></div>
+
+            <!-- Subtle overhead label (kept from the previous static map) -->
+            <p class="gp-hero-label text-white/70 tracking-[0.5em] font-bold uppercase text-[11px] sm:text-[12px]"
+              data-i18n="hero_map">Our impact in the world</p>
+
+            <!-- Interactive 3D globe -->
+            <div id="gp-globe-wrap" class="gp-globe-wrap relative z-10 w-full h-full">
+              <div id="gp-globe-canvas" class="gp-globe-canvas" role="img"
+                data-aria-key="gp_globe_aria"
+                aria-label="Interactive 3D globe showing CorosDev locations in Honduras, the United States and the Czech Republic"></div>
+              <p id="gp-fallback-note" class="gp-fallback-note" data-i18n="gp_fallback_note" hidden>Interactive globe
+                unavailable — showing our locations below.</p>
+            </div>
           </div>
 
-
-          <div class="absolute -inset-6 rounded-3xl blur-3xl opacity-10"
-            style="background: radial-gradient(600px 200px at 20% 30%, #1F7FFF, transparent), radial-gradient(500px 300px at 80% 70%, #1F7FFF, transparent)">
+          <!-- Location chips: floating over the globe on desktop, scrollable row below it on mobile -->
+          <div id="gp-selector" class="gp-selector" aria-label="Select a CorosDev location"
+            data-aria-key="gp_selector_aria">
+            <button type="button" class="gp-selector-btn" data-loc="honduras" aria-pressed="false">
+              <span class="gp-selector-flag" aria-hidden="true">HN</span>
+              <span data-i18n="gp_loc_honduras_short">Honduras</span>
+            </button>
+            <button type="button" class="gp-selector-btn" data-loc="miami" aria-pressed="false">
+              <span class="gp-selector-flag" aria-hidden="true">US</span>
+              <span data-i18n="gp_loc_miami_short">Miami</span>
+            </button>
+            <button type="button" class="gp-selector-btn" data-loc="wyoming" aria-pressed="false">
+              <span class="gp-selector-flag" aria-hidden="true">US</span>
+              <span data-i18n="gp_loc_wyoming_short">Wyoming</span>
+            </button>
+            <button type="button" class="gp-selector-btn" data-loc="prague" aria-pressed="false">
+              <span class="gp-selector-flag" aria-hidden="true">CZ</span>
+              <span data-i18n="gp_loc_prague_short">Praha</span>
+            </button>
           </div>
-          <div class="relative z-10 w-full aspect-square flex items-center justify-center">
-            <svg viewBox="0 0 2018 2018" class="w-full h-full">
-              <!-- World Map from Assets -->
-              <image href="assets/mapa mundi.svg" x="0" y="0" width="2018" height="2018" opacity="0.4"
-                style="filter: brightness(1.2); will-change: transform, opacity;" />
-              <!-- Nota: Se eliminÃÂ³ el drop-shadow del SVG grande por ser extremadamente costoso en rendimiento -->
 
-              <!-- Connection Lines (White and Continuous Feeling) -->
-              <!-- USA to EUROPE -->
-              <path d="M400 840 Q 730 600 1060 820" stroke="white" stroke-width="10" fill="none"
-                class="map-line opacity-70" />
-              <!-- LATAM to USA -->
-              <path d="M350 1080 Q 370 960 400 840" stroke="white" stroke-width="8" fill="none"
-                class="map-line opacity-50" />
-              <!-- LATAM to EUROPE -->
-              <path d="M350 1080 Q 700 950 1060 820" stroke="white" stroke-width="10" fill="none"
-                class="map-line opacity-70" />
+          <!-- Floating office card (hidden until a location is selected; stacks below the chips on mobile) -->
+          <div id="gp-card" class="gp-card" aria-live="polite" hidden>
+            <button type="button" id="gp-card-close" class="gp-card-close" aria-label="Close">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span class="sr-only" data-i18n="gp_card_close">Close</span>
+            </button>
 
-              <!-- Central Nodes (White and Consistent Size) -->
-              <!-- USA (Central) -->
-              <g transform="translate(400, 840)">
-                <circle cx="0" cy="0" r="23" fill="white" class="drop-shadow-glow" />
-                <circle cx="0" cy="0" r="23" fill="none" stroke="white" stroke-width="3" class="map-ping" />
-                <text x="35" y="-15" fill="white" font-size="45" font-weight="black" opacity="0.9">USA</text>
-              </g>
+            <div class="gp-card-banner">
+              <img id="gp-card-banner-img" src="assets/Cities/sps.jpg" alt="" loading="lazy" decoding="async"
+                width="280" height="140">
+              <div class="gp-card-banner-overlay"></div>
+              <div class="gp-card-flag-badge" id="gp-card-flag" aria-hidden="true">HN</div>
+            </div>
 
-              <!-- LATAM (Adjusted Further West) -->
-              <g transform="translate(350, 1080)">
-                <circle cx="0" cy="0" r="23" fill="white" class="drop-shadow-glow" />
-                <circle cx="0" cy="0" r="23" fill="none" stroke="white" stroke-width="3" class="map-ping" />
-                <text x="45" y="10" fill="white" font-size="45" font-weight="black" opacity="0.9">LATAM</text>
-              </g>
+            <div class="gp-card-body">
+              <p class="gp-card-type" id="gp-card-type" data-i18n="gp_loc_honduras_type">GLOBAL HEADQUARTERS</p>
+              <h3 class="gp-card-title" id="gp-card-title" data-i18n="gp_loc_honduras_title">Honduras Headquarters</h3>
 
-              <!-- EUROPE (Central) -->
-              <g transform="translate(1060, 820)">
-                <circle cx="0" cy="0" r="23" fill="white" class="drop-shadow-glow" />
-                <circle cx="0" cy="0" r="23" fill="none" stroke="white" stroke-width="3" class="map-ping" />
-                <text x="35" y="-15" fill="white" font-size="45" font-weight="black" opacity="0.9">EUROPE</text>
-              </g>
-            </svg>
+              <div class="gp-card-info">
+                <p class="gp-card-info-row">
+                  <svg class="gp-card-info-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                    stroke-width="1.6" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 18s6-5.686 6-10a6 6 0 10-12 0c0 4.314 6 10 6 10z" />
+                    <circle cx="10" cy="8" r="2" />
+                  </svg>
+                  <span id="gp-card-location" data-i18n="gp_loc_honduras_location">San Pedro Sula, Honduras</span>
+                </p>
+                <p class="gp-card-info-row">
+                  <svg class="gp-card-info-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                    stroke-width="1.6" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M4 17V5a1 1 0 011-1h6a1 1 0 011 1v12M4 17h12M4 17H3m13 0h1M7 8h1m3 0h1M7 11h1m3 0h1M7 14h1m3 0h1" />
+                  </svg>
+                  <span id="gp-card-company" data-i18n="gp_loc_honduras_company">CorosDev S.A.</span>
+                </p>
+                <p class="gp-card-info-row">
+                  <svg class="gp-card-info-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor"
+                    stroke-width="1.6" aria-hidden="true">
+                    <rect x="3" y="5" width="14" height="10" rx="1.5" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.5 6l6.5 5 6.5-5" />
+                  </svg>
+                  <span id="gp-card-address"
+                    data-i18n="gp_loc_honduras_full_address">Boulevard Michelleti<br>3era Etapa, 5th Street<br>San
+                    Pedro Sula 21101<br>Honduras</span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
       <!-- Logo marquee -->
       <!-- <div class="mt-16 marquee py-4">
@@ -961,8 +1000,6 @@
 
 
 
-
-
   <!-- TESTIMONIALS -->
   <section id="testimonials" class="py-12 md:py-24 relative overflow-hidden">
     <div class="mx-auto max-w-7xl px-6 relative mb-8 md:mb-16">
@@ -1350,6 +1387,8 @@
     }
   </script>
   <script src="cta-modal.js"></script>
+  <script src="global-presence-data.js"></script>
+  <script src="global-presence.js"></script>
 </body>
 
 </html>

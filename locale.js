@@ -110,6 +110,43 @@ const CD_TRANSLATIONS = {
     video_title:      'See Our <span class="gradient-text drop-shadow-glow">Methodology in Action</span>',
     video_desc:       'Experience how we design, build, and scale digital products. Learn how our ecosystem and elite engineering teams bring future-ready systems to life.',
 
+    /* ── GLOBAL PRESENCE GLOBE (hero, index) ──
+       Office titles, categories, legal company names and mailing
+       addresses are kept identical in en/es on purpose — legal
+       entity names and postal addresses aren't translated. */
+    gp_selector_aria: 'Select a CorosDev location',
+    gp_globe_aria:    'Interactive 3D globe showing CorosDev locations in Honduras, the United States and the Czech Republic',
+    gp_card_close:    'Close',
+    gp_fallback_note: 'Interactive globe unavailable — showing our locations below.',
+
+    gp_loc_honduras_type:         'GLOBAL HEADQUARTERS',
+    gp_loc_honduras_title:        'Honduras Headquarters',
+    gp_loc_honduras_short:        'Honduras',
+    gp_loc_honduras_location:     'San Pedro Sula, Honduras',
+    gp_loc_honduras_company:      'CorosDev S.A.',
+    gp_loc_honduras_full_address: 'Boulevard Michelleti<br>3era Etapa, 5th Street<br>San Pedro Sula 21101<br>Honduras',
+
+    gp_loc_miami_type:         'BUSINESS PRESENCE',
+    gp_loc_miami_title:        'Miami Office',
+    gp_loc_miami_short:        'Miami',
+    gp_loc_miami_location:     'Miami, Florida, United States',
+    gp_loc_miami_company:      'CorosDev LLC',
+    gp_loc_miami_full_address: '100 SE 2nd Street<br>Suite 2000<br>Miami, FL 33131<br>United States',
+
+    gp_loc_wyoming_type:         'REGISTERED OFFICE',
+    gp_loc_wyoming_title:        'Wyoming Registered Office',
+    gp_loc_wyoming_short:        'Wyoming',
+    gp_loc_wyoming_location:     'Sheridan, Wyoming, United States',
+    gp_loc_wyoming_company:      'CorosDev LLC',
+    gp_loc_wyoming_full_address: '30 N Gould St<br>Sheridan, WY 82801<br>United States',
+
+    gp_loc_prague_type:         'EUROPEAN HEADQUARTERS',
+    gp_loc_prague_title:        'Prague Headquarters',
+    gp_loc_prague_short:        'Praha',
+    gp_loc_prague_location:     'Praha, Czech Republic',
+    gp_loc_prague_company:      'CorosDev S.R.O.',
+    gp_loc_prague_full_address: 'Plzeňská 3352/156<br>Praha 5, 150 00<br>Czech Republic',
+
     /* ── SERVICES PAGE ── */
     svc_hero_tag:   'METHODOLOGY &middot; STRATEGY &middot; EXECUTION',
     svc_hero_h1:    'Elite services. <span class="gradient-text drop-shadow-glow">Strategic systems.</span>',
@@ -335,6 +372,43 @@ const CD_TRANSLATIONS = {
     eco_stage_label:  'Etapa',
     video_title:      'Mira Nuestra <span class="gradient-text drop-shadow-glow">Metodología en Acción</span>',
     video_desc:       'Descubre cómo diseñamos, construimos y escalamos productos digitales. Conoce cómo nuestro ecosistema y equipos de ingeniería de élite dan vida a sistemas preparados para el futuro.',
+
+    /* ── GLOBAL PRESENCE GLOBE (hero, index) ──
+       Office titles, categories, legal company names and mailing
+       addresses are kept identical in en/es on purpose — legal
+       entity names and postal addresses aren't translated. */
+    gp_selector_aria: 'Selecciona una ubicación de CorosDev',
+    gp_globe_aria:    'Globo terráqueo 3D interactivo que muestra las ubicaciones de CorosDev en Honduras, Estados Unidos y República Checa',
+    gp_card_close:    'Cerrar',
+    gp_fallback_note: 'El globo interactivo no está disponible — mostrando nuestras ubicaciones a continuación.',
+
+    gp_loc_honduras_type:         'GLOBAL HEADQUARTERS',
+    gp_loc_honduras_title:        'Honduras Headquarters',
+    gp_loc_honduras_short:        'Honduras',
+    gp_loc_honduras_location:     'San Pedro Sula, Honduras',
+    gp_loc_honduras_company:      'CorosDev S.A.',
+    gp_loc_honduras_full_address: 'Boulevard Michelleti<br>3era Etapa, 5th Street<br>San Pedro Sula 21101<br>Honduras',
+
+    gp_loc_miami_type:         'BUSINESS PRESENCE',
+    gp_loc_miami_title:        'Miami Office',
+    gp_loc_miami_short:        'Miami',
+    gp_loc_miami_location:     'Miami, Florida, United States',
+    gp_loc_miami_company:      'CorosDev LLC',
+    gp_loc_miami_full_address: '100 SE 2nd Street<br>Suite 2000<br>Miami, FL 33131<br>United States',
+
+    gp_loc_wyoming_type:         'REGISTERED OFFICE',
+    gp_loc_wyoming_title:        'Wyoming Registered Office',
+    gp_loc_wyoming_short:        'Wyoming',
+    gp_loc_wyoming_location:     'Sheridan, Wyoming, United States',
+    gp_loc_wyoming_company:      'CorosDev LLC',
+    gp_loc_wyoming_full_address: '30 N Gould St<br>Sheridan, WY 82801<br>United States',
+
+    gp_loc_prague_type:         'EUROPEAN HEADQUARTERS',
+    gp_loc_prague_title:        'Prague Headquarters',
+    gp_loc_prague_short:        'Praha',
+    gp_loc_prague_location:     'Praha, Czech Republic',
+    gp_loc_prague_company:      'CorosDev S.R.O.',
+    gp_loc_prague_full_address: 'Plzeňská 3352/156<br>Praha 5, 150 00<br>Czech Republic',
 
     /* ── SERVICES PAGE ── */
     svc_hero_tag:   'METODOLOGÍA &middot; ESTRATEGIA &middot; EJECUCIÓN',
