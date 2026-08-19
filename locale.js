@@ -11,6 +11,7 @@ const CD_TRANSLATIONS = {
     nav_platform:   'Platform',
     nav_services:   'Services',
     nav_ecosystem:  'Ecosystem',
+    nav_partners:   'Partners',
     nav_about:      'About Us',
     nav_contact:    'Contact',
     nav_cta:        'Book a demo',
@@ -91,6 +92,37 @@ const CD_TRANSLATIONS = {
     eco_cta:          'Interested in partnering or investing?',
     eco_cta_link:     'Let\'s talk &rarr;',
     eco_early_tester_btn: 'Want to be an early Tester? &rarr;',
+
+    /* ── PARTNERS PAGE ── */
+    ptn_label:        'Strategic Alliances',
+    ptn_title:        'Our <span class="gradient-text drop-shadow-glow">Partners</span>',
+    ptn_subtitle:     'We build alongside a trusted network of technology, capital, and data companies — extending what CorosDev can deliver for every client and venture.',
+    ptn_visit:        'Visit site &rarr;',
+    ptn_sector_label: 'Sector',
+
+    ptn_eiw_name:    'EncryptedInfoWeb',
+    ptn_eiw_sector:  'IT Solutions &amp; Software Development',
+    ptn_eiw_desc:    'Custom web development, mobile apps, and enterprise ERP/CRM software &mdash; delivering data-driven solutions across real estate, healthcare, finance, and e-commerce.',
+
+    ptn_sbc_name:    'SBC Capital',
+    ptn_sbc_sector:  'Private Equity &amp; Acquisitions',
+    ptn_sbc_desc:    'A private acquisition firm investing in lower middle-market businesses across the U.S. and Europe, acting as permanent, long-term owners.',
+
+    ptn_audela_name:   'AUDELA Control Tower',
+    ptn_audela_sector: 'Business Intelligence &amp; LegalTech',
+    ptn_audela_desc:   'A French software company delivering Business Intelligence, ERP, and LegalTech solutions through its unified Control Tower platform.',
+
+    ptn_nolim_name:   'Nolim Studios',
+    ptn_nolim_sector: 'Software, AI &amp; AR/VR',
+    ptn_nolim_desc:   'A software development studio building custom software, AI systems, AR/VR experiences, SaaS platforms, and games &mdash; from air traffic systems to judicial education platforms.',
+
+    ptn_intellify_name:   'The Intellify',
+    ptn_intellify_sector: 'AI &amp; Digital Product Engineering',
+    ptn_intellify_desc:   'An AI and digital product engineering company building intelligent automation, AI agents, and modernized platforms for enterprises across regulated industries.',
+
+    ptn_cta:        'Interested in becoming a CorosDev partner?',
+    ptn_cta_sub:    'We are always looking to grow our network of strategic technology, capital, and data allies.',
+    ptn_cta_link:   'Let\'s talk &rarr;',
 
     /* ── SNAPAY SPOTLIGHT ── */
     snapay_badge:     'A CorosDev Venture',
@@ -254,6 +286,8 @@ const CD_TRANSLATIONS = {
     cta_drawer_subtitle_eco: 'Interested in partnering, investing, or trying early versions of our ventures?',
     cta_drawer_title_svc: 'Build Your Custom Platform',
     cta_drawer_subtitle_svc: 'Let\'s design and engineer your high-performance growth system.',
+    cta_drawer_title_ptn: 'Become a CorosDev Partner',
+    cta_drawer_subtitle_ptn: 'Tell us about your company and how we could collaborate.',
     cta_form_role: 'I\'m interested as...',
     cta_form_role_tester: 'Early Tester / User',
     cta_form_role_investor: 'Capital Investor',
@@ -274,6 +308,7 @@ const CD_TRANSLATIONS = {
     nav_platform:   'Plataforma',
     nav_services:   'Servicios',
     nav_ecosystem:  'Ecosistema',
+    nav_partners:   'Partners',
     nav_about:      'Nosotros',
     nav_contact:    'Contacto',
     nav_cta:        'Agendar demo',
@@ -354,6 +389,37 @@ const CD_TRANSLATIONS = {
     eco_cta:          '&iquest;Interesado en asociarte o invertir?',
     eco_cta_link:     'Hablemos &rarr;',
     eco_early_tester_btn: '&iquest;Quieres ser un Tester de acceso anticipado? &rarr;',
+
+    /* ── PARTNERS PAGE ── */
+    ptn_label:        'Alianzas Estratégicas',
+    ptn_title:        'Nuestros <span class="gradient-text drop-shadow-glow">Partners</span>',
+    ptn_subtitle:     'Construimos junto a una red de confianza de empresas de tecnología, capital y datos, ampliando lo que CorosDev puede ofrecer a cada cliente y proyecto.',
+    ptn_visit:        'Visitar sitio &rarr;',
+    ptn_sector_label: 'Sector',
+
+    ptn_eiw_name:    'EncryptedInfoWeb',
+    ptn_eiw_sector:  'Soluciones de TI y Desarrollo de Software',
+    ptn_eiw_desc:    'Desarrollo web a medida, aplicaciones móviles y software empresarial ERP/CRM &mdash; soluciones basadas en datos para real estate, salud, finanzas y e-commerce.',
+
+    ptn_sbc_name:    'SBC Capital',
+    ptn_sbc_sector:  'Capital Privado y Adquisiciones',
+    ptn_sbc_desc:    'Firma de adquisiciones privada que invierte en negocios del mercado medio-bajo en EE. UU. y Europa, actuando como propietarios permanentes a largo plazo.',
+
+    ptn_audela_name:   'AUDELA Control Tower',
+    ptn_audela_sector: 'Business Intelligence y LegalTech',
+    ptn_audela_desc:   'Empresa de software francesa que ofrece soluciones de Business Intelligence, ERP y LegalTech a través de su plataforma unificada Control Tower.',
+
+    ptn_nolim_name:   'Nolim Studios',
+    ptn_nolim_sector: 'Software, IA y AR/VR',
+    ptn_nolim_desc:   'Estudio de desarrollo de software especializado en soluciones a medida, sistemas de IA, experiencias AR/VR, plataformas SaaS y videojuegos.',
+
+    ptn_intellify_name:   'The Intellify',
+    ptn_intellify_sector: 'IA e Ingeniería de Productos Digitales',
+    ptn_intellify_desc:   'Empresa de ingeniería de productos digitales e IA que desarrolla automatización inteligente, agentes de IA y plataformas modernizadas para empresas en industrias reguladas.',
+
+    ptn_cta:        '&iquest;Interesado en ser partner de CorosDev?',
+    ptn_cta_sub:    'Siempre buscamos hacer crecer nuestra red de aliados estratégicos en tecnología, capital y datos.',
+    ptn_cta_link:   'Hablemos &rarr;',
 
     /* ── SNAPAY SPOTLIGHT ── */
     snapay_badge:     'Una Empresa de CorosDev',
@@ -517,6 +583,8 @@ const CD_TRANSLATIONS = {
     cta_drawer_subtitle_eco: '¿Interesado en asociarte, invertir o probar versiones beta de nuestras startups?',
     cta_drawer_title_svc: 'Construye Tu Plataforma',
     cta_drawer_subtitle_svc: 'Diseñemos y desarrollemos tu sistema de crecimiento de alto rendimiento.',
+    cta_drawer_title_ptn: 'Sé un Partner de CorosDev',
+    cta_drawer_subtitle_ptn: 'Cuéntanos sobre tu empresa y cómo podríamos colaborar.',
     cta_form_role: 'Me interesa como...',
     cta_form_role_tester: 'Tester de Acceso Anticipado / Usuario',
     cta_form_role_investor: 'Inversor de Capital',

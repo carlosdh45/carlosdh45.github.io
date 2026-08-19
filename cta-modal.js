@@ -146,6 +146,10 @@
       titleEl.setAttribute('data-i18n', 'cta_drawer_title_svc');
       subtitleEl.setAttribute('data-i18n', 'cta_drawer_subtitle_svc');
       if (selectEl) selectEl.value = 'Socio Estratégico / Cliente';
+    } else if (context === 'partners') {
+      titleEl.setAttribute('data-i18n', 'cta_drawer_title_ptn');
+      subtitleEl.setAttribute('data-i18n', 'cta_drawer_subtitle_ptn');
+      if (selectEl) selectEl.value = 'Socio Estratégico / Cliente';
     } else {
       titleEl.setAttribute('data-i18n', 'cta_drawer_title');
       subtitleEl.setAttribute('data-i18n', 'cta_drawer_subtitle');
