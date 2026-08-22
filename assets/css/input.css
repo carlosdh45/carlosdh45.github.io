@@ -1,0 +1,74 @@
+/* Outfit Regular (400) */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/assets/fonts/Outfit-Regular.woff2') format('woff2');
+}
+
+/* Outfit ExtraBold (800) */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/assets/fonts/Outfit-ExtraBold.woff2') format('woff2');
+}
+
+/* --- Global Stacking Fix --- */
+html {
+  background-color: #070B1A; /* brand-900 como base absoluta */
+}
+
+body {
+  background-color: transparent !important;
+}
+
+/* --- Stars Engine (GPU Accelerated) --- */
+#stars-1, #stars-2 {
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  z-index: -10;
+  will-change: transform;
+}
+
+#stars-1 {
+  animation: moveStars 100s linear infinite !important;
+}
+
+#stars-2 {
+  animation: moveStars 60s linear infinite !important;
+  opacity: 0.5;
+}
+
+@keyframes moveStars {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-1000px, 0, 0); }
+}
+
+@import "tailwindcss";
+
+@source "../../**/*.html";
+
+@theme {
+  --color-brand-900: #070B1A;
+  --color-brand-800: #0B1226;
+  --color-brand-700: #0E1730;
+  --color-brand-600: #121D3C;
+  
+  --color-cobalt-700: #114A99;
+  --color-cobalt-500: #1F7FFF;
+  --color-cobalt-300: #7DBBFF;
+  --color-cobalt-100: #D9EFFF;
+  
+  --color-neon-500: #00F2FF;
+  --color-neon-300: #7DFAFF;
+
+  --drop-shadow-glow: 0 0 20px rgba(31, 127, 255, 0.45);
+  --drop-shadow-glowblue: 0 0 25px rgba(31, 127, 255, 0.35);
+}

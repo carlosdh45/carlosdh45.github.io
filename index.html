@@ -2,44 +2,22 @@
 <html lang="en" id="html-root">
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0BBYWL11BW"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0BBYWL11BW');
-  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CorosDev - Engineering the Future of Global Innovation</title>
   <meta name="description"
     content="We empower innovative companies through world-class technology and intelligent growth systems - transforming ideas into scalable, profitable, and future-ready businesses." />
-  <link rel="icon" href="assets/favicon.svg">
-  <!-- Preconnect para CDNs externas -->
-  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <!-- Preload critical images for LCP -->
+  <link rel="preload" href="assets/coros.webp" as="image" type="image/webp">
+  <link rel="preload" href="assets/mapa mundi.svg" as="image" type="image/svg+xml">
+  <!-- Preload fonts to avoid FOUT/FOIT -->
+  <link rel="preload" href="/assets/fonts/Outfit-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/assets/fonts/Outfit-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preconnect" href="https://unpkg.com">
-  <!-- Defer scripts para no bloquear renderizado -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=1.0.4">
+  <!-- i18n is critical to prevent flash of untranslated content -->
   <script defer src="locale.js?v=1.0.3" charset="UTF-8"></script>
-  <script defer type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: { 900: '#070B1A', 800: '#0B1226', 700: '#0E1730', 600: '#121D3C' },
-            neon: { 100: '#D9EFFF', 300: '#7DBBFF', 500: '#1F7FFF', 700: '#114A99' },
-            cobalt: { 300: '#7DBBFF', 500: '#1F7FFF', 700: '#114A99' },
-          },
-          dropShadow: {
-            glow: '0 0 20px rgba(31,127,255,0.45)',
-            glowblue: '0 0 25px rgba(31,127,255,0.35)'
-          }
-        }
-      }
-    }
-  </script>
   <style>
     html,
     body {
@@ -254,12 +232,11 @@
 
     @keyframes ping {
       0% {
-        r: 3;
+        transform: scale(1);
         opacity: 1;
       }
-
       100% {
-        r: 12;
+        transform: scale(4);
         opacity: 0;
       }
     }
@@ -271,6 +248,8 @@
     }
 
     .map-ping {
+      transform-origin: center;
+      transform-box: fill-box;
       animation: ping 2s ease-out infinite;
     }
 
@@ -404,14 +383,17 @@
       transform-origin: center;
     }
     #mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      display: none;
       opacity: 0;
+      transform: translate3d(0, -10px, 0);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
     }
     #mobile-menu.open {
-      max-height: 400px;
+      display: block;
       opacity: 1;
+      transform: translate3d(0, 0, 0);
+      pointer-events: auto;
     }
     #mobile-menu a {
       display: block;
@@ -436,7 +418,11 @@
 <body
   class="bg-brand-900 text-white antialiased selection:bg-neon-500 selection:text-brand-900 relative overflow-x-hidden">
 
-  <canvas id="stars" class="fixed inset-0 -z-10"></canvas>
+  <!-- Optimizacion: Capas CSS para estrellas (GPU Accelerated) -->
+  <div id="stars-container" class="fixed inset-0 -z-10 pointer-events-none">
+    <div id="stars-1"></div>
+    <div id="stars-2"></div>
+  </div>
   <div class="bg-orb -z-20"></div>
 
   <!-- NAV -->
@@ -444,14 +430,14 @@
     <div class="mx-auto max-w-7xl px-6 py-3 glass rounded-b-2xl shadow-2xl mt-0">
       <div class="flex items-center justify-between">
         <!-- Hamburger (mobile only) -->
-        <button id="mobile-menu-btn" class="md:hidden" onclick="toggleMobileMenu()" aria-label="Menu">
+        <button id="mobile-menu-btn" class="md:hidden" aria-label="Menu">
           <span id="ham-1"></span>
           <span id="ham-2"></span>
           <span id="ham-3"></span>
         </button>
         <!-- Logo (centered on mobile) -->
         <a href="#" class="flex items-center gap-3 group md:order-none">
-          <img src="assets/coros.png" alt="CorosDev" class="h-12 md:h-16 w-auto" width="200" height="48">
+          <img src="assets/coros.webp" alt="CorosDev" class="h-12 md:h-16 w-auto" width="200" height="48">
           <div class="hidden sm:block h-6 w-[1px] bg-white/10 mx-2"></div>
           <span class="hidden sm:block text-[10px] tracking-widest text-white font-bold uppercase opacity-80">AI
             Driven Company</span>
@@ -603,8 +589,9 @@
       <div class="mx-auto max-w-3xl group relative rounded-[2rem] glass p-3 border border-white/10 shadow-[0_0_50px_rgba(31,127,255,0.15)] hover:border-neon-500/30 transition-all duration-700 ease-out hover:shadow-[0_0_60px_rgba(31,127,255,0.25)] hover:-translate-y-1">
         <div class="relative aspect-video w-full overflow-hidden rounded-[1.5rem] bg-brand-900 border border-white/5">
           <iframe class="absolute inset-0 w-full h-full" 
+            loading="lazy"
             src="https://www.youtube.com/embed/haRpSox-c1Q" 
-            title="CorosDev Presentation Video" 
+            title="CorosDev Presentación del Proyecto" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
             referrerpolicy="strict-origin-when-cross-origin" 
@@ -1201,8 +1188,8 @@
         </div>
         <form id="coros-brevo-form" class="glass rounded-2xl p-6" onsubmit="enviarFormularioBrevo(event)">
           <div class="grid gap-4">
-            <input type="text" id="NOMBRE" placeholder="Tu nombre completo" data-i18n="form_name" class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500" required />
-            <input type="email" id="EMAIL" placeholder="Tu correo corporativo" data-i18n="form_email" class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500" required />
+            <input type="text" id="NOMBRE" placeholder="Tu nombre completo" data-i18n="form_name" autocomplete="name" class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500" required />
+            <input type="email" id="EMAIL" placeholder="Tu correo corporativo" data-i18n="form_email" autocomplete="email" class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500" required />
             
             <select id="INTEREST" data-i18n="form_interest" class="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-neon-500 text-white/70 bg-brand-800">
               <option value="Inversor de Capital">Inversor de Capital</option>
@@ -1231,110 +1218,6 @@
   </footer>
 
   <script>
-    /* --•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•--
-       i18n loaded dynamically from locale.js
-    --•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•----•-- */
-
-    /* Throttle utility to prevent Long Tasks from high-frequency events */
-    function throttle(func, limit) {
-      let inThrottle;
-      return function(...args) {
-        if (!inThrottle) {
-          func.apply(this, args);
-          inThrottle = true;
-          setTimeout(() => inThrottle = false, limit);
-        }
-      };
-    }
-
-    /* --&#8221;---&#8221;- Existing JS --&#8221;---&#8221;- */
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.querySelectorAll('.tilt').forEach(el => {
-      let rafId = null;
-      el.addEventListener('mousemove', (e) => {
-        if (rafId) return;
-        rafId = requestAnimationFrame(() => {
-          const r = el.getBoundingClientRect();
-          const x = e.clientX - r.left, y = e.clientY - r.top;
-          const rx = ((y / r.height) - .5) * -8;
-          const ry = ((x / r.width) - .5) * 8;
-          el.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-          rafId = null;
-        });
-      });
-      el.addEventListener('mouseleave', () => {
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = null;
-        el.style.transform = 'perspective(1000px)';
-      });
-    });
-    const siteNav = document.getElementById('site-nav');
-    function toggleNavGlass() {
-      if (window.scrollY > 8) siteNav.classList.add('scrolled');
-      else siteNav.classList.remove('scrolled');
-    }
-    // Throttle scroll event to 50ms to prevent excessive repaints
-    window.addEventListener('scroll', throttle(toggleNavGlass, 50), { passive: true });
-    toggleNavGlass(); // estado inicial
-    const canvas = document.getElementById('stars');
-    const ctx = canvas.getContext('2d');
-    let W, H, stars = [];
-    function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
-    // Throttle resize to 150ms to prevent layout thrashing
-    window.addEventListener('resize', throttle(resize, 150), { passive: true }); resize();
-
-    for (let i = 0; i < 160; i++) {
-      stars.push({ x: Math.random() * W, y: Math.random() * H, z: Math.random() * 2 + 0.2 });
-    }
-
-    let currentScroll = window.scrollY;
-    // Throttle scroll position update to 16ms (~60fps) to keep in sync with animation frame
-    window.addEventListener('scroll', throttle(() => { currentScroll = window.scrollY; }, 16), { passive: true });
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      const scrollFactor = 1.5 + (currentScroll / 2000);
-
-      // Pre-calculate stars to update positions
-      for (const s of stars) {
-        s.x -= s.z * scrollFactor;
-        if (s.x < 0) { s.x = W; s.y = Math.random() * H; }
-      }
-
-      // Group stars by brightness to minimize globalAlpha changes
-      // Low brightness
-      ctx.globalAlpha = 0.5;
-      ctx.fillStyle = 'white';
-      for (const s of stars) {
-        if (s.z < 1) ctx.fillRect(s.x, s.y, s.z, s.z);
-      }
-
-      // High brightness
-      ctx.globalAlpha = 0.9;
-      for (const s of stars) {
-        if (s.z >= 1) ctx.fillRect(s.x, s.y, s.z, s.z);
-      }
-
-      ctx.globalAlpha = 1.0;
-      requestAnimationFrame(draw);
-    } draw();
-
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('opacity-100', 'translate-y-0');
-          io.unobserve(e.target); // Dejamos de observar una vez animado para liberar recursos
-        }
-      });
-    }, { threshold: .1 });
-
-    document.querySelectorAll('section .glass, section img, section h2').forEach(el => {
-      // Avoid will-change-transform here as it promotes to layer too early
-      el.classList.add('opacity-0', 'translate-y-6', 'transition-all', 'duration-700');
-      io.observe(el);
-    });
-
     function enviarFormularioBrevo(event) {
       event.preventDefault();
       const btn = document.getElementById('btn-submit-form');
@@ -1371,7 +1254,29 @@
       });
     }
   </script>
-  <script src="cta-modal.js"></script>
+  <!-- Non-critical scripts with deferred loading -->
+  <script defer src="main.js"></script>
+  <script defer src="cta-modal.js"></script>
+  
+  <!-- Analytics and heavy components loaded only after page is stable -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0BBYWL11BW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0BBYWL11BW');
+  </script>
+
+  <!-- Extremely heavy assets loaded last -->
+  <script type="module">
+    // Delayed loading of Lottie to prioritize FCP/LCP
+    setTimeout(() => {
+      const s = document.createElement('script');
+      s.type = 'module';
+      s.src = "https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js";
+      document.body.appendChild(s);
+    }, 2000);
+  </script>
 </body>
 
 </html>

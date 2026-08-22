@@ -4,6 +4,12 @@
           Then call: initI18n() on DOMContentLoaded
    ============================================================ */
 
+// Shared entity map for placeholders to avoid re-allocation in loops
+const HTML_ENTITY_MAP = {
+  '&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",
+  '&middot;':'·','&bull;':'•','&rarr;':'→','&copy;':'©','&iquest;':'¿','&mdash;':'—'
+};
+
 const CD_TRANSLATIONS = {
   en: {
     /* ── NAV ── */
@@ -475,14 +481,10 @@ async function cdDetectGeo() {
   const stored = localStorage.getItem('cd_lang');
   if (stored === 'en' || stored === 'es') return stored;
   try {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 2500);
-    const res  = await fetch('https://ipapi.co/json/', { signal: controller.signal });
-    clearTimeout(timer);
-    const data = await res.json();
-    return data.country_code === 'HN' ? 'es' : 'en';
-  } catch (_) {
+    // Fallback immediate to avoid CORS/Performance issues with external APIs
     const nav = (navigator.language || 'en').toLowerCase();
+    return nav.startsWith('es') ? 'es' : 'en';
+  } catch (_) {
     return nav.startsWith('es') ? 'es' : 'en';
   }
 }
@@ -496,28 +498,30 @@ function cdApplyLang(lang, save) {
   if (save) localStorage.setItem('cd_lang', lang);
   document.documentElement.lang = lang;
   const t = CD_TRANSLATIONS[lang] || CD_TRANSLATIONS.en;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) {
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.placeholder = t[key].replace(/&[^;]+;/g, m => {
-          const map = {'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",
-                       '&middot;':'·','&bull;':'•','&rarr;':'→','&copy;':'©','&iquest;':'¿','&mdash;':'—'};
-          return map[m] || m;
-        });
-      } else {
-        el.innerHTML = t[key];
+  requestAnimationFrame(() => {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (t[key] !== undefined) {
+        const translatedValue = t[key];
+        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+          el.placeholder = translatedValue.replace(/&[^;]+;/g, m => HTML_ENTITY_MAP[m] || m);
+        } else {
+          el.innerHTML = translatedValue;
+        }
       }
-    }
+    });
   });
   const btn = document.getElementById('lang-toggle');
   if (btn) btn.textContent = lang === 'en' ? 'ES' : 'EN';
-  document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());
+  
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear().toString();
 
-  const videoSection = document.getElementById('presentation');
-  const videoDivider = document.getElementById('video-divider');
-  if (videoSection) videoSection.style.display = '';
-  if (videoDivider) videoDivider.style.display  = '';
+  // Special case for Landing video visibility
+  ['presentation', 'video-divider'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = '';
+  });
 }
 
 // User manual toggle — saves preference to localStorage
@@ -531,40 +535,3 @@ async function initI18n() {
   if (geoLang !== _cdLang) cdApplyLang(geoLang); // Re-render only if geo disagrees
 }
 document.addEventListener('DOMContentLoaded', initI18n);
-
-/* ── Mobile hamburger menu ── */
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobile-menu');
-  const h1   = document.getElementById('ham-1');
-  const h2   = document.getElementById('ham-2');
-  const h3   = document.getElementById('ham-3');
-  if (!menu) return;
-  const isOpen = menu.classList.contains('open');
-  if (isOpen) {
-    menu.classList.remove('open');
-    if (h1) h1.style.transform = '';
-    if (h2) h2.style.opacity  = '1';
-    if (h3) h3.style.transform = '';
-  } else {
-    menu.classList.add('open');
-    if (h1) h1.style.transform = 'translateY(7px) rotate(45deg)';
-    if (h2) h2.style.opacity   = '0';
-    if (h3) h3.style.transform = 'translateY(-7px) rotate(-45deg)';
-  }
-}
-
-document.addEventListener('click', function(e) {
-  const menu = document.getElementById('mobile-menu');
-  const btn  = document.getElementById('mobile-menu-btn');
-  if (menu && btn && menu.classList.contains('open')) {
-    if (!menu.contains(e.target) && !btn.contains(e.target)) {
-      menu.classList.remove('open');
-      const h1 = document.getElementById('ham-1');
-      const h2 = document.getElementById('ham-2');
-      const h3 = document.getElementById('ham-3');
-      if (h1) h1.style.transform = '';
-      if (h2) h2.style.opacity   = '1';
-      if (h3) h3.style.transform = '';
-    }
-  }
-});

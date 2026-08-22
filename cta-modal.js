@@ -49,12 +49,12 @@
 
               <div class="cd-form-group">
                 <label class="cd-form-label" for="cd-input-name" data-i18n="form_name">Full Name</label>
-                <input type="text" id="cd-input-name" name="NOMBRE" required class="cd-form-input" placeholder="e.g. John Doe" data-i18n="form_name_placeholder">
+                <input type="text" id="cd-input-name" name="NOMBRE" autocomplete="name" required class="cd-form-input" placeholder="e.g. John Doe" data-i18n="form_name_placeholder">
               </div>
 
               <div class="cd-form-group">
                 <label class="cd-form-label" for="cd-input-email" data-i18n="form_email">Work Email</label>
-                <input type="email" id="EMAIL" name="EMAIL" required class="cd-form-input" placeholder="e.g. john@company.com" data-i18n="form_email_placeholder">
+                <input type="email" id="cd-input-email" name="EMAIL" autocomplete="email" required class="cd-form-input" placeholder="e.g. john@company.com" data-i18n="form_email_placeholder">
               </div>
 
               <div class="cd-form-group">
@@ -217,10 +217,13 @@
     });
   };
 
-  // Run DOM injection
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectCtaMarkup);
-  } else {
-    injectCtaMarkup();
-  }
+  // Optimized: Delay injection to free main thread
+  const initIdle = () => {
+      if (document.getElementById('cd-drawer-overlay')) return;
+      injectCtaMarkup();
+      window.removeEventListener('scroll', initIdle);
+  };
+
+  window.addEventListener('scroll', initIdle, { passive: true });
+  setTimeout(initIdle, 3000); // Fallback for no-scroll users
 })();

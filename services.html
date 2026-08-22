@@ -2,6 +2,18 @@
 <html lang="en" class="bg-brand-900 scroll-smooth">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - CorosDev</title>
+  <meta name="description"
+    content="Explore the elite technology services and strategic frameworks of CorosDev - AI automation, custom software, digital growth, and scalable systems." />
+  <!-- Preload critical logo -->
+  <link rel="preload" href="assets/coros.webp" as="image" type="image/webp">
+  <!-- Preload fonts to avoid FOUT/FOIT -->
+  <link rel="preload" href="/assets/fonts/Outfit-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/assets/fonts/Outfit-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css?v=1.0.4">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0BBYWL11BW"></script>
   <script>
@@ -10,32 +22,9 @@
     gtag('js', new Date());
     gtag('config', 'G-0BBYWL11BW');
   </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services - CorosDev</title>
-  <meta name="description"
-    content="Explore the elite technology services and strategic frameworks of CorosDev - AI automation, custom software, digital growth, and scalable systems." />
-  <link rel="icon" href="assets/favicon.svg">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="locale.js?v=1.0.3" charset="UTF-8"></script>
+  <script defer src="locale.js?v=1.0.3" charset="UTF-8"></script>
+  <script defer src="main.js" charset="UTF-8"></script>
   <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: { 900: '#070B1A', 800: '#0B1226', 700: '#0E1730', 600: '#121D3C' },
-            neon: { 100: '#D9EFFF', 300: '#7DBBFF', 500: '#1F7FFF', 700: '#114A99' },
-            cobalt: { 300: '#7DBBFF', 500: '#1F7FFF', 700: '#114A99' },
-          },
-          dropShadow: {
-            glow: '0 0 20px rgba(31,127,255,0.45)',
-            glowblue: '0 0 25px rgba(31,127,255,0.35)'
-          }
-        }
-      }
-    }
-  </script>
   <style>
     html,
     body {
@@ -197,27 +186,30 @@
   <link rel="stylesheet" href="cta-modal.css">
 </head>
 
-<body class="relative min-h-screen text-white font-sans bg-brand-900">
+<body class="relative min-h-screen text-white font-sans bg-transparent">
 
-  <!-- Interactive canvas star field background -->
-  <canvas id="stars" class="fixed inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+  <!-- Optimizacion: Capas CSS para estrellas (GPU Accelerated) -->
+  <div id="stars-container" class="fixed inset-0 -z-10 pointer-events-none">
+    <div id="stars-1"></div>
+    <div id="stars-2"></div>
+  </div>
 
   <!-- Giant background gradient orb - very subtle -->
-  <div class="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] z-0 bg-orb"></div>
+  <div class="absolute top-[-10%] right-[-10%] w-[60vw] h-[60vw] -z-20 bg-orb"></div>
 
   <!-- NAV -->
   <header id="site-nav" class="fixed top-0 left-0 right-0 z-50">
     <div class="mx-auto max-w-7xl px-6 py-3 glass rounded-b-2xl shadow-2xl mt-0">
       <div class="flex items-center justify-between">
         <!-- Hamburger (mobile only) -->
-        <button id="mobile-menu-btn" class="md:hidden" onclick="toggleMobileMenu()" aria-label="Menu">
+        <button id="mobile-menu-btn" class="md:hidden" aria-label="Menu">
           <span id="ham-1"></span>
           <span id="ham-2"></span>
           <span id="ham-3"></span>
         </button>
         <!-- Logo -->
         <a href="index.html" class="flex items-center gap-3 group md:order-none">
-          <img src="assets/coros.png" alt="CorosDev" class="h-12 md:h-16 w-auto" width="200" height="48">
+          <img src="assets/coros.webp" alt="CorosDev" class="h-12 md:h-16 w-auto" width="200" height="48">
           <div class="hidden sm:block h-6 w-[1px] bg-white/10 mx-2"></div>
           <span class="hidden sm:block text-[10px] tracking-widest text-white font-bold uppercase opacity-80">AI
             Driven Company</span>
@@ -438,109 +430,7 @@
     </div>
   </footer>
 
-  <!-- SCRIPT BLOCK -->
-  <script>
-    // 3D Perspective Tilt Animation
-    document.querySelectorAll('.tilt').forEach(el => {
-      let rafId = null;
-      el.addEventListener('mousemove', (e) => {
-        if (rafId) return;
-        rafId = requestAnimationFrame(() => {
-          const r = el.getBoundingClientRect();
-          const x = e.clientX - r.left, y = e.clientY - r.top;
-          const rx = ((y / r.height) - .5) * -8;
-          const ry = ((x / r.width) - .5) * 8;
-          el.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-          rafId = null;
-        });
-      });
-      el.addEventListener('mouseleave', () => {
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = null;
-        el.style.transform = 'perspective(1000px)';
-      });
-    });
-
-    // Scrolled Header Navigation Effect
-    const siteNav = document.getElementById('site-nav');
-    function toggleNavGlass() {
-      if (window.scrollY > 8) siteNav.classList.add('scrolled');
-      else siteNav.classList.remove('scrolled');
-    }
-    window.addEventListener('scroll', toggleNavGlass, { passive: true });
-    toggleNavGlass();
-
-    // Canvas Interactive Starfield
-    const canvas = document.getElementById('stars');
-    const ctx = canvas.getContext('2d');
-    let W, H, stars = [];
-
-    function resize() {
-      W = canvas.width = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    for (let i = 0; i < 150; i++) {
-      stars.push({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        r: Math.random() * 1.5,
-        d: Math.random() * 50,
-        speed: (Math.random() * 0.15) + 0.05
-      });
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
-      ctx.beginPath();
-      for (let i = 0; i < stars.length; i++) {
-        const s = stars[i];
-        ctx.moveTo(s.x, s.y);
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2, true);
-      }
-      ctx.fill();
-      update();
-    }
-
-    let scrollYOffset = 0;
-    window.addEventListener('scroll', () => {
-      scrollYOffset = window.scrollY * 0.12;
-    }, { passive: true });
-
-    function update() {
-      for (let i = 0; i < stars.length; i++) {
-        const s = stars[i];
-        s.y -= s.speed + (scrollYOffset * 0.02);
-        if (s.y < 0) {
-          stars[i] = { x: Math.random() * W, y: H, r: s.r, d: s.d, speed: s.speed };
-        }
-      }
-    }
-
-    function animateLoop() {
-      draw();
-      requestAnimationFrame(animateLoop);
-    }
-    animateLoop();
-
-    // Intersection Observer for Scroll Reveals
-    const revealCallback = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    };
-    const revealObserver = new IntersectionObserver(revealCallback, {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    });
-    document.querySelectorAll('.reveal-item').forEach(el => revealObserver.observe(el));
-  </script>
-  <script src="cta-modal.js"></script>
+  <script defer src="cta-modal.js"></script>
 </body>
 
 </html>
